@@ -30,7 +30,7 @@
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" name="password" maxlength="32" [formControl]="password" required>
+                <input matInput type="password" placeholder="Password" name="password" maxlength="32" [formControl]="password" required>
                 <mat-hint align="start"><strong>Minimum length is 6</strong> </mat-hint>
                 <mat-hint align="end">{{password.value.length}} / 32</mat-hint>
                 <mat-error *ngIf="password.hasError('required')">

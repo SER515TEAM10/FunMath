@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-user-login',
@@ -8,15 +9,21 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   email = new FormControl();
   password = new FormControl();
+  userType : String
 
   login() {
     console.log('Login function')
+    //TODO send credentials to backend and validate
+    this.userType = 'admin' //Dummy success
+    if(this.userType === 'admin'){
+      this.router.navigateByUrl('admindash',{skipLocationChange: true})
+    }
   }
 }
