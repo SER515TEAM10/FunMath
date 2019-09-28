@@ -30,7 +30,7 @@ export class UserRegistrationComponent implements OnInit {
       "Email":this.email.value,
       "Password":this.password.value,
       "Gender":this.gender.value,
-      "DOB":this.date.value
+      "DOB":this.date.value.toISOString().substring(0, 10)
     };
     console.log(obj);
   }
