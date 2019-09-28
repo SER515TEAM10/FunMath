@@ -6,12 +6,13 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-      { path: 'register', component: UserRegistrationComponent },
-      { path: 'login', component: UserLoginComponent },   
+  { path: 'register', component: UserRegistrationComponent },
+  { path: 'login', component: UserLoginComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

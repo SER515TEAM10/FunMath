@@ -1,9 +1,15 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row> 
-       <a mat-button routerLink="/"><mat-icon>home</mat-icon>FunMath</a>
-       <span class="spacer"></span>
-       <a mat-button routerLink="/register"><mat-icon>account_circle</mat-icon>Register</a>
-       <a mat-button routerLink="/login"><mat-icon>exit_to_app</mat-icon>Login</a>
-    </mat-toolbar-row>
- </mat-toolbar>
- <router-outlet></router-outlet>
+   <mat-toolbar-row>
+      <a mat-button routerLink="/" skipLocationChange="true">
+         <mat-icon>home</mat-icon>FunMath
+      </a>
+      <span class="spacer"></span>
+      <a mat-button routerLink="/register" skipLocationChange="true">
+         <mat-icon>account_circle</mat-icon>Register
+      </a>
+      <a mat-button routerLink="/login" skipLocationChange="true">
+         <mat-icon>exit_to_app</mat-icon>Login
+      </a>
+   </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

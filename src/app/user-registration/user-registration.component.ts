@@ -20,4 +20,16 @@ export class UserRegistrationComponent implements OnInit {
   gender = new FormControl()
   dob = new FormControl()
 
+  register() {
+    console.log('Registration function')
+    let obj = {
+      "First Name":this.fname.value,
+      "Last Name":this.lname.value,
+      "Email":this.email.value,
+      "Password":this.password.value,
+      "Gender":this.gender.value,
+      "DOB":this.dob.value
+    };
+    console.log(obj);
+  }
 }
