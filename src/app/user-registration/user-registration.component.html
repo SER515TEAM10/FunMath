@@ -47,9 +47,9 @@
             </mat-form-field><br />
             <mat-form-field class="full-width">
                 <mat-label>Date of Birth</mat-label>
-                <input matInput [matDatepicker]="dob" placeholder="Choose a date">
+                <input matInput [matDatepicker]="dob" placeholder="Choose a date" [formControl]="date">
                 <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
-                <mat-datepicker #dob></mat-datepicker>
+                <mat-datepicker #dob startView="year" [startAt]="startDate"></mat-datepicker>
             </mat-form-field>
         </form>
     </mat-card-content>
