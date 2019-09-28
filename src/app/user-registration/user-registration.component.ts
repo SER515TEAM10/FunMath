@@ -23,14 +23,13 @@ export class UserRegistrationComponent implements OnInit {
   date = new FormControl()
 
   register() {
-    console.log('Registration function')
     let obj = {
-      "First Name":this.fname.value,
-      "Last Name":this.lname.value,
-      "Email":this.email.value,
-      "Password":this.password.value,
-      "Gender":this.gender.value,
-      "DOB":this.date.value.toISOString().substring(0, 10)
+      "First Name": this.fname.value,
+      "Last Name": this.lname.value,
+      "Email": this.email.value,
+      "Password": this.password.value,
+      "Gender": this.gender.value,
+      "DOB": this.date.value != null ? this.date.value.toISOString().substring(0, 10) : ''
     };
     console.log(obj);
   }
