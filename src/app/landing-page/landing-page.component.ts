@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public authService: AuthService) { }
+
+  isLoggedIn: string
+  id: string;
+  userType: string
 
   ngOnInit() {
+    this.isLoggedIn = localStorage.getItem('isLoggedIn')
+    this.id = localStorage.getItem('token');
+    this.userType = localStorage.getItem('userType');
+    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
+  goHome() {
+    if (this.userType === null) this.router.navigateByUrl('', { skipLocationChange: true })
+    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })
+  }
+
+  goLogin() {
+    this.router.navigateByUrl('login', { skipLocationChange: true })
+  }
+
+  goRegister() {
+    this.router.navigateByUrl('register', { skipLocationChange: true })
   }
 
 }
