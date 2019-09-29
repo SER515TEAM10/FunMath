@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-registration',
@@ -8,7 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class UserRegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -23,14 +24,33 @@ export class UserRegistrationComponent implements OnInit {
   date = new FormControl()
 
   register() {
-    let obj = {
-      "First Name": this.fname.value,
-      "Last Name": this.lname.value,
-      "Email": this.email.value,
-      "Password": this.password.value,
-      "Gender": this.gender.value,
-      "DOB": this.date.value != null ? this.date.value.toISOString().substring(0, 10) : ''
-    };
-    console.log(obj);
+    if (this.fname.invalid || this.lname.invalid || this.email.invalid || this.password.invalid) {
+      this._snackBar.open('Invalid Details!', 'Dismiss', {
+        duration: 1000,
+      });
+      return;
+    }
+    else {
+      let obj = {
+        "First Name": this.fname.value,
+        "Last Name": this.lname.value,
+        "Email": this.email.value,
+        "Password": this.password.value,
+        "Gender": this.gender.value,
+        "DOB": this.date.value != null ? this.date.value.toISOString().substring(0, 10) : ''
+      };
+      console.log(obj);
+      //TODO Send above data to backend and after success response execute code below
+
+      this.fname.reset()
+      this.lname.reset()
+      this.email.reset()
+      this.password.setValue('')
+      this.gender.reset()
+      this.date.reset()
+      this._snackBar.open('Registration Successful!', 'Dismiss', {
+        duration: 1000,
+      });
+    }
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from '../auth/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-login',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor(private router: Router, private formBuilder: FormBuilder, public authService: AuthService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, public authService: AuthService, private _snackBar: MatSnackBar) { }
 
   loginForm: FormGroup;
 
@@ -23,6 +24,9 @@ export class UserLoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.invalid) {
+      this._snackBar.open('Invalid Details!', 'Dismiss', {
+        duration: 1000,
+      });
       return;
     }
     else {
