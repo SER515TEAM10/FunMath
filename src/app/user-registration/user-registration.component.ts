@@ -32,12 +32,12 @@ export class UserRegistrationComponent implements OnInit {
     }
     else {
       let obj = {
-        "First Name": this.fname.value,
-        "Last Name": this.lname.value,
-        "Email": this.email.value,
-        "Password": this.password.value,
-        "Gender": this.gender.value,
-        "DOB": this.date.value != null ? this.date.value.toISOString().substring(0, 10) : ''
+        "firstName": this.fname.value,
+        "lastName": this.lname.value,
+        "emailId": this.email.value,
+        "password": this.password.value,
+        "gender": this.gender.value,
+        "dob": this.date.value != null ? this.date.value.toISOString().substring(0, 10) : ''
       };
       console.log(obj);
       //TODO Send above data to backend and after success response execute code below
