@@ -16,6 +16,9 @@ export class LandingPageComponent implements OnInit {
   userType: string
 
   ngOnInit() {
+    if(localStorage.getItem('isLoggedIn')==undefined){
+      localStorage.setItem('isLoggedIn', "false");
+    }
     this.isLoggedIn = localStorage.getItem('isLoggedIn')
     this.id = localStorage.getItem('token');
     this.userType = localStorage.getItem('userType');
