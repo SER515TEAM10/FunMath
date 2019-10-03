@@ -4,13 +4,16 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component'
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
-
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'register', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'admindash', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'usersearch', component: UserSearchComponent, canActivate: [AuthGuard] },  
+  { path: 'userdetails/:id', component: UserDetailsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];
 

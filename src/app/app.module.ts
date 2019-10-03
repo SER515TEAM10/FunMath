@@ -48,6 +48,8 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
     StudentDashboardComponent,
     TeacherDashboardComponent,
     LandingPageComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserSearchComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

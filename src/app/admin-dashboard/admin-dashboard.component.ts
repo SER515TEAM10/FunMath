@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import {Router} from "@angular/router"
 
 export interface DialogData {
   animal: string;
@@ -16,7 +17,7 @@ export class AdminDashboardComponent {
   animal: string;
   name: string;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   approve(): void {
     const dialogRef = this.dialog.open(AdminApprovalDialog, {
@@ -26,6 +27,10 @@ export class AdminDashboardComponent {
     dialogRef.afterClosed().subscribe(result => {
       this.animal = result;
     });
+  }
+
+  view(): void {
+    this.router.navigate(['/usersearch'])
   }
 
 }
