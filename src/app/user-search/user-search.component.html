@@ -4,7 +4,7 @@
     <div id="search-component">
         <h4><label for="search-box">User Search</label></h4>
 
-        <input #searchBox id="search-box" />
+        <input #searchBox id="search-box" placeholder="Enter userid or Name"/>
 
         <button class="search" title="Search"
             (click)="search(searchBox.value)">Search</button>
@@ -14,6 +14,7 @@
     
 
     <ul class="users">
+        <div *ngIf="!UsersSize">No users found.</div>
         <div *ngFor="let user of Users">
             <input (click)="updateCheck(user.userid)" type="checkbox"/>
             <li>            

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
+import { Users } from '../mock-users';
 
 @Component({
   selector: 'app-user-search',
@@ -12,6 +13,7 @@ export class UserSearchComponent implements OnInit {
 
   Users: User[];
   selectedUsers: number[] = [];
+  UsersSize: boolean = false;
 
   constructor(private usersService: UsersService, private location: Location) { }
 
@@ -21,6 +23,12 @@ export class UserSearchComponent implements OnInit {
 
   getUsers(): void {
     this.Users = this.usersService.getUsers();
+    if (this.Users.length > 0) {
+      this.UsersSize = true;
+    }else{
+      this.UsersSize = false;
+    }
+    console.log(this.UsersSize);
   }
 
   delete(user: User): void {
@@ -32,12 +40,19 @@ export class UserSearchComponent implements OnInit {
         alert("Something went wrong");
       }
       this.Users = this.usersService.getUsers();
+
     }
   }
 
   search(nameOrId: string): void {
     this.Users = this.usersService.getUser(nameOrId);
-    this.selectedUsers = []
+    if (this.Users.length > 0) {
+      this.UsersSize = true;
+    }else{
+      this.UsersSize = false;
+    }
+    console.log(this.UsersSize);
+    this.selectedUsers = [];
   }
 
   updateCheck(userid: number): void {

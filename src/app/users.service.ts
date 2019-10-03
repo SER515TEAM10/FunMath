@@ -14,16 +14,16 @@ export class UsersService {
     return Users;
   }
 
-  searchUsers: User[] = [];
+  
 
   getUser(nameOrId: string): User[] {
-    this.searchUsers = [];
+    var searchUsers: User[] = [];
     Users.forEach(user => {
       if( (user.userid == +nameOrId) || (user.name == nameOrId) ){
-        this.searchUsers.push(user);
+        searchUsers.push(user);
       }      
     });
-    return this.searchUsers;
+    return searchUsers;
   }
 
   
@@ -47,10 +47,10 @@ export class UsersService {
   deleteUsers(userids: number[]): string {
     var index = 0;
     var count = 0;
-    Users.forEach(user => {
+    //var userlist = Users;
+    userids.forEach(userid => {
       
-      if(userids.indexOf(user.userid) >= 0){
-        Users.splice(index,1);
+      if(this.deleteUser(userid)){
         count += 1;
       }      
       index += 1;
