@@ -12,10 +12,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 
-/**
- * @author asmi
- *
- */
 @Entity
 @Table(name="users")
 public class Users {
