@@ -7,7 +7,7 @@ CREATE TABLE users
 	last_name VARCHAR2(40),
 	email_id VARCHAR2(40) UNIQUE,
     gender VARCHAR2(40),
-	password VARCHAR2(40),
+	password VARCHAR2(200),
     dob Date
 );
 

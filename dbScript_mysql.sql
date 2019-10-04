@@ -5,7 +5,7 @@ CREATE TABLE `funmath_project`.`users` (
   `gender` varchar(45) NOT NULL,
   `dob` date NOT NULL,
   `email_id` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `role_id` int(11) DEFAULT '100',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
