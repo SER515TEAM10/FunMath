@@ -18,7 +18,7 @@
         <div *ngFor="let user of Users">
             <input (click)="updateCheck(user.userid)" type="checkbox"/>
             <li>            
-                <a routerLink="/userdetails/{{user.userid}}">
+                <a (click)="goTo(user.userid)">
                     <span class="badge">{{user.userid}}</span> {{user.name}}
                 </a>            
                 <button class="delete" title="delete User"

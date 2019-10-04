@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'register', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'admindash', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'usersearch', component: UserSearchComponent, canActivate: [AuthGuard] },  
-  { path: 'userdetails/:id', component: UserDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'usersearch', component: UserSearchComponent},  
+  { path: 'userdetails/:id', component: UserDetailsComponent},
   { path: '**', redirectTo: '' }
 ];
 

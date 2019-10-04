@@ -48,7 +48,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { UserSearchComponent } from './user-search/user-search.component';
+import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-search.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
@@ -62,6 +62,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     LandingPageComponent,
     UserLoginComponent,
     UserSearchComponent,
+    ConfirmDeleteDialog,
     UserDetailsComponent
   ],
   imports: [
@@ -107,6 +108,6 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AdminApprovalDialog]
+  entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
 })
 export class AppModule { }

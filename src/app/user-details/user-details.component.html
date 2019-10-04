@@ -1,8 +1,8 @@
-<div>
-    <h2>User Details</h2>
+<mat-card>
+    <h2>{{user.name}}'s  Details</h2>
 
     
-    <ul class="users">
+    <!-- <ul class="users">
         <li *ngFor="let user of Users">
             <a routerLink="/userdetails/{{user.userid}}">
                 <span class="badge">{{user.userid}}</span> {{user.name}}
@@ -10,5 +10,7 @@
             <button class="delete" title="delete User"
             (click)="delete(user)">x</button>
         </li>
-    </ul>
-</div>
+    </ul> -->
+    <button class="search" title="Back"
+        (click)="goBackToUserSearch()">Back</button>
+</mat-card>

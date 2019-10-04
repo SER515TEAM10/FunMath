@@ -3,6 +3,10 @@ import { User } from '../user';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
 import { Users } from '../mock-users';
+import {Router} from "@angular/router";
+
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-search',
@@ -15,7 +19,7 @@ export class UserSearchComponent implements OnInit {
   selectedUsers: number[] = [];
   UsersSize: boolean = false;
 
-  constructor(private usersService: UsersService, private location: Location) { }
+  constructor(private usersService: UsersService, private location: Location, private router: Router, private snackbar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getUsers();
@@ -32,20 +36,27 @@ export class UserSearchComponent implements OnInit {
   }
 
   delete(user: User): void {
-    if (confirm("Are you sure, Do you want to delete the user ?")){
-      
-      if (this.usersService.deleteUser(user.userid)) {
-        alert("User Deleted Successfully.");
-      }else{
-        alert("Something went wrong");
+    //if (confirm("Are you sure, Do you want to delete the user ?")){
+    const dialogRef = this.dialog.open(ConfirmDeleteDialog);  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+      if (result == true) {
+        if (this.usersService.deleteUser(user.userid)) {
+          this.snackbar.open('User Deleted Successfully.', 'Dismiss', {
+            duration: 3000
+          });
+        }else{
+          this.snackbar.open('Something went wrong.', 'Dismiss', {
+            duration: 3000
+          });
+        }
+        this.Users = this.usersService.getUsers();
       }
-      this.Users = this.usersService.getUsers();
-
-    }
+    });
   }
 
   search(nameOrId: string): void {
-    this.Users = this.usersService.getUser(nameOrId);
+    this.Users = this.usersService.searchUser(nameOrId);
     if (this.Users.length > 0) {
       this.UsersSize = true;
     }else{
@@ -66,21 +77,53 @@ export class UserSearchComponent implements OnInit {
 
   deleteSelected(): void {
     if (this.selectedUsers.length == 0) {
-      alert("Please select atleast one user.")
+      this.snackbar.open('Please select atleast one user.', 'Dismiss', {
+        duration: 3000
+      });
       return;
     }
-    if (confirm("Do you want to delete the users ?")){
-      
-      alert(this.usersService.deleteUsers(this.selectedUsers))
-      this.Users = this.usersService.getUsers();
-      this.selectedUsers  = [];
-    }
+    const dialogRef = this.dialog.open(ConfirmDeleteDialog);
+    //if (confirm("Do you want to delete the users ?")){
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+      if (result == true) {
+        this.snackbar.open(this.usersService.deleteUsers(this.selectedUsers), 'Dismiss', {
+          duration: 3000
+        });
+        this.Users = this.usersService.getUsers();
+        this.selectedUsers  = [];
+      }      
+    });
     
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigateByUrl('/admindash', { skipLocationChange: true });
     
+  }
+
+  goTo(id: number): void {
+    this.router.navigateByUrl('/userdetails/'+id, { skipLocationChange: true });
+  }
+
+}
+@Component({
+  selector: 'confirm-delete-dialog',
+  templateUrl: 'confirm-delete-dialog.html',
+})
+export class ConfirmDeleteDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmDeleteDialog>) { }
+
+  onNoClick(): boolean {    
+    this.dialogRef.close();
+    return false;
+  }
+
+  onYesClick(): boolean {    
+    this.dialogRef.close();
+    return true;
   }
 
 }

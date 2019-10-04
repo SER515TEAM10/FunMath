@@ -14,9 +14,20 @@ export class UsersService {
     return Users;
   }
 
+  getUserById(userid: number): User {
+    var returnuser: User;
+    Users.forEach(user => {      
+      if(user.userid == +userid){
+        returnuser = user;
+        return false;    
+      }
+    });
+    return returnuser;
+  }
+
   
 
-  getUser(nameOrId: string): User[] {
+  searchUser(nameOrId: string): User[] {
     var searchUsers: User[] = [];
     Users.forEach(user => {
       if( (user.userid == +nameOrId) || (user.name == nameOrId) ){

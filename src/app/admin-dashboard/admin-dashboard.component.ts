@@ -30,7 +30,7 @@ export class AdminDashboardComponent {
   }
 
   view(): void {
-    this.router.navigate(['/usersearch'])
+    this.router.navigateByUrl('usersearch', { skipLocationChange: true });
   }
 
 }
