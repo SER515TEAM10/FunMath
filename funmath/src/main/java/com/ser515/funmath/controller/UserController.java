@@ -1,7 +1,9 @@
 package com.ser515.funmath.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.tomcat.util.net.AprEndpoint.Sendfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,9 +53,18 @@ public class UserController {
 		userService.updateUserRole(user);
 	}
 	
+	
+	
+/*
+    Send JSON like:
+	{
+		"username": "abc@xyz.com",
+		"password": "password"
+	}
+*/
 	@RequestMapping(path="/login/",method=RequestMethod.POST)	
-	public @ResponseBody Users validateLogin(String username, String password){
-		return userService.login(username, password);
+	public @ResponseBody Users validateLogin(@RequestBody Map<String, String> json){
+		return userService.login(json.get("username"), json.get("password"));
 	}
 
 }
