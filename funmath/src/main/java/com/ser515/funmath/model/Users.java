@@ -1,5 +1,4 @@
 package com.ser515.funmath.model;
-
 import java.sql.Date;
 
 import javax.persistence.Column;

@@ -1,28 +1,44 @@
 package com.ser515.funmath.services;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import com.ser515.funmath.model.Users;
-import com.ser515.funmath.repository.UserRepository;
+import com.ser515.funmath.repositories.UserRepository;
+
 
 @Service
 public class UserService {
-
+	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 	
 	public List<Users> getAllUsers(){
 		List<Users> userList = new ArrayList<>();
 		userRepository.findAll().forEach((userList::add));
 		return userList;
 	}
+
+	
+	public void updateUserRole(Users user) {
+		userRepository.save(user);
+	}
+	
+	public Users saveUser(Users user) {
+		try {
+			return userRepository.saveAndFlush(user);
+
 	public void updateUserRole(Users user) {
 		userRepository.save(user);
 		
@@ -45,6 +61,26 @@ public class UserService {
 					"Unable to add users at the moment, please try after sometime:" + ex.getMessage());
 		}
 	}
+	
+	
+    public Users login(String emailID, String password) {
+		 Users user = userRepository.findByEmailId(emailID);
+		    if (user == null) 
+		    {
+		    	throw new UsernameNotFoundException("Username not found!");
+		    }
+		    else
+		    {
+		    	if (encoder.matches(password, user.getPassword()))
+		    	{
+		    		return user;
+		    	}
+		    	else
+		    	{
+		    		
+		    		throw new BadCredentialsException("Password is incorrect!");
+		    	}
+		    }
 
 	public Users findUserById(int id) {
 		// TODO Auto-generated method stub
