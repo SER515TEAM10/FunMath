@@ -112,8 +112,7 @@ public class Users {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-
-	@Override
+  @Override
 	public String toString() {
 		final StringBuilder sbObject = new StringBuilder("User{");
 		sbObject.append("userId=").append(userId);
@@ -121,7 +120,5 @@ public class Users {
 		sbObject.append(", lastName='").append(lastName).append('\'');
 		sbObject.append(", email='").append(emailId).append('\'');
 		sbObject.append('}');
-		return sbObject.toString();
-	}
-
+  }
 }

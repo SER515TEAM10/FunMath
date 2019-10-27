@@ -1,6 +1,7 @@
 package com.ser515.funmath.services;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,17 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepository;
-
+	
+	public List<Users> getAllUsers(){
+		List<Users> userList = new ArrayList<>();
+		userRepository.findAll().forEach((userList::add));
+		return userList;
+	}
+	public void updateUserRole(Users user) {
+		userRepository.save(user);
+		
+	}
+  
 	public List<Users> findAll() {
 		return userRepository.findAll();
 	}

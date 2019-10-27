@@ -39,6 +39,15 @@ public class UserController {
 	public Users saveUser(@RequestBody Users user) {
 		return userService.saveUser(user);
 	}
+  
+	@RequestMapping(path="/getAllUsers/",method=RequestMethod.GET)	
+	public List<Users> getAllUsers(){
+		return userService.getAllUsers();
+	}
+	@RequestMapping(path="/updateUserRole/",method=RequestMethod.PUT)	
+	public void updateUserRole(@RequestBody Users user){
+		userService.updateUserRole(user);
+	}
 	@DeleteMapping("/remove/{id}")
 	public void removeUser(@PathVariable Integer id) {
 		userService.removeUser(id);
