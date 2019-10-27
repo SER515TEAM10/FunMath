@@ -3,7 +3,6 @@ package com.ser515.funmath.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tomcat.util.net.AprEndpoint.Sendfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,25 +15,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.services.UserService;
 
-
 @RestController
-@RequestMapping("/funmath")
+@RequestMapping("/user/")
 public class UserController {
-
+	
 	@Autowired
 	UserService userService;
-
-	@Autowired
+  	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
-    private static final String PATH = "/error";
-
-    @RequestMapping(value = PATH)
+      private static final String PATH = "/error";
+	
+	@GetMapping("/getAll")
+	public List<Users> getAll(){
+		return userService.findAll();
+	}
+	@GetMapping("/getCount")
+	public Long getCount(){
+		return userService.getCount();
+	}
+	
+	@GetMapping("/search/{id}")
+	public Users findUserById(@PathVariable Integer id) {
+		return userService.findUserById(id);
+	}
+	
+	 @RequestMapping(value = PATH)
     public String error() {
         return "Error handling";
     }
 
-    //@RequestMapping(path = "/register", method=RequestMethod.POST)
+    
     @PostMapping("/register")
 	public Users saveUser(@RequestBody Users user) {
     	String pwd= user.getPassword();
@@ -42,18 +52,17 @@ public class UserController {
     	user.setPassword(encryptPwd);
 		return userService.saveUser(user);
 	}
-    
+  
 	@RequestMapping(path="/getAllUsers/",method=RequestMethod.GET)	
 	public List<Users> getAllUsers(){
 		return userService.getAllUsers();
 	}
+
 	
 	@RequestMapping(path="/updateUserRole/",method=RequestMethod.PUT)	
 	public void updateUserRole(@RequestBody Users user){
 		userService.updateUserRole(user);
 	}
-	
-	
 	
 /*
     Send JSON like:
@@ -68,3 +77,12 @@ public class UserController {
 	}
 
 }
+
+	@DeleteMapping("/remove/{id}")
+	public void removeUser(@PathVariable Integer id) {
+		userService.removeUser(id);
+		
+	}
+	
+}
+
