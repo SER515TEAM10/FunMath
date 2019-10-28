@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
+  display:boolean
 
-  constructor() { }
+  constructor() {
+    this.display=false;
+   }
 
   ngOnInit() {
+    
+  }
+  countingProblems():void{
+    this.display=!this.display;
+    
   }
 
 }
