@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem, CdkDragRelease } from '@angular/cdk/drag-drop';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-student-canvas',
@@ -8,7 +9,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem, CdkDrag
 })
 export class StudentCanvasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -67,10 +68,21 @@ export class StudentCanvasComponent implements OnInit {
   }
 
   calculate() {
-    console.log(this.canvas);
-    for (let i = 0; i < this.canvas.length; i++) {
-
+    // double slash , trim 0
+    let expression = this.canvas.toString();
+    for (let i = 0; i < expression.length; i++) {
+      expression = expression.replace(',', '');
     }
-    this.isComputed = 100;
+    try {
+      this.isComputed = eval(expression);
+    } catch (err) {
+      this._snackBar.open(err, 'Dismiss', {
+        duration: 3000,
+      });
+    }
+  }
+
+  clear() {
+    this.canvas = []
   }
 }
