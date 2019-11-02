@@ -3,6 +3,7 @@ import { User } from '../user';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
 import { Users } from '../mock-users';
+import { Observable, of } from 'rxjs';
 
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
@@ -19,13 +20,14 @@ export class UserDetailsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   user: User;
+
   ngOnInit() {
     this.getUser();
   }
 
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.user = this.usersService.getUserById(id);
+    this.usersService.getUserById(id).subscribe(user => this.user = user);
   }
 
   goBackToUserSearch(): void {

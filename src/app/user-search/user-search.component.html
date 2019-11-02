@@ -13,7 +13,7 @@
 
     
 
-    <ul class="users">
+    <ul class="users" *ngIf="Users">
         <div *ngIf="!UsersSize">No users found.</div>
         <div *ngFor="let user of Users">
             <input (click)="updateCheck(user.userid)" type="checkbox"/>

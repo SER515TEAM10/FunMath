@@ -26,13 +26,19 @@ export class UserSearchComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.Users = this.usersService.getUsers();
-    if (this.Users.length > 0) {
-      this.UsersSize = true;
-    }else{
-      this.UsersSize = false;
-    }
-    console.log(this.UsersSize);
+    this.usersService.getUsers()
+    .subscribe(
+      users => 
+      {
+        this.Users = users;
+        if (this.Users.length > 0) {
+          this.UsersSize = true;
+        }else{
+          this.UsersSize = false;
+        }
+        console.log(this.UsersSize);
+      }
+    );    
   }
 
   delete(user: User): void {
@@ -41,16 +47,36 @@ export class UserSearchComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed',result);
       if (result == true) {
-        if (this.usersService.deleteUser(user.userid)) {
-          this.snackbar.open('User Deleted Successfully.', 'Dismiss', {
-            duration: 3000
-          });
-        }else{
-          this.snackbar.open('Something went wrong.', 'Dismiss', {
-            duration: 3000
-          });
-        }
-        this.Users = this.usersService.getUsers();
+        this.usersService.deleteUser(user.userid)
+          .subscribe(val => {
+            console.log(val)
+            //need to update once real api is ready
+            val = true;
+            if (val) {
+              this.Users = this.Users.filter(u => u.userid !== user.userid);
+              this.snackbar.open('User Deleted Successfully.', 'Dismiss', {
+                duration: 3000
+              });
+            }else{
+              this.snackbar.open('Something went wrong.', 'Dismiss', {
+                duration: 3000
+              });
+            }
+          })
+        
+        // this.usersService.getUsers()
+        // .subscribe(
+        //   users => 
+        //   {
+        //     this.Users = users;
+        //     if (this.Users.length > 0) {
+        //       this.UsersSize = true;
+        //     }else{
+        //       this.UsersSize = false;
+        //     }
+        //     console.log(this.UsersSize);
+        //   }
+        // );
       }
     });
   }
@@ -90,7 +116,19 @@ export class UserSearchComponent implements OnInit {
         this.snackbar.open(this.usersService.deleteUsers(this.selectedUsers), 'Dismiss', {
           duration: 3000
         });
-        this.Users = this.usersService.getUsers();
+        this.usersService.getUsers()
+        .subscribe(
+          users => 
+          {
+            this.Users = users;
+            if (this.Users.length > 0) {
+              this.UsersSize = true;
+            }else{
+              this.UsersSize = false;
+            }
+            console.log(this.UsersSize);
+          }
+        );
         this.selectedUsers  = [];
       }      
     });
