@@ -51,6 +51,7 @@ import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
+import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { StudentCanvasComponent } from './student-canvas/student-canvas.componen
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
-    StudentCanvasComponent
+    StudentCanvasComponent,
+    StudentGradesComponent, //TODO: 
   ],
   imports: [
     BrowserModule,
