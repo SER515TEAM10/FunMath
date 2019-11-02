@@ -1,0 +1,37 @@
+<div>
+    <h2>Users</h2>
+
+    <div id="search-component">
+        <h4><label for="search-box">User Search</label></h4>
+
+        <input #searchBox id="search-box" placeholder="Enter userid or Name"/>
+
+        <button class="search" title="Search"
+            (click)="search(searchBox.value)">Search</button>
+
+    </div>
+
+    
+
+    <ul class="users" *ngIf="Users">
+        <div *ngIf="!UsersSize">No users found.</div>
+        <div *ngFor="let user of Users">
+            <input (click)="updateCheck(user.userid)" type="checkbox"/>
+            <li>            
+                <a (click)="goTo(user.userid)">
+                    <span class="badge">{{user.userid}}</span> {{user.name}}
+                </a>            
+                <button class="delete" title="delete User"
+                (click)="delete(user)">x</button> 
+                
+                
+            </li>
+        </div>
+    </ul>
+
+    <button class="search" title="Delete Selected"
+        (click)="deleteSelected()">Delete</button>
+    <button class="search" title="Back"
+        (click)="goBack()">Back</button>
+</div>
+
