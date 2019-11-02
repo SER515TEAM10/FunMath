@@ -40,6 +40,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
@@ -48,6 +50,12 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-search.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 
 @NgModule({
   declarations: [
@@ -58,9 +66,14 @@ import { UserLoginComponent } from './user-login/user-login.component';
     StudentDashboardComponent,
     TeacherDashboardComponent,
     LandingPageComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserSearchComponent,
+    ConfirmDeleteDialog,
+    UserDetailsComponent,
+    StudentCanvasComponent
+
   ],
-  imports: [
+  imports: [    
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -99,10 +112,20 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AdminApprovalDialog]
+  entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
 })
 export class AppModule { }
+
+
