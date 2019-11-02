@@ -40,6 +40,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
@@ -53,6 +55,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import { InMemoryDataService }  from './in-memory-data.service';
     UserLoginComponent,
     UserSearchComponent,
     ConfirmDeleteDialog,
-    UserDetailsComponent
+    UserDetailsComponent,
+    StudentCanvasComponent
+
   ],
   imports: [    
     BrowserModule,
@@ -107,6 +112,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

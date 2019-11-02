@@ -3,6 +3,9 @@
       <button mat-button (click)="goHome()">
          <mat-icon>home</mat-icon> FunMath
       </button>
+      <button mat-button (click)="goTryCanvas()">
+         <mat-icon>school</mat-icon>Try Now!
+      </button>
       <span class="spacer"></span>
       <button *ngIf="isLoggedIn==='false'" mat-button (click)="goRegister()">
          <mat-icon>account_circle</mat-icon>Register
