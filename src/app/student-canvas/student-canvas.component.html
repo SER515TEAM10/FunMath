@@ -1,7 +1,7 @@
 <mat-toolbar>
   <mat-icon>picture_in_picture</mat-icon><span>Canvas</span>
   <button style="position:absolute; left: 300px" mat-raised-button (click)="clear()" color="primary">Clear</button>
-  <span style="position:absolute; left: 870px">Result: {{isComputed}}</span>
+  <span *ngIf="hasResult" style="position:absolute; left: 870px">Result: {{isComputed}}</span>
   <button style="position:absolute; right: 40px" mat-raised-button (click)="drawer.toggle()" color="primary">Toggle
     Operations</button>
   <button style="position:absolute; right: 680px" mat-raised-button (click)="calculate()"

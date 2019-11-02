@@ -15,6 +15,7 @@ export class StudentCanvasComponent implements OnInit {
   }
 
   isComputed;
+  hasResult = false;
 
   canvas = [
   ];
@@ -75,14 +76,19 @@ export class StudentCanvasComponent implements OnInit {
     }
     try {
       this.isComputed = eval(expression);
+      if (this.isComputed != null) {
+        this.hasResult = true;
+      }
     } catch (err) {
       this._snackBar.open(err, 'Dismiss', {
         duration: 3000,
       });
+      this.hasResult = false;
     }
   }
 
   clear() {
+    this.hasResult = false;
     this.canvas = []
   }
 }
