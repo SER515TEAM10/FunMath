@@ -40,6 +40,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
@@ -48,6 +50,8 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +62,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
     StudentDashboardComponent,
     TeacherDashboardComponent,
     LandingPageComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    StudentCanvasComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +104,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
