@@ -1,4 +1,5 @@
 package com.ser515.funmath.model;
+
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -28,8 +29,8 @@ public class Users {
 	private String password;
 	@Column(name = "dob")
 	private Date dob;
-	
-	private int roleId=100;
+
+	private int roleId = 100;
 
 	public int getRoleId() {
 		return roleId;
@@ -44,7 +45,7 @@ public class Users {
 	}
 
 	public Users(int userId, String firstName, String lastName, String emailId, String gender, String password,
-			Date dob,int roleId) {
+			Date dob, int roleId) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -53,7 +54,7 @@ public class Users {
 		this.gender = gender;
 		this.password = password;
 		this.dob = dob;
-		this.roleId=roleId;
+		this.roleId = roleId;
 	}
 
 	public int getUserId() {
@@ -111,7 +112,8 @@ public class Users {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-  @Override
+
+	@Override
 	public String toString() {
 		final StringBuilder sbObject = new StringBuilder("User{");
 		sbObject.append("userId=").append(userId);
@@ -119,5 +121,6 @@ public class Users {
 		sbObject.append(", lastName='").append(lastName).append('\'');
 		sbObject.append(", email='").append(emailId).append('\'');
 		sbObject.append('}');
-  }
+		return sbObject.toString();
+	}
 }
