@@ -39,6 +39,10 @@ export class LandingPageComponent implements OnInit {
     if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true })
   }
 
+  goTryCanvas() {
+    this.router.navigateByUrl('canvas', { skipLocationChange: true })
+  }
+
   goLogin() {
     this.router.navigateByUrl('login', { skipLocationChange: true })
   }
