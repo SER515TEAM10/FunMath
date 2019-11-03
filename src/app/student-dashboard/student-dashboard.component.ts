@@ -30,7 +30,7 @@ export class StudentDashboardComponent implements OnInit {
 
   viewAssignment(): void {
     console.log("Inside viewAssignment");
-    this.router.navigateByUrl('assignmnet', { skipLocationChange: true });
+    this.router.navigateByUrl('assignmentview', { skipLocationChange: true });
   }
 
   viewHistory(): void {

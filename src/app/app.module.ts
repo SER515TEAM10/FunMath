@@ -48,6 +48,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AssignmnetViewComponent } from './assignmnet-view/assignmnet-view.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
     StudentDashboardComponent,
     TeacherDashboardComponent,
     LandingPageComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    AssignmnetViewComponent
   ],
   imports: [
     BrowserModule,
