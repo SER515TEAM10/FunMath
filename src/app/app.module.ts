@@ -73,8 +73,7 @@ import { StudentFirstGradeComponent } from './student-first-grade/student-first-
     ConfirmDeleteDialog,
     UserDetailsComponent,
     StudentCanvasComponent,
-    StudentFirstGradeComponent    
-
+    StudentFirstGradeComponent
   ],
   imports: [    
     BrowserModule,
