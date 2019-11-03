@@ -1,1 +1,27 @@
-<p>student-dashboard works!</p>
+<mat-toolbar>
+    <mat-icon>dashboard</mat-icon><span>Student Dashboard</span>
+  </mat-toolbar>
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="4:1">
+      <mat-grid-tile>
+        <button mat-raised-button (click)="viewGrades()" color="primary">
+          <mat-icon>grade</mat-icon>VIEW GRADES
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button (click)="viewAssignment()" color="primary">
+          <mat-icon>assignment</mat-icon>VIEW ASSIGNMENTS
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button (click)="viewHistory()" color="primary">
+          <mat-icon>history</mat-icon>HISTORY
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button (click)="launchCanvas()" color="primary">
+          <mat-icon>launch</mat-icon>CANVAS
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>

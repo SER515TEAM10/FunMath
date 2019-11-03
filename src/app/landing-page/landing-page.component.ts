@@ -22,7 +22,10 @@ export class LandingPageComponent implements OnInit {
     this.isLoggedIn = localStorage.getItem('isLoggedIn')
     this.id = localStorage.getItem('token');
     this.userType = localStorage.getItem('userType');
-    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })
+    console.log(this.userType)
+    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })    
+    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true })
+    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true })
   }
 
   logout(): void {
@@ -32,6 +35,8 @@ export class LandingPageComponent implements OnInit {
   goHome() {
     if (this.userType === null) this.router.navigateByUrl('', { skipLocationChange: true })
     if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })
+    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true })
+    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true })
   }
 
   goLogin() {
