@@ -8,13 +8,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "student_grades")
 public class StudentGrades {
-	@Id
-	@Column(name = "ass_id")
-	private int assignmentId;
 	
 	@Id
+	@Column(name = "grade_id")
+	private int gradeId;
+	
 	@Column(name = "student_user_id")
 	private int studentUserId;
+	
+	@Column(name = "ass_id")
+	private int assignmentId;
 
 	@Column(name = "marks")
 	private int marks;

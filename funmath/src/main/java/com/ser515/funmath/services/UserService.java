@@ -2,7 +2,7 @@ package com.ser515.funmath.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
@@ -29,15 +29,6 @@ public class UserService {
 		userRepository.findAll().forEach((userList::add));
 		return userList;
 	}
-
-	
-	public void updateUserRole(Users user) {
-		userRepository.save(user);
-	}
-	
-	public Users saveUser(Users user) {
-		try {
-			return userRepository.saveAndFlush(user);
 
 	public void updateUserRole(Users user) {
 		userRepository.save(user);
@@ -81,6 +72,7 @@ public class UserService {
 		    		throw new BadCredentialsException("Password is incorrect!");
 		    	}
 		    }
+    }
 
 	public Users findUserById(int id) {
 		// TODO Auto-generated method stub
