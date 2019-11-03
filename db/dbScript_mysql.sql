@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS funmath_expression_tab;
 DROP TABLE IF EXISTS student_grades;
 DROP TABLE IF EXISTS assignment;
 DROP TABLE IF EXISTS users;
@@ -43,14 +44,16 @@ CREATE TABLE `funmath_project`.`assignment` (
 INSERT INTO funmath_project.assignment (assignment_name, due_date) values("Addition", '2019-10-31');
 INSERT INTO funmath_project.assignment (assignment_name, due_date) values("Subtraction", '2019-09-10');
 INSERT INTO funmath_project.assignment (assignment_name, due_date) values("Multiplication", '2019-11-01');
+INSERT INTO funmath_project.assignment (assignment_name, due_date) values("Integration", '2019-11-01');
 
 CREATE TABLE `funmath_project`.`student_grades` (
+	`grade_id` INT NOT NULL AUTO_INCREMENT,
 	`ass_id` INT NOT NULL,
 	`student_user_id` INT NOT NULL,
 	`marks` INT,
 	`maximum_marks` INT NOT NULL,
 	`comments` VARCHAR(200),
-	PRIMARY KEY (`ass_id`,`student_user_id`),
+	PRIMARY KEY (`grade_id`),
     CONSTRAINT `student_user_id`
 		FOREIGN KEY (`student_user_id`)
 		REFERENCES `funmath_project`.`users` (`user_id`)
@@ -66,6 +69,7 @@ CREATE TABLE `funmath_project`.`student_grades` (
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (1, 1, 100, 100, 'Excellent!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
+INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (4, 1, 30, 100, 'bhak bc');
 
 #Query for creating expression table   
 
