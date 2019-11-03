@@ -10,7 +10,17 @@ export class StudentDashboardComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  breakpoint : number;
+
   ngOnInit() {
+    console.log("Inside ngOnInit");
+    this.breakpoint = (window.innerWidth <= 400) ? 2 : 4;
+  }
+
+  //Not working need to take a look again.
+  onResize(event) {
+    console.log("Inside Resize");
+    this.breakpoint = (event.target.innerWidth <= 400) ? 2 : 4;
   }
 
   viewGrades(): void {
