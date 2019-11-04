@@ -120,6 +120,7 @@ public class Users {
 		sbObject.append(", lastName='").append(lastName).append('\'');
 		sbObject.append(", email='").append(emailId).append('\'');
 		sbObject.append('}');
+		//added this in
 		return sbObject.toString();
   }
 }
