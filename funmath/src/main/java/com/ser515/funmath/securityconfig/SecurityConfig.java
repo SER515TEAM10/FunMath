@@ -8,17 +8,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 //order =1 if more than 1 configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
-		
-	
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder encodePWD() {
-		return new BCryptPasswordEncoder();		
+		return new BCryptPasswordEncoder();
 	}
 
 }
