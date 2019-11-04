@@ -36,9 +36,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table'; 
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {FlexLayoutModule} from '@angular/flex-layout'
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
@@ -56,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
+import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
 import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
 
 @NgModule({
@@ -72,8 +74,8 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     UserSearchComponent,
     ConfirmDeleteDialog,
     UserDetailsComponent,
-    StudentCanvasComponent
-
+    StudentCanvasComponent,
+    StudentFirstGradeComponent
   ],
   imports: [    
     BrowserModule,
@@ -116,6 +118,7 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     ReactiveFormsModule,
     DragDropModule,
     HttpClientModule,
+    FlexLayoutModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

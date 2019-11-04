@@ -66,21 +66,31 @@ CREATE TABLE `funmath_project`.`student_grades` (
 		ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO user_role(role_id,role_name) VALUES(100,'STUDENT');
+INSERT INTO user_role(role_id,role_name) VALUES(101,'ADMIN');
+INSERT INTO user_role(role_id,role_name) VALUES(102,'TEACHER');
+
+''' Query for creating expression table  '''     
+                                                                         
+CREATE TABLE `student_expressions` (
+  `expression_id` int(11) NOT NULL AUTO_INCREMENT,
+  `expression_val` varchar(1000) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `result` int(11) DEFAULT NULL,
+  PRIMARY KEY (`expression_id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) 
+ ''' Table for storing published assignments''' 
+  CREATE TABLE `published_assignments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `assignment_number` int(11) DEFAULT NULL,
+  `class` int(11) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `solution_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (1, 1, 100, 100, 'Excellent!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (4, 1, 30, 100, 'bhak bc');
-
-#Query for creating expression table   
-
-CREATE TABLE `funmath_project`.`funmath_expression_tab` (
-  `expression_id` INT NOT NULL AUTO_INCREMENT,
-  `expression_val` VARCHAR(1000) NOT NULL,
-  `user_id` INT NOT NULL,
-  PRIMARY KEY (`expression_id`),
-  INDEX `user_id_idx` (`user_id` ASC),
-  CONSTRAINT `user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `funmath_project`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);

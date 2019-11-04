@@ -11,7 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.repositories.ExpressionRepository;
 import com.ser515.funmath.repositories.UserRepository;
 
 @Service
@@ -19,6 +21,8 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ExpressionRepository expressionRepository;
 
 	@Autowired
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -31,6 +35,7 @@ public class UserService {
 
 	public void updateUserRole(Users user) {
 		userRepository.save(user);
+
 	}
 
 	public List<Users> findAll() {
@@ -66,6 +71,7 @@ public class UserService {
 	}
 
 	public Users findUserById(int id) {
+		// TODO Auto-generated method stub
 		System.out.println(id);
 		Optional<Users> user = userRepository.findById(id);
 		if (user.isPresent()) {
@@ -75,12 +81,18 @@ public class UserService {
 	}
 
 	public void removeUser(int id) {
+		// TODO Auto-generated method stub
 		try {
 			userRepository.deleteById(id);
 		} catch (Exception ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 					"Unable to remove user with id:" + id + " - Error:" + ex.getMessage());
 		}
+
+	}
+
+	public void saveExpression(ExpressionModel expressionModel) {
+		expressionRepository.save(expressionModel);
 
 	}
 }
