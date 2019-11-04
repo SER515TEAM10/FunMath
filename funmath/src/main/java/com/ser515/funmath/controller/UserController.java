@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.services.UserService;
 
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
@@ -77,7 +76,6 @@ public class UserController {
 	@DeleteMapping("/remove/{id}")
 	public void removeUser(@PathVariable Integer id) {
 		userService.removeUser(id);
-
 	}
 
 }

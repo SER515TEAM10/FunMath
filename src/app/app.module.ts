@@ -56,6 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
+import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { StudentCanvasComponent } from './student-canvas/student-canvas.componen
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
+    StudentGradesComponent, //TODO: 
     UserSearchComponent,
     ConfirmDeleteDialog,
     UserDetailsComponent,
