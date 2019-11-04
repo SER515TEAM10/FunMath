@@ -68,7 +68,6 @@ import { StudentCanvasComponent } from './student-canvas/student-canvas.componen
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
-
     AssignmnetViewComponent,
     UserSearchComponent,
     ConfirmDeleteDialog,

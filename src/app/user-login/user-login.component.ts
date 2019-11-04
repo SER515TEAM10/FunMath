@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
     }
     else {
       localStorage.setItem('isLoggedIn', "true");
-      localStorage.setItem('token', 'Dhananjay');
+      localStorage.setItem('token', 'Amit');
       localStorage.setItem('userType', 'Student');
       window.location.reload();
     }
