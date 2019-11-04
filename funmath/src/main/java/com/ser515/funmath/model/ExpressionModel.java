@@ -16,12 +16,12 @@ public class ExpressionModel {
 	private int userId;
 	private int result;
 
-	public ExpressionModel(int expressionId, String expressionVal, int userId,int result) {
+	public ExpressionModel(int expressionId, String expressionVal, int userId, int result) {
 		super();
 		this.expressionId = expressionId;
 		this.expressionVal = expressionVal;
 		this.userId = userId;
-		this.result=result;
+		this.result = result;
 	}
 
 	public int getExpressionId() {
@@ -55,6 +55,5 @@ public class ExpressionModel {
 	public void setResult(int result) {
 		this.result = result;
 	}
-	
 
 }

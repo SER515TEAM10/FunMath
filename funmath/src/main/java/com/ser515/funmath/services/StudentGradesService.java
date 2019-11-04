@@ -12,13 +12,12 @@ import com.ser515.funmath.repositories.StudentGradesRepository;
 
 @Service
 public class StudentGradesService {
-	
+
 	@Autowired
 	private StudentGradesRepository studentGradesRepository;
-	
-	public List<StudentGrades> findGrades(int studentId) {	
-		if(studentGradesRepository.findByStudentUserId(studentId).isEmpty())
-		{
+
+	public List<StudentGrades> findGrades(int studentId) {
+		if (studentGradesRepository.findByStudentUserId(studentId).isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find user with given id:" + studentId);
 		}
 		return studentGradesRepository.findByStudentUserId(studentId);
