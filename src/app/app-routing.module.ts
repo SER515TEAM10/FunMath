@@ -6,6 +6,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 
 
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'admindash', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'studentgradesdash', component: StudentGradesComponent}, //TODO: 
   { path: 'studentdash', component: StudentDashboardComponent},
+  { path: 'usersearch', component: UserSearchComponent},  
+  { path: 'userdetails/:id', component: UserDetailsComponent},
   { path: '**', redirectTo: '' }
 ];
 

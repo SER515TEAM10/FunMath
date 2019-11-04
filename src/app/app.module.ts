@@ -50,9 +50,13 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-search.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
-
 
 @NgModule({
   declarations: [
@@ -64,10 +68,14 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
-    StudentCanvasComponent,
     StudentGradesComponent, //TODO: 
+    UserSearchComponent,
+    ConfirmDeleteDialog,
+    UserDetailsComponent,
+    StudentCanvasComponent
+
   ],
-  imports: [
+  imports: [    
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -106,11 +114,20 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AdminApprovalDialog]
+  entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
 })
 export class AppModule { }
+
+
