@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ser515.funmath.model.ExpressionModel;
 
 @Repository
-public interface ExpressionRepository extends JpaRepository<ExpressionModel,Integer> {
-	
+public interface ExpressionRepository extends JpaRepository<ExpressionModel, Integer> {
+
 }

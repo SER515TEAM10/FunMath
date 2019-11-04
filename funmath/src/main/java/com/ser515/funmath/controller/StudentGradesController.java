@@ -14,14 +14,13 @@ import com.ser515.funmath.services.StudentGradesService;
 @RestController
 @RequestMapping("/studentgrades")
 public class StudentGradesController {
-	
+
 	@Autowired
 	StudentGradesService studentGradesService;
-	
+
 	@GetMapping("/search/{id}")
 	public List<StudentGrades> findGradesByID(@PathVariable Integer id) {
 		return studentGradesService.findGrades(id);
 	}
 
 }
-
