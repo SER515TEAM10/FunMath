@@ -51,6 +51,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AssignmnetViewComponent } from './assignmnet-view/assignmnet-view.component';
 import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-search.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -70,6 +71,7 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
+    AssignmnetViewComponent,
     StudentGradesComponent, //TODO: 
     UserSearchComponent,
     ConfirmDeleteDialog,
