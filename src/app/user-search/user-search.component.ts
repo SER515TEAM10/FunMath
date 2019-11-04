@@ -3,10 +3,10 @@ import { User } from '../user';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
 import { Users } from '../mock-users';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-search',
@@ -27,25 +27,24 @@ export class UserSearchComponent implements OnInit {
 
   getUsers(): void {
     this.usersService.getUsers()
-    .subscribe(
-      users => 
-      {
-        this.Users = users;
-        if (this.Users.length > 0) {
-          this.UsersSize = true;
-        }else{
-          this.UsersSize = false;
+      .subscribe(
+        users => {
+          this.Users = users;
+          if (this.Users.length > 0) {
+            this.UsersSize = true;
+          } else {
+            this.UsersSize = false;
+          }
+          console.log(this.UsersSize);
         }
-        console.log(this.UsersSize);
-      }
-    );    
+      );
   }
 
   delete(user: User): void {
     //if (confirm("Are you sure, Do you want to delete the user ?")){
     const dialogRef = this.dialog.open(ConfirmDeleteDialog);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed',result);
+      console.log('The dialog was closed', result);
       if (result == true) {
         this.usersService.deleteUser(user.userid)
           .subscribe(val => {
@@ -57,13 +56,13 @@ export class UserSearchComponent implements OnInit {
               this.snackbar.open('User Deleted Successfully.', 'Dismiss', {
                 duration: 3000
               });
-            }else{
+            } else {
               this.snackbar.open('Something went wrong.', 'Dismiss', {
                 duration: 3000
               });
             }
           })
-        
+
         // this.usersService.getUsers()
         // .subscribe(
         //   users => 
@@ -85,7 +84,7 @@ export class UserSearchComponent implements OnInit {
     this.Users = this.usersService.searchUser(nameOrId);
     if (this.Users.length > 0) {
       this.UsersSize = true;
-    }else{
+    } else {
       this.UsersSize = false;
     }
     console.log(this.UsersSize);
@@ -94,8 +93,8 @@ export class UserSearchComponent implements OnInit {
 
   updateCheck(userid: number): void {
     if (this.selectedUsers.indexOf(userid) >= 0) {
-      this.selectedUsers.splice(this.selectedUsers.indexOf(userid),1);
-    }else{
+      this.selectedUsers.splice(this.selectedUsers.indexOf(userid), 1);
+    } else {
       this.selectedUsers.push(userid);
     }
     console.log(this.selectedUsers);
@@ -111,7 +110,7 @@ export class UserSearchComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteDialog);
     //if (confirm("Do you want to delete the users ?")){
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed',result);
+      console.log('The dialog was closed', result);
       if (result == true) {
         this.Users = this.Users.filter(u => (this.selectedUsers.indexOf(u.userid) < 0));
         this.snackbar.open(this.usersService.deleteUsers(this.selectedUsers), 'Dismiss', {
@@ -130,19 +129,19 @@ export class UserSearchComponent implements OnInit {
         //     console.log(this.UsersSize);
         //   }
         // );
-        this.selectedUsers  = [];
-      }      
+        this.selectedUsers = [];
+      }
     });
-    
+
   }
 
   goBack(): void {
     this.router.navigateByUrl('/admindash', { skipLocationChange: true });
-    
+
   }
 
   goTo(id: number): void {
-    this.router.navigateByUrl('/userdetails/'+id, { skipLocationChange: true });
+    this.router.navigateByUrl('/userdetails/' + id, { skipLocationChange: true });
   }
 
 }
@@ -155,12 +154,12 @@ export class ConfirmDeleteDialog {
   constructor(
     public dialogRef: MatDialogRef<ConfirmDeleteDialog>) { }
 
-  onNoClick(): boolean {    
+  onNoClick(): boolean {
     this.dialogRef.close();
     return false;
   }
 
-  onYesClick(): boolean {    
+  onYesClick(): boolean {
     this.dialogRef.close();
     return true;
   }

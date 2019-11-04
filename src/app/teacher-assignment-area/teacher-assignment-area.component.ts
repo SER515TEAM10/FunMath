@@ -8,11 +8,11 @@ import { stringToKeyValue } from "@angular/flex-layout/extended/typings/style/st
   styleUrls: ["./teacher-assignment-area.component.scss"]
 })
 export class TeacherAssignmentAreaComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   public linkClicked;
   //checkClass = 'isClass1s1';
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   // public displayclass1s1() {
   //   localStorage.setItem("isClass1", "S1");

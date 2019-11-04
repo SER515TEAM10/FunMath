@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Assignment } from '../assignment';
 import { AssignmentService } from '../assignment.service';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class AssignmnetViewComponent implements OnInit {
 
   Assignments: Assignment[];
   assignmentsSize: boolean;
-  breakpoint : boolean;
+  breakpoint: boolean;
   displayedColumns: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks'];
   displayedColumns1: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks', 'star'];
 
@@ -31,20 +31,19 @@ export class AssignmnetViewComponent implements OnInit {
 
   getAssignments(): void {
     this.assignmentService.getAssignments()
-    .subscribe(
-      assignments => 
-      {
-        this.Assignments = assignments;
-        console.log(this.Assignments);
-        if (this.Assignments.length > 0) {
-          this.assignmentsSize = true;
-        }else{
-          this.assignmentsSize = false;
+      .subscribe(
+        assignments => {
+          this.Assignments = assignments;
+          console.log(this.Assignments);
+          if (this.Assignments.length > 0) {
+            this.assignmentsSize = true;
+          } else {
+            this.assignmentsSize = false;
+          }
+          console.log(this.assignmentsSize);
         }
-        console.log(this.assignmentsSize);
-      }
-    );    
+      );
   }
-  
+
 
 }

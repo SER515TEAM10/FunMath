@@ -39,7 +39,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {FlexLayoutModule} from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
@@ -56,7 +56,7 @@ import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-sea
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
 import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO:
@@ -138,4 +138,4 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
   bootstrap: [AppComponent],
   entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
 })
-export class AppModule {}
+export class AppModule { }

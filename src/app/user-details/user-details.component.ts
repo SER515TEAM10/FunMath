@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Users } from '../mock-users';
 import { Observable, of } from 'rxjs';
 
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,8 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailsComponent implements OnInit {
 
   constructor(private usersService: UsersService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   user: User;
 
@@ -32,6 +32,6 @@ export class UserDetailsComponent implements OnInit {
 
   goBackToUserSearch(): void {
     this.router.navigateByUrl('/usersearch', { skipLocationChange: true });
-    
+
   }
 }

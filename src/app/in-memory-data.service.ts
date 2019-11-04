@@ -17,12 +17,12 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const assignments = [
-      { id: 11, name: 'Assignment_1', dueDate: '11/03/2019', creationDate: '10/25/2019', marks: 50},
-      { id: 12, name: 'Assignment_2', dueDate: '11/04/2019', creationDate: '10/26/2019', marks: 45},
-      { id: 13, name: 'Assignment_3', dueDate: '11/05/2019', creationDate: '10/27/2019', marks: 40},
-      { id: 14, name: 'Assignment_4', dueDate: '11/06/2019', creationDate: '10/28/2019', marks: 35},
-      { id: 15, name: 'Assignment_5', dueDate: '11/07/2019', creationDate: '10/29/2019', marks: 30},
-      { id: 16, name: 'Assignment_6', dueDate: '11/08/2019', creationDate: '10/30/2019', marks: 20}
+      { id: 11, name: 'Assignment_1', dueDate: '11/03/2019', creationDate: '10/25/2019', marks: 50 },
+      { id: 12, name: 'Assignment_2', dueDate: '11/04/2019', creationDate: '10/26/2019', marks: 45 },
+      { id: 13, name: 'Assignment_3', dueDate: '11/05/2019', creationDate: '10/27/2019', marks: 40 },
+      { id: 14, name: 'Assignment_4', dueDate: '11/06/2019', creationDate: '10/28/2019', marks: 35 },
+      { id: 15, name: 'Assignment_5', dueDate: '11/07/2019', creationDate: '10/29/2019', marks: 30 },
+      { id: 16, name: 'Assignment_6', dueDate: '11/08/2019', creationDate: '10/30/2019', marks: 20 }
     ];
     // const heroes = [
     //   { id: 11, name: 'Dr Nice' },
@@ -36,7 +36,7 @@ export class InMemoryDataService implements InMemoryDbService {
     //   { id: 19, name: 'Magma' },
     //   { id: 20, name: 'Tornado' }
     // ];
-    return {users, assignments};
+    return { users, assignments };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
@@ -48,7 +48,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return users.length > 0 ? Math.max(...users.map(user => user.userid)) + 1 : 11;
   }
 
-  
+
   // genId(assignmnets: Assignment[]): number {
   //   return assignmnets.length > 0 ? Math.max(...assignmnets.map(assignmnet => assignmnet.id)) + 1 : 11;
   // }
