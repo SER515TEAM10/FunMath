@@ -28,3 +28,24 @@ CREATE TABLE `funmath_project`.`user_role` (
 INSERT INTO user_role(role_id,role_name) VALUES(100,'STUDENT');
 INSERT INTO user_role(role_id,role_name) VALUES(101,'ADMIN');
 INSERT INTO user_role(role_id,role_name) VALUES(102,'TEACHER');
+
+''' Query for creating expression table  '''     
+                                                                         
+CREATE TABLE `student_expressions` (
+  `expression_id` int(11) NOT NULL AUTO_INCREMENT,
+  `expression_val` varchar(1000) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `result` int(11) DEFAULT NULL,
+  PRIMARY KEY (`expression_id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) 
+ ''' Table for storing published assignments''' 
+  CREATE TABLE `published_assignments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `assignment_number` int(11) DEFAULT NULL,
+  `class` int(11) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `solution_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
