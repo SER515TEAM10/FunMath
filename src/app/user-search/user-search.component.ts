@@ -43,7 +43,7 @@ export class UserSearchComponent implements OnInit {
 
   delete(user: User): void {
     //if (confirm("Are you sure, Do you want to delete the user ?")){
-    const dialogRef = this.dialog.open(ConfirmDeleteDialog);  
+    const dialogRef = this.dialog.open(ConfirmDeleteDialog);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed',result);
       if (result == true) {
@@ -113,22 +113,23 @@ export class UserSearchComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed',result);
       if (result == true) {
+        this.Users = this.Users.filter(u => (this.selectedUsers.indexOf(u.userid) < 0));
         this.snackbar.open(this.usersService.deleteUsers(this.selectedUsers), 'Dismiss', {
           duration: 3000
         });
-        this.usersService.getUsers()
-        .subscribe(
-          users => 
-          {
-            this.Users = users;
-            if (this.Users.length > 0) {
-              this.UsersSize = true;
-            }else{
-              this.UsersSize = false;
-            }
-            console.log(this.UsersSize);
-          }
-        );
+        // this.usersService.getUsers()
+        // .subscribe(
+        //   users => 
+        //   {
+        //     this.Users = users;
+        //     if (this.Users.length > 0) {
+        //       this.UsersSize = true;
+        //     }else{
+        //       this.UsersSize = false;
+        //     }
+        //     console.log(this.UsersSize);
+        //   }
+        // );
         this.selectedUsers  = [];
       }      
     });

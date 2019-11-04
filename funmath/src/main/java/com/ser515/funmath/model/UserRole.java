@@ -46,9 +46,5 @@ public class UserRole {
 		this.roleId = roleId;
 		this.roleName = roleName;
 	}
-	
-	
-	
-	
 
 }

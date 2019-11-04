@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class StudentCanvasComponent implements OnInit {
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -41,6 +41,8 @@ export class StudentCanvasComponent implements OnInit {
   ];
 
   advancedOperations = [
+    '(',
+    ')',
     '>',
     '<',
     '>=',
@@ -80,7 +82,7 @@ export class StudentCanvasComponent implements OnInit {
         this.hasResult = true;
       }
     } catch (err) {
-      this._snackBar.open(err, 'Dismiss', {
+      this.snackBar.open(err, 'Dismiss', {
         duration: 3000,
       });
       this.hasResult = false;
@@ -89,6 +91,6 @@ export class StudentCanvasComponent implements OnInit {
 
   clear() {
     this.hasResult = false;
-    this.canvas = []
+    this.canvas = [];
   }
 }
