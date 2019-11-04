@@ -11,21 +11,27 @@ export class LandingPageComponent implements OnInit {
 
   constructor(private router: Router, public authService: AuthService) { }
 
-  isLoggedIn: string
+  isLoggedIn: string;
   id: string;
-  userType: string
+  userType: string;
 
   ngOnInit() {
-    if(localStorage.getItem('isLoggedIn')==undefined){
+    if (localStorage.getItem('isLoggedIn') == undefined) {
       localStorage.setItem('isLoggedIn', "false");
     }
-    this.isLoggedIn = localStorage.getItem('isLoggedIn')
+    this.isLoggedIn = localStorage.getItem('isLoggedIn');
     this.id = localStorage.getItem('token');
     this.userType = localStorage.getItem('userType');
-    console.log(this.userType)
-    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })    
-    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true })
-    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true })
+    console.log(this.userType);
+    if (this.userType === 'Admin') {
+      this.router.navigateByUrl('admindash', { skipLocationChange: true });
+    }
+    if (this.userType === 'Student') {
+      this.router.navigateByUrl('studentdash', { skipLocationChange: true });
+    }
+    if (this.userType === 'Teacher') {
+      this.router.navigateByUrl('teacherdash', { skipLocationChange: true });
+    }
   }
 
   logout(): void {
@@ -33,22 +39,22 @@ export class LandingPageComponent implements OnInit {
   }
 
   goHome() {
-    if (this.userType === null) this.router.navigateByUrl('', { skipLocationChange: true })
-    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true })
-    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true })
-    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true })
+    if (this.userType === null) this.router.navigateByUrl('', { skipLocationChange: true });
+    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true });
+    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true });
+    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true });
   }
 
   goTryCanvas() {
-    this.router.navigateByUrl('canvas', { skipLocationChange: true })
+    this.router.navigateByUrl('canvas', { skipLocationChange: true });
   }
 
   goLogin() {
-    this.router.navigateByUrl('login', { skipLocationChange: true })
+    this.router.navigateByUrl('login', { skipLocationChange: true });
   }
 
   goRegister() {
-    this.router.navigateByUrl('register', { skipLocationChange: true })
+    this.router.navigateByUrl('register', { skipLocationChange: true });
   }
 
 }

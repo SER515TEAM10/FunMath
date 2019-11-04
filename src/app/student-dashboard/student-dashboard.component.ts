@@ -25,7 +25,7 @@ export class StudentDashboardComponent implements OnInit {
 
   viewGrades(): void {
     console.log("Inside viewGrades");
-    this.router.navigateByUrl('grades', { skipLocationChange: true });
+    this.router.navigateByUrl('studentgradesdash', { skipLocationChange: true });
   }
 
   viewAssignment(): void {
@@ -41,6 +41,10 @@ export class StudentDashboardComponent implements OnInit {
   launchCanvas(): void {
     console.log("Inside launchcanvas");
     this.router.navigateByUrl('canvas', { skipLocationChange: true });
+  }
+
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
   }
 
 }
