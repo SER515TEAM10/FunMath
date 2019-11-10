@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-student-dashboard',
@@ -10,7 +10,7 @@ export class StudentDashboardComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  breakpoint : number;
+  breakpoint: number;
 
   ngOnInit() {
     console.log("Inside ngOnInit");
@@ -43,7 +43,7 @@ export class StudentDashboardComponent implements OnInit {
     this.router.navigateByUrl('canvas', { skipLocationChange: true });
   }
 
-  goToPage(pageName:string){
+  goToPage(pageName: string) {
     this.router.navigate([`${pageName}`]);
   }
 

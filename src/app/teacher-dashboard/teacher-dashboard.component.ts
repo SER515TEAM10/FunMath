@@ -7,20 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./teacher-dashboard.component.scss']
 })
 export class TeacherDashboardComponent implements OnInit {
-  public router:Router;
+  public router: Router;
   constructor(router: Router) { }
 
   ngOnInit() {
   }
 
-  viewGrades(){   
+  viewGrades() {
 
   }
-  addAssignments(){
-    this.router.navigateByUrl('add-assignment',{skipLocationChange:true});
+  addAssignments() {
+    this.router.navigateByUrl('add-assignment', { skipLocationChange: true });
   }
-  publishAssignments(){
-    this.router.navigateByUrl('publish-assignment',{skipLocationChange:true});
+  publishAssignments() {
+    this.router.navigateByUrl('publish-assignment', { skipLocationChange: true });
   }
 
 }

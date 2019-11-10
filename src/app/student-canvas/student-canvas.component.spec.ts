@@ -8,9 +8,9 @@ describe('StudentCanvasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StudentCanvasComponent ]
+      declarations: [StudentCanvasComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

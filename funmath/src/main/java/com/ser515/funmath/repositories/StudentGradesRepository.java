@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ser515.funmath.model.StudentGrades;
 
-
-public interface StudentGradesRepository extends JpaRepository<StudentGrades, Integer>{
+public interface StudentGradesRepository extends JpaRepository<StudentGrades, Integer> {
 	List<StudentGrades> findByStudentUserId(int studentID);
 }

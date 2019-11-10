@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './auth/auth.guard';
+import { AppRoutingModule } from "./app-routing.module";
+import { AuthGuard } from "./auth/auth.guard";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
 //Angular Material Components
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,14 +36,14 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {FlexLayoutModule} from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AdminDashboardComponent, AdminApprovalDialog } from './admin-dashboard/admin-dashboard.component';
@@ -56,11 +56,13 @@ import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-sea
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
-import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO: 
-
+import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO:
+import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
+import { Class1Component } from "./teacher-assignment-area/questiontemplates/class1/class1.component";
+import { Class3Component } from "./teacher-assignment-area/questiontemplates/class3/class3.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,14 +74,17 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     LandingPageComponent,
     UserLoginComponent,
     AssignmnetViewComponent,
-    StudentGradesComponent, //TODO: 
+    StudentGradesComponent, //TODO:
     UserSearchComponent,
     ConfirmDeleteDialog,
     UserDetailsComponent,
     StudentCanvasComponent,
+    TeacherAssignmentAreaComponent,
+    Class1Component,
+    Class3Component,
     StudentFirstGradeComponent
   ],
-  imports: [    
+  imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
@@ -124,9 +129,9 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false
+    })
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
@@ -134,5 +139,3 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
   entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
 })
 export class AppModule { }
-
-

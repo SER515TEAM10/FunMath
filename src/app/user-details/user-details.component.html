@@ -1,7 +1,7 @@
 <mat-card *ngIf="user">
-    <h2>{{user.name}}'s  Details</h2>
+    <h2>{{user.name}}'s Details</h2>
 
-    
+
     <!-- <ul class="users">
         <li *ngFor="let user of Users">
             <a routerLink="/userdetails/{{user.userid}}">
@@ -11,6 +11,5 @@
             (click)="delete(user)">x</button>
         </li>
     </ul> -->
-    <button class="search" title="Back"
-        (click)="goBackToUserSearch()">Back</button>
+    <button class="search" title="Back" (click)="goBackToUserSearch()">Back</button>
 </mat-card>

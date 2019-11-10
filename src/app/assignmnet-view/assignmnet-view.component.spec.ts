@@ -8,9 +8,9 @@ describe('AssignmnetViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssignmnetViewComponent ]
+      declarations: [AssignmnetViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
