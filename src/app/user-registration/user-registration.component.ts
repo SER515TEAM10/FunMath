@@ -60,12 +60,12 @@ export class UserRegistrationComponent implements OnInit {
 
         );
 
-      // this.fname.reset();
-      // this.lname.reset();
-      // this.email.reset();
-      // this.password.setValue('');
-      // this.gender.reset();
-      // this.date.reset();
+      this.fname.reset();
+      this.lname.reset();
+      this.email.reset();
+      this.password.setValue('');
+      this.gender.reset();
+      this.date.reset();
     }
   }
 }
