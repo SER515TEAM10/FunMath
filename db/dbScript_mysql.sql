@@ -20,9 +20,9 @@ INSERT INTO user_role(role_id,role_name) VALUES(102,'TEACHER');
 CREATE TABLE `funmath_project`.`users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `gender` varchar(45) NOT NULL,
-  `dob` date NOT NULL,
+  `last_name` varchar(45) DEFAULT NOT NULL,
+  `gender` varchar(45) NULL,
+  `dob` date NULL,
   `email_id` varchar(45) NOT NULL,
   `password` varchar(200) NOT NULL,
   `role_id` int(11) DEFAULT '100',
