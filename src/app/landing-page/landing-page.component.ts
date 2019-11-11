@@ -22,7 +22,7 @@ export class LandingPageComponent implements OnInit {
     this.isLoggedIn = localStorage.getItem('isLoggedIn');
     this.id = localStorage.getItem('token');
     this.userType = localStorage.getItem('userType');
-    console.log(this.userType);
+
     if (this.userType === 'Admin') {
       this.router.navigateByUrl('admindash', { skipLocationChange: true });
     }
