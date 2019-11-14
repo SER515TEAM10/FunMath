@@ -51,20 +51,20 @@ export class UsersService {
     );
   }
 
-  
+
 
   searchUser(nameOrId: string): User[] {
     var searchUsers: User[] = [];
     Users.forEach(user => {
-      if( (user.userid == +nameOrId) || (user.name == nameOrId) ){
+      if ((user.userid == +nameOrId) || (user.name == nameOrId)) {
         searchUsers.push(user);
-      }      
+      }
     });
     return searchUsers;
   }
 
-  
-  deleteUser(userid: number): Observable<Boolean> {     
+
+  deleteUser(userid: number): Observable<Boolean> {
     const url = `${this.usersUrl}/delete/${userid}`;
     return this.http.get<Boolean>(url).pipe(
       tap(_ => console.log(`fetched user id=${userid}`)),
@@ -73,7 +73,7 @@ export class UsersService {
     // var deleted: boolean = false;
     // var index = 0
     // Users.forEach(user => {
-      
+
     //   if(user.userid == +userid){
     //     Users.splice(index,1);
     //     deleted = true;        
@@ -91,10 +91,10 @@ export class UsersService {
     var count = 0;
     //var userlist = Users;
     userids.forEach(userid => {
-      
-      if(this.deleteUser(userid)){
+
+      if (this.deleteUser(userid)) {
         count += 1;
-      }      
+      }
       index += 1;
     });
     var returnMessage = count + " out of " + userids.length + " deleted succesfully."
@@ -107,7 +107,7 @@ export class UsersService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

@@ -2,48 +2,43 @@ package com.ser515.funmath.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.ser515.funmath.model.Users;
-import com.ser515.funmath.repositories.UserRepository;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.Users;
+import com.ser515.funmath.repositories.ExpressionRepository;
+import com.ser515.funmath.repositories.UserRepository;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+	@Autowired
+	private ExpressionRepository expressionRepository;
+
 	@Autowired
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-	
-	public List<Users> getAllUsers(){
+	public List<Users> getAllUsers() {
 		List<Users> userList = new ArrayList<>();
 		userRepository.findAll().forEach((userList::add));
 		return userList;
 	}
 
-	
 	public void updateUserRole(Users user) {
 		userRepository.save(user);
-	}
-	
-	public Users saveUser(Users user) {
-		try {
-			return userRepository.saveAndFlush(user);
 
-	public void updateUserRole(Users user) {
-		userRepository.save(user);
-		
 	}
-  
+
 	public List<Users> findAll() {
 		return userRepository.findAll();
 	}
@@ -55,32 +50,26 @@ public class UserService {
 	public Users saveUser(Users user) {
 		try {
 			return userRepository.saveAndFlush(user);
-			
+
 		} catch (Exception ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 					"Unable to add users at the moment, please try after sometime:" + ex.getMessage());
 		}
 	}
-	
-	
-    public Users login(String emailID, String password) {
-		 Users user = userRepository.findByEmailId(emailID);
-		    if (user == null) 
-		    {
-		    	throw new UsernameNotFoundException("Username not found!");
-		    }
-		    else
-		    {
-		    	if (encoder.matches(password, user.getPassword()))
-		    	{
-		    		return user;
-		    	}
-		    	else
-		    	{
-		    		
-		    		throw new BadCredentialsException("Password is incorrect!");
-		    	}
-		    }
+
+	public Users login(String emailID, String password) {
+		Users user = userRepository.findByEmailId(emailID);
+		if (user == null) {
+			throw new UsernameNotFoundException("Username not found!");
+		} else {
+			if (encoder.matches(password, user.getPassword())) {
+				return user;
+			} else {
+
+				throw new BadCredentialsException("Password is incorrect!");
+			}
+		}
+	}
 
 	public Users findUserById(int id) {
 		// TODO Auto-generated method stub
@@ -96,9 +85,15 @@ public class UserService {
 		// TODO Auto-generated method stub
 		try {
 			userRepository.deleteById(id);
-		}catch(Exception ex) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to remove user with id:" + id+" - Error:"+ex.getMessage());
+		} catch (Exception ex) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+					"Unable to remove user with id:" + id + " - Error:" + ex.getMessage());
 		}
-		
+
+	}
+
+	public void saveExpression(ExpressionModel expressionModel) {
+		expressionRepository.save(expressionModel);
+
 	}
 }

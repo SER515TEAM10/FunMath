@@ -60,7 +60,7 @@
     </mat-accordion>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="">
+    <div>
       <div cdkDropList #canvasList="cdkDropList" [cdkDropListData]="canvas"
         [cdkDropListConnectedTo]="[number, basicOperation, advancedOperation]" class="listHorizontal"
         (cdkDropListDropped)="dropReplicate($event)" cdkDropListOrientation="horizontal">

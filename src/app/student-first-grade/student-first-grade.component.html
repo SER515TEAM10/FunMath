@@ -1,0 +1,266 @@
+<!-- <mat-grid-list cols="10" rowHeight="1:4">
+  <mat-grid-tile md-colspan="2" colspan="2">     -->
+<div class="split-left">
+
+  <mat-list>
+    <span class="box">
+      <a mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h3 matLine class="link-menu" (click)="countingProblems()">Counting Problems</h3>
+      </a>
+    </span>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Understanding Addition</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Understanding Subtraction</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Mixed Operations</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Comparison Problems</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Measurement Problems</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu" (click)="patternProblems()">Patterns</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>
+      <mat-icon matListIcon>folder</mat-icon>
+      <h3 matLine class="link-menu">Shapes</h3>
+    </a>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>
+<!-- </mat-grid-tile> -->
+<!-- <div class = "container slide-right first-grade-panel">  
+  <mat-grid-list cols=1 rowHeight="200px" gutterSize="3px">
+    <mat-grid-tile>1</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+  </mat-grid-list>
+</div> -->
+<mat-divider vertical="true" gutter></mat-divider>
+<!-- <mat-grid-tile colspan="8"> -->
+<div class="container first-grade-panel">
+  <div class="slide-right">
+    <div *ngIf="displayCounting">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Question1</mat-card-title>
+          <mat-card-subtitle>Count number of balls</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="align-contents">
+          <div class="flex-container">
+            <span class="flex-item"><img src="../../assets/counting/ball2.jpg" alt="ball1"></span>
+            <span class="flex-item"><img src="../../assets/counting/ball2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/ball2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/ball2.jpg" alt="ball2"></span>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="flex-container">
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('1')">1</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('2')">2</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('3')">3</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('4')">4</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('5')">5</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('6')">6</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('7')">7</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('8')">8</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('9')">9</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q1('10')">10</button>
+            </span>
+          </div>
+          <div class="flex-container">
+            <span class="flex-item">
+              <mat-label>{{labelstringC1S1Q1}}</mat-label>
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Question2</mat-card-title>
+          <mat-card-subtitle>Count number of doughnuts:</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="align-contents">
+          <div class="flex-container">
+            <!-- <div> -->
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
+            <!-- </div> -->
+            <br>
+            <br>
+            <br>
+          </div>
+          <div class="flex-container" style="position:relative;right:-50px">
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')">1</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('2')">2</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('3')">3</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('4')">4</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('5')">5</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('6')">6</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('7')">7</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('8')">8</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('9')">9</button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('10')">10</button>
+            </span>
+          </div>
+          <div>
+            <div class="flex-container">
+              <div class="flex-item " style='position:relative;right:-50px'>
+                <mat-label>{{labelstringC1S1Q2}}</mat-label>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!--Patterns-->
+    <div *ngIf="displayPatterns">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Question1</mat-card-title>
+          <mat-card-subtitle>What number comes next in the given pattern?</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="align-contents">
+          <div class="flex-container">
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball1"></span>
+            <span class="flex-item"><img src="../../assets/counting/2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/2.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/qmark.jpg" alt="ball2"></span>
+          </div>
+          <br>
+          <br>
+          <div class="flex-container">
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S7Q1('1')"><img
+                  src="../../assets/counting/1.jpg" /></button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S7Q1('2')"><img
+                  src="../../assets/counting/2.jpg" /></button>
+            </span>
+          </div>
+          <div class="flex-container">
+            <span class="flex-item">
+              <mat-label>{{labelstringC1S7Q1}}</mat-label>
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Question2</mat-card-title>
+          <mat-card-subtitle>What number comes next in the given pattern?</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="align-contents">
+          <div class="flex-container">
+            <span class="flex-item"><img src="../../assets/counting/5.jpg" alt="ball1"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/6.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/5.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/6.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/5.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/6.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/5.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/1.jpg" alt="ball2"></span>
+            <span class="flex-item"><img src="../../assets/counting/qmark.jpg" alt="ball2"></span>
+          </div>
+          <br>
+          <br>
+          <div class="flex-container">
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S7Q2('1')"><img
+                  src="../../assets/counting/1.jpg" /></button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S7Q2('5')"><img
+                  src="../../assets/counting/5.jpg" /></button>
+            </span>
+            <span class="flex-item">
+              <button mat-raised-button type="submit" (click)="changeLabelNameC1S7Q2('6')"><img
+                  src="../../assets/counting/6.jpg" /></button>
+            </span>
+          </div>
+          <div class="flex-container">
+            <span class="flex-item">
+              <mat-label>{{labelstringC1S7Q2}}</mat-label>
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

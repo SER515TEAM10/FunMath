@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 
 export interface DialogData {
   animal: string;

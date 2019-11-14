@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-dashboard',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-dashboard.component.scss']
 })
 export class TeacherDashboardComponent implements OnInit {
-
-  constructor() { }
+  public router: Router;
+  constructor(router: Router) { }
 
   ngOnInit() {
+  }
+
+  viewGrades() {
+
+  }
+  addAssignments() {
+    this.router.navigateByUrl('add-assignment', { skipLocationChange: true });
+  }
+  publishAssignments() {
+    this.router.navigateByUrl('publish-assignment', { skipLocationChange: true });
   }
 
 }
