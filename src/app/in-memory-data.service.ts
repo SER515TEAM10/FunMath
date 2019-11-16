@@ -1,7 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { User } from '../app/user-search/user';
 import { Assignment } from './assignmnet-view/assignment';
 import { Injectable } from '@angular/core';
+import { User } from './user-search/user';
 
 @Injectable({
   providedIn: 'root',
