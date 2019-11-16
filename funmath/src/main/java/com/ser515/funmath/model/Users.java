@@ -28,7 +28,7 @@ public class Users {
 	@Column(name = "password")
 	private String password;
 	@Column(name = "dob")
-	private Date dob;
+	private String dob;
 
 	private int roleId = 100;
 
@@ -45,7 +45,7 @@ public class Users {
 	}
 
 	public Users(int userId, String firstName, String lastName, String emailId, String gender, String password,
-			Date dob, int roleId) {
+			String dob, int roleId) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -105,11 +105,11 @@ public class Users {
 		this.password = password;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

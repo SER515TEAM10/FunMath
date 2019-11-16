@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.services.UserService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -50,10 +52,15 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public Users saveUser(@RequestBody Users user) {
-		String pwd = user.getPassword();
-		String encryptPwd = passwordEncoder.encode(pwd);
+	public Users saveUser(@RequestBody Map<String, String> json) {
+		Users user = new Users();
+		user.setFirstName(json.get("firstName"));
+		user.setLastName(json.get("lastName"));
+		user.setEmailId(json.get("emailId"));
+		String encryptPwd = passwordEncoder.encode(json.get("password"));
 		user.setPassword(encryptPwd);
+		user.setGender(json.get("gender"));
+		user.setDob(json.get("dob"));
 		return userService.saveUser(user);
 	}
 
