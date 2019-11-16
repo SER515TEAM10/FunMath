@@ -52,9 +52,7 @@
                 <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
                 <mat-datepicker #dob startView="year" [startAt]="startDate"></mat-datepicker>
             </mat-form-field>
+            <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
         </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
-    </mat-card-actions>
 </mat-card>
