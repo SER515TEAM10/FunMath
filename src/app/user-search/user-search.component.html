@@ -4,7 +4,7 @@
     <div id="search-component">
         <h4><label for="search-box">User Search</label></h4>
 
-        <input #searchBox id="search-box" placeholder="Enter userid or Name" />
+        <input #searchBox id="search-box" placeholder="Enter userId or Name" />
 
         <button class="search" title="Search" (click)="search(searchBox.value)">Search</button>
 
@@ -15,10 +15,10 @@
     <ul class="users" *ngIf="Users">
         <div *ngIf="!UsersSize">No users found.</div>
         <div *ngFor="let user of Users">
-            <input (click)="updateCheck(user.userid)" type="checkbox" />
+            <input (click)="updateCheck(user.userId)" type="checkbox" />
             <li>
-                <a (click)="goTo(user.userid)">
-                    <span class="badge">{{user.userid}}</span> {{user.name}}
+                <a (click)="goTo(user.userId)">
+                    <span class="badge">{{user.userId}}</span> {{user.firstName}}
                 </a>
                 <button class="delete" title="delete User" (click)="delete(user)">x</button>
 

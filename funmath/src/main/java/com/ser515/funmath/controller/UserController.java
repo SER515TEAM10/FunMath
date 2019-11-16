@@ -88,6 +88,14 @@ public class UserController {
 
 	}
 
+	@RequestMapping(path = "/removeIds/", method = RequestMethod.POST)
+	public boolean removeIds(@RequestBody int[] ids) {
+		for (int id: ids){
+			userService.removeUser(id);
+		}
+		return true;
+	}
+
 	@PostMapping("/expression/save")
 	public void saveExpresions(@RequestBody ExpressionModel expressionModel) {
 		userService.saveExpression(expressionModel);

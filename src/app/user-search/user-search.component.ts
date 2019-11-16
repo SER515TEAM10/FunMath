@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UsersService } from '../users.service';
+import { User } from './user';
+import { UsersService } from './users.service';
 import { Location } from '@angular/common';
 import { Users } from '../mock-users';
 import { Router } from "@angular/router";
@@ -46,13 +46,13 @@ export class UserSearchComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if (result == true) {
-        this.usersService.deleteUser(user.userid)
+        this.usersService.deleteUser(user.userId)
           .subscribe(val => {
             console.log(val)
             //need to update once real api is ready
             val = true;
             if (val) {
-              this.Users = this.Users.filter(u => u.userid !== user.userid);
+              this.Users = this.Users.filter(u => u.userId !== user.userId);
               this.snackbar.open('User Deleted Successfully.', 'Dismiss', {
                 duration: 3000
               });
@@ -112,10 +112,19 @@ export class UserSearchComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if (result == true) {
-        this.Users = this.Users.filter(u => (this.selectedUsers.indexOf(u.userid) < 0));
-        this.snackbar.open(this.usersService.deleteUsers(this.selectedUsers), 'Dismiss', {
-          duration: 3000
-        });
+        var returnMessage = this.selectedUsers.length + " out of " + this.selectedUsers.length + " deleted succesfully."
+        this.usersService.deleteUsers(this.selectedUsers)
+          .subscribe(val => {
+            console.log(val)
+            if (val){
+              this.snackbar.open(returnMessage, 'Dismiss', {
+                duration: 3000
+              });
+            }
+            
+          });
+        this.Users = this.Users.filter(u => (this.selectedUsers.indexOf(u.userId) < 0));
+        
         // this.usersService.getUsers()
         // .subscribe(
         //   users => 
