@@ -1,0 +1,59 @@
+<div *ngIf="classSelected?callThisMethod(classSelected):false">
+  <form #createAssign="ngForm" (ngSubmit)="createAssignment(createAssign)">
+    <div>
+      <span>
+        <h3>Select multiple questions to create an assignment</h3>
+        <button type="submit" mat-raised-button color="primary">Create
+          Assignment</button>
+      </span>
+    </div>
+    <div>
+
+      <section class="card-section" *ngFor='let question of questionList'>
+        <mat-checkbox class="ques-checkbox" ngModel name='{{question.ID}}'>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Question {{question.number}}</mat-card-title>
+              <mat-card-subtitle>{{question.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="flex-container" *ngFor='let image of question.images'>
+                <span class="flex-item"><img src="{{image.name}}" /></span>
+              </div>
+              <div>
+                <span>
+                  <p class="card_para">{{question.descquestion}}</p>
+                </span>
+              </div>
+              <br />
+              <br />
+              <h4>Your answer: </h4>
+              <div class="flex-container">
+                <span>
+                  <table *ngIf='question.answers.type == "textbox"'>
+                    <tr *ngFor='let answer of question.answers.fields'>
+                      <td>{{answer.answertext}} </td>
+                      <td> <input type="text" /></td>
+                      <td> {{answer.answerunit}}</td>
+                    </tr>
+                  </table>
+                </span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-checkbox>
+      </section>
+      <br>
+    </div>
+
+    <!--Multiplication and Division-->
+    <!--Understanding exponents-->
+    <!--Number theory-->
+    <!--Fractions-->
+    <!--Mixed Operations-->
+    <!--Probability-->
+    <!--Time-->
+    <!--Geometric Measurements-->
+    <!--Ratios and Percentages-->
+  </form>
+</div>
