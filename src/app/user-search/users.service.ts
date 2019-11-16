@@ -1,5 +1,5 @@
 import { User } from './user';
-import { Users } from './mock-users';
+import { Users } from '../mock-users';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UsersService {
 
-  private usersUrl = 'api/users';  // URL to web api
+  private usersUrl = 'http://localhost:8080/user';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +24,7 @@ export class UsersService {
 
   getUsers(): Observable<User[]> {
     //return of(Users);
-    return this.http.get<User[]>(this.usersUrl)
+    return this.http.get<User[]>(`${this.usersUrl}/getAll/`)
       .pipe(
         tap(_ => console.log('fetched Users')),
         catchError(this.handleError<User[]>('getUsers', []))
@@ -44,7 +44,7 @@ export class UsersService {
 
   /** GET user by id. Will 404 if id not found */
   getUserById(userid: number): Observable<User> {
-    const url = `${this.usersUrl}/${userid}`;
+    const url = `${this.usersUrl}/search/${userid}`;
     return this.http.get<User>(url).pipe(
       tap(_ => console.log(`fetched user id=${userid}`)),
       catchError(this.handleError<User>(`getUserById id=${userid}`))
@@ -56,7 +56,7 @@ export class UsersService {
   searchUser(nameOrId: string): User[] {
     var searchUsers: User[] = [];
     Users.forEach(user => {
-      if ((user.userid == +nameOrId) || (user.name == nameOrId)) {
+      if ((user.userId == +nameOrId) || (user.firstName == nameOrId)) {
         searchUsers.push(user);
       }
     });
@@ -65,9 +65,9 @@ export class UsersService {
 
 
   deleteUser(userid: number): Observable<Boolean> {
-    const url = `${this.usersUrl}/delete/${userid}`;
-    return this.http.get<Boolean>(url).pipe(
-      tap(_ => console.log(`fetched user id=${userid}`)),
+    const url = `${this.usersUrl}/remove/${userid}`;
+    return this.http.delete<Boolean>(url).pipe(
+      tap(_ => console.log(`Deleted user id=${userid}`)),
       catchError(this.handleError<Boolean>(`getUserById id=${userid}`))
     );
     // var deleted: boolean = false;
@@ -86,19 +86,30 @@ export class UsersService {
     // return of(deleted)
   }
 
-  deleteUsers(userids: number[]): string {
-    var index = 0;
-    var count = 0;
-    //var userlist = Users;
-    userids.forEach(userid => {
+  deleteUsers(userids: number[]): Observable<Boolean> {
+    const url = `${this.usersUrl}/removeIds/`;
+    return this.http.post<Boolean>(url, userids).pipe(
+      tap(_ => console.log(`Deleted users id=${userids}`)),
+      catchError(this.handleError<Boolean>(`getUserById id=${userids}`))
+    );
+    // var index = 0;
+    // var count = 0;
+    // //var userlist = Users;
+    // userids.forEach(userid => {
 
-      if (this.deleteUser(userid)) {
-        count += 1;
-      }
-      index += 1;
-    });
-    var returnMessage = count + " out of " + userids.length + " deleted succesfully."
-    return returnMessage;
+    //   this.deleteUser(userid)
+    //       .subscribe(val => {
+    //         console.log(val)
+    //         //need to update once real api is ready
+    //         val = true;
+    //         if (val) {
+    //           count += 1;
+    //         }
+    //       });
+    //   index += 1;
+    // });
+    // var returnMessage = count + " out of " + userids.length + " deleted succesfully."
+    // return of(returnMessage);
   }
 
   /**
