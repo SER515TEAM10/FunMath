@@ -13,7 +13,6 @@ export class StudentDashboardComponent implements OnInit {
   breakpoint: number;
 
   ngOnInit() {
-    console.log("Inside ngOnInit");
     this.breakpoint = (window.innerWidth <= 400) ? 2 : 4;
   }
 

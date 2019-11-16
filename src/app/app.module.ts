@@ -55,11 +55,9 @@ import { AssignmnetViewComponent } from './assignmnet-view/assignmnet-view.compo
 import { UserSearchComponent, ConfirmDeleteDialog } from './user-search/user-search.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { StudentCanvasComponent } from './student-canvas/student-canvas.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
-import { StudentGradesComponent } from './student-grades/student-grades.component'; //TODO:
+import { StudentGradesComponent } from './student-grades/student-grades.component';
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
 import { Class1Component } from "./teacher-assignment-area/questiontemplates/class1/class1.component";
 import { Class3Component } from "./teacher-assignment-area/questiontemplates/class3/class3.component";
@@ -74,7 +72,7 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
     LandingPageComponent,
     UserLoginComponent,
     AssignmnetViewComponent,
-    StudentGradesComponent, //TODO:
+    StudentGradesComponent,
     UserSearchComponent,
     ConfirmDeleteDialog,
     UserDetailsComponent,
@@ -125,13 +123,7 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
     ReactiveFormsModule,
     DragDropModule,
     HttpClientModule,
-    FlexLayoutModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    })
+    FlexLayoutModule
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
