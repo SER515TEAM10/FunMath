@@ -3,7 +3,7 @@ api_version: 1
 threadsafe: true
 handlers:
 - url: /
-  static_files: dist/index.html
-  upload: dist/index.html
+  static_files: dist/FunMath/index.html
+  upload: dist/FunMath/index.html
 - url: /
   static_dir: dist
