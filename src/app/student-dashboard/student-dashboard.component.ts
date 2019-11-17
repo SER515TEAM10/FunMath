@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router"
+import { Router } from '@angular/router'
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -8,7 +9,7 @@ import { Router } from "@angular/router"
 })
 export class StudentDashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: MatDialog) { }
 
   breakpoint: number;
 
@@ -16,6 +17,13 @@ export class StudentDashboardComponent implements OnInit {
     this.breakpoint = (window.innerWidth <= 400) ? 2 : 4;
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(PrivilegeRequestDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // if ${result} == true then call API
+    });
+  }
   //Not working need to take a look again.
   onResize(event) {
     console.log("Inside Resize");
@@ -47,3 +55,9 @@ export class StudentDashboardComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'privilege-request-dialog',
+  templateUrl: 'privilege-request-dialog.html',
+})
+export class PrivilegeRequestDialog { }
