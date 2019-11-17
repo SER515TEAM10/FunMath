@@ -6,4 +6,4 @@ handlers:
   static_files: dist/FunMath/index.html
   upload: dist/FunMath/index.html
 - url: /
-  static_dir: dist
+  static_dir: dist/FunMath/
