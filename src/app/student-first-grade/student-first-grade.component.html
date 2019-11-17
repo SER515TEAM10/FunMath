@@ -1,5 +1,3 @@
-<!-- <mat-grid-list cols="10" rowHeight="1:4">
-  <mat-grid-tile md-colspan="2" colspan="2">     -->
 <div class="split-left">
 
   <mat-list>
@@ -47,18 +45,57 @@
     <mat-divider></mat-divider>
   </mat-list>
 </div>
-<!-- </mat-grid-tile> -->
-<!-- <div class = "container slide-right first-grade-panel">  
-  <mat-grid-list cols=1 rowHeight="200px" gutterSize="3px">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-  </mat-grid-list>
-</div> -->
 <mat-divider vertical="true" gutter></mat-divider>
 <!-- <mat-grid-tile colspan="8"> -->
 <div class="container first-grade-panel">
   <div class="slide-right">
-    <div *ngIf="displayCounting">
+    <!-- Added for testing dynamic logic-->
+    <div *ngIf="test_for_pattern" class="question-panel">
+      <div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Question{{question[i].number}}</mat-card-title>
+            <mat-card-subtitle>{{question[i].desc}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="flex-container">
+              <span class="flex-item" *ngFor="let image of question[i].images"><img
+                  src="../../assets/{{image.name}}"></span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="flex-container" style="position:relative;right:-50px">
+              <div *ngIf="question[i].answers.type=='button'">
+                <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
+                  <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')">{{button.id}}</button>
+                </span>
+              </div>
+              <div *ngIf="question[i].answers.type=='image'">
+                <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
+                  <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')"><img src="../../assets/{{button.image}}"/></button>
+                </span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <br>
+      <div>
+        <button class="btn btn-outline-rounded btn-default previous-btn" (click)="i=i-1" [disabled]="i==0"> <span
+            style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span>
+          Previous</button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right" (click)="i=i+1"
+          [disabled]="i==question.length-1">Next <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-right"></span> </button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Added for testing dynamic logic ends-->
+
+
+    <!-- <div *ngIf="displayCounting_1" class="question-panel">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Question1</mat-card-title>
@@ -114,6 +151,17 @@
         </mat-card-content>
       </mat-card>
       <br>
+      <div> 
+       
+        <button class="mat-raised-button previous-btn" color="primary"> <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-left "></span> Previous</button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right"
+          (click)="displayCounting_1=false; displayCounting_2=true">Next <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-right"></span> </button>
+      </div>
+    </div>-->
+    <!-- <div *ngIf="displayCounting_2" class="question-panel">
+      <br>
       <mat-card>
         <mat-card-header>
           <mat-card-title>Question2</mat-card-title>
@@ -121,7 +169,7 @@
         </mat-card-header>
         <mat-card-content class="align-contents">
           <div class="flex-container">
-            <!-- <div> -->
+     
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
@@ -132,7 +180,7 @@
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
-            <!-- </div> -->
+            
             <br>
             <br>
             <br>
@@ -178,9 +226,19 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <br>
+      <div>
+        <button class="btn btn-outline-rounded btn-default previous-btn"
+          (click)="displayCounting_2=false; displayCounting_1=true"> <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-left"></span>
+          Previous</button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right">Next <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-right"></span> </button>
+      </div>
     </div>
-    <!--Patterns-->
-    <div *ngIf="displayPatterns">
+
+    
+    <div *ngIf="displayPatterns_1" class="question-panel">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Question1</mat-card-title>
@@ -218,6 +276,17 @@
         </mat-card-content>
       </mat-card>
       <br>
+      <div>
+        <button class="btn btn-outline-rounded btn-default previous-btn"> <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-left"></span> Previous</button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right"
+          (click)="displayPatterns_1=false; displayPatterns_2=true">Next <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-right"></span> </button>
+      </div>
+
+    </div>
+    <br>
+    <div *ngIf="displayPatterns_2" class="question-panel">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Question2</mat-card-title>
@@ -261,6 +330,15 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <br>
+      <div>
+        <button class="btn btn-outline-rounded btn-default previous-btn"
+          (click)="displayPatterns_1=true; displayPatterns_2=false"> <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-left"></span>
+          Previous</button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right" [disabled]>Next <span
+            style="margin-right:10px;" class="glyphicon glyphicon-arrow-right"></span> </button>
+      </div>
     </div>
-  </div>
-</div>
+
+  </div> -->

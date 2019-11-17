@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Assignment } from '../assignment';
-import { AssignmentService } from '../assignment.service';
+import { Assignment } from './assignment';
+import { AssignmentService } from './assignment.service';
 import { Router } from "@angular/router";
 import { Injectable } from '@angular/core';
 
