@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UsersService } from '../users.service';
+import { User } from '../user-search/user';
+import { UsersService } from '../user-search/users.service';
 import { Location } from '@angular/common';
 import { Users } from '../mock-users';
 import { Observable, of } from 'rxjs';

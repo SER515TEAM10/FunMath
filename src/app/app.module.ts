@@ -47,7 +47,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AdminDashboardComponent, AdminApprovalDialog } from './admin-dashboard/admin-dashboard.component';
-import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { StudentDashboardComponent, PrivilegeRequestDialog } from './student-dashboard/student-dashboard.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -68,6 +68,7 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
     AdminDashboardComponent,
     AdminApprovalDialog,
     StudentDashboardComponent,
+    PrivilegeRequestDialog,
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
@@ -128,6 +129,6 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog]
+  entryComponents: [AdminApprovalDialog, ConfirmDeleteDialog, PrivilegeRequestDialog]
 })
 export class AppModule { }

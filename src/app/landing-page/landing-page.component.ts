@@ -23,6 +23,8 @@ export class LandingPageComponent implements OnInit {
     this.id = localStorage.getItem('token');
     this.userType = localStorage.getItem('userType');
 
+    if (this.userType === null) { this.goLogin(); }
+
     if (this.userType === 'Admin') {
       this.router.navigateByUrl('admindash', { skipLocationChange: true });
     }
@@ -39,10 +41,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   goHome() {
-    if (this.userType === null) this.router.navigateByUrl('', { skipLocationChange: true });
-    if (this.userType === 'Admin') this.router.navigateByUrl('admindash', { skipLocationChange: true });
-    if (this.userType === 'Student') this.router.navigateByUrl('studentdash', { skipLocationChange: true });
-    if (this.userType === 'Teacher') this.router.navigateByUrl('teacherdash', { skipLocationChange: true });
+    if (this.userType === null) { this.goLogin(); }
+    if (this.userType === 'Admin') { this.router.navigateByUrl('admindash', { skipLocationChange: true }); }
+    if (this.userType === 'Student') { this.router.navigateByUrl('studentdash', { skipLocationChange: true }); }
+    if (this.userType === 'Teacher') { this.router.navigateByUrl('teacherdash', { skipLocationChange: true }); }
   }
 
   goTryCanvas() {

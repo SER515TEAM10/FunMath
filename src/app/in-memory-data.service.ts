@@ -1,7 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { User } from './User';
-import { Assignment } from './assignment';
+import { Assignment } from './assignmnet-view/assignment';
 import { Injectable } from '@angular/core';
+import { User } from './user-search/user';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +9,11 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = [
-      { id: 11, userid: 11, name: 'Asmi', password: 'Asmi', role: 0 },
-      { id: 12, userid: 12, name: 'Dhananjay', password: 'Dhananjay', role: 0 },
-      { id: 13, userid: 13, name: 'Sharad', password: 'Sharad', role: 0 },
-      { id: 14, userid: 14, name: 'Naren', password: 'Naren', role: 0 },
-      { id: 15, userid: 15, name: 'Satyen', password: 'Satyen', role: 0 }
+      { id: 11, userId: 11, firstName: 'Asmi', password: 'Asmi', role: 0 },
+      { id: 12, userId: 12, firstName: 'Dhananjay', password: 'Dhananjay', role: 0 },
+      { id: 13, userId: 13, firstName: 'Sharad', password: 'Sharad', role: 0 },
+      { id: 14, userId: 14, firstName: 'Naren', password: 'Naren', role: 0 },
+      { id: 15, userId: 15, firstName: 'Satyen', password: 'Satyen', role: 0 }
     ];
 
     const assignments = [
@@ -45,7 +45,7 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
   genId(users: User[]): number {
-    return users.length > 0 ? Math.max(...users.map(user => user.userid)) + 1 : 11;
+    return users.length > 0 ? Math.max(...users.map(user => user.userId)) + 1 : 11;
   }
 
 
