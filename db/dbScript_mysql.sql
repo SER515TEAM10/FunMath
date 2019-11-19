@@ -105,3 +105,11 @@ INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maxi
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (4, 1, 30, 100, 'bhak bc');
+"""Updated question_pool table as question_repo """
+CREATE TABLE `question_repo` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_number` int(11) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL,
+  `question_list` longtext,
+  PRIMARY KEY (`question_id`)
+)
