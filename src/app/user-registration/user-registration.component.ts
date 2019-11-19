@@ -61,9 +61,13 @@ export class UserRegistrationComponent implements OnInit {
         );
 
       this.fname.reset();
+      this.fname.setErrors(null);
       this.lname.reset();
+      this.lname.setErrors(null);
       this.email.reset();
+      this.email.setErrors(null);
       this.password.setValue('');
+      this.password.setErrors(null);
       this.gender.reset();
       this.date.reset();
     }

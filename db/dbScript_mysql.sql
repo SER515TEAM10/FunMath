@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS student_grades;
 DROP TABLE IF EXISTS assignment;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_role;
+DROP TABLE IF EXISTS user_requests;
 
 CREATE TABLE `funmath_project`.`user_role` (
   `role_id` int(11) NOT NULL,
@@ -91,6 +92,16 @@ CREATE TABLE `student_expressions` (
   `solution_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
+)
+''' table for storing user requests'''
+CREATE TABLE `funmath_project`.`user_requests` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email_id` VARCHAR(100) NOT NULL,
+  `request_date` VARCHAR(50) NOT NULL,
+  `request_status` VARCHAR(45) NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`id`));
+
+
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (1, 1, 100, 100, 'Excellent!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
