@@ -20,6 +20,8 @@ import {
   styleUrls: ["./class5.component.scss"]
 })
 export class Class5Component implements OnInit {
+  date = new FormControl();
+  startDate = new Date();
   public selected: string;
   public selectedList: any;
   public assignmentList: any[] = [];
@@ -145,6 +147,10 @@ export class Class5Component implements OnInit {
     console.log("Assignment Created");
     this.selectedList = e.value;
     console.log(this.selectedList);
+    // duedate: this.date.value != null
+    //   ? this.date.value.toISOString().substring(0, 10)
+    //   : null;
+
     for (let key in this.selectedList) {
       let value = this.selectedList[key];
       if (value == true) {

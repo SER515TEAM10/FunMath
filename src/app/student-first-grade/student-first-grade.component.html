@@ -10,27 +10,27 @@
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Understanding Addition</h3>
+      <h3 matLine class="link-menu" (click)="additionProblems()">Understanding Addition</h3>
     </a>
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Understanding Subtraction</h3>
+      <h3 matLine class="link-menu" (click)="subtractionProblems()">Understanding Subtraction</h3>
     </a>
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Mixed Operations</h3>
+      <h3 matLine class="link-menu" (click)="mixedOpProblems()">Mixed Operations</h3>
     </a>
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Comparison Problems</h3>
+      <h3 matLine class="link-menu" (click)="comparisonProblems()">Comparison Problems</h3>
     </a>
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Measurement Problems</h3>
+      <h3 matLine class="link-menu" (click)="measurementProblems()">Measurement Problems</h3>
     </a>
     <mat-divider></mat-divider>
     <a mat-list-item>
@@ -40,7 +40,7 @@
     <mat-divider></mat-divider>
     <a mat-list-item>
       <mat-icon matListIcon>folder</mat-icon>
-      <h3 matLine class="link-menu">Shapes</h3>
+      <h3 matLine class="link-menu" (click)="shapesProblems()">Shapes</h3>
     </a>
     <mat-divider></mat-divider>
   </mat-list>
@@ -68,12 +68,25 @@
             <div class="flex-container" style="position:relative;right:-50px">
               <div *ngIf="question[i].answers.type=='button'">
                 <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
-                  <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')">{{button.id}}</button>
+                  <button mat-raised-button type="submit"
+                    (click)="changeLabelNameC1S1Q2('1')"><b>{{button.id}}</b></button>
                 </span>
               </div>
               <div *ngIf="question[i].answers.type=='image'">
                 <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
-                  <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')"><img src="../../assets/{{button.image}}"/></button>
+                  <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')"><img
+                      src="../../assets/{{button.image}}" /></button>
+                </span>
+              </div>
+              <div *ngIf="question[i].answers.type=='textbox'">
+                <span class="flex-item">
+                  <table>
+                    <tr *ngFor='let answer of question[i].answers.fields'>
+                      <td>{{answer.answertext}} </td>
+                      <td> <input type="text" /></td>
+                      <td> {{answer.answerunit}}</td>
+                    </tr>
+                  </table>
                 </span>
               </div>
             </div>
@@ -92,10 +105,10 @@
     </div>
   </div>
 </div>
-    <!-- Added for testing dynamic logic ends-->
+<!-- Added for testing dynamic logic ends-->
 
 
-    <!-- <div *ngIf="displayCounting_1" class="question-panel">
+<!-- <div *ngIf="displayCounting_1" class="question-panel">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Question1</mat-card-title>
@@ -151,8 +164,8 @@
         </mat-card-content>
       </mat-card>
       <br>
-      <div> 
-       
+      <div>
+
         <button class="mat-raised-button previous-btn" color="primary"> <span style="margin-right:10px;"
             class="glyphicon glyphicon-arrow-left "></span> Previous</button>
         <button class="btn btn-outline-rounded btn-info" style="float:right"
@@ -160,7 +173,7 @@
             class="glyphicon glyphicon-arrow-right"></span> </button>
       </div>
     </div>-->
-    <!-- <div *ngIf="displayCounting_2" class="question-panel">
+<!-- <div *ngIf="displayCounting_2" class="question-panel">
       <br>
       <mat-card>
         <mat-card-header>
@@ -169,7 +182,7 @@
         </mat-card-header>
         <mat-card-content class="align-contents">
           <div class="flex-container">
-     
+
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
@@ -180,7 +193,7 @@
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
             <span class="flex-item"><img src="../../assets/counting/doughnut.png" alt="ball3"></span>
-            
+
             <br>
             <br>
             <br>
@@ -237,7 +250,7 @@
       </div>
     </div>
 
-    
+
     <div *ngIf="displayPatterns_1" class="question-panel">
       <mat-card>
         <mat-card-header>

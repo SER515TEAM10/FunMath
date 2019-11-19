@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.services.PublishAssignmentService;
 import com.ser515.funmath.services.UserService;
 
 @CrossOrigin
@@ -27,6 +29,8 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	PublishAssignmentService publishAssignService;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	private static final String PATH = "/error";
@@ -99,6 +103,12 @@ public class UserController {
 	@PostMapping("/expression/save")
 	public void saveExpresions(@RequestBody ExpressionModel expressionModel) {
 		userService.saveExpression(expressionModel);
+
+	}
+	
+	@PostMapping("/publishAssignment")
+	public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
+		publishAssignService.publishAssignment(assignment);
 
 	}
 

@@ -71,8 +71,8 @@ INSERT INTO user_role(role_id,role_name) VALUES(100,'STUDENT');
 INSERT INTO user_role(role_id,role_name) VALUES(101,'ADMIN');
 INSERT INTO user_role(role_id,role_name) VALUES(102,'TEACHER');
 
-''' Query for creating expression table  '''     
-                                                                         
+''' Query for creating expression table  '''
+
 CREATE TABLE `student_expressions` (
   `expression_id` int(11) NOT NULL AUTO_INCREMENT,
   `expression_val` varchar(1000) NOT NULL,
@@ -81,8 +81,8 @@ CREATE TABLE `student_expressions` (
   PRIMARY KEY (`expression_id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) 
- ''' Table for storing published assignments''' 
+)
+ ''' Table for storing published assignments'''
   CREATE TABLE `published_assignments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assignment_number` int(11) DEFAULT NULL,
@@ -90,8 +90,32 @@ CREATE TABLE `student_expressions` (
   `question_id` int(11) DEFAULT NULL,
   `solution_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) 
+)
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (1, 1, 100, 100, 'Excellent!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
 INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (4, 1, 30, 100, 'bhak bc');
+
+
+
+"""
+question_pool
+"""
+
+CREATE TABLE `funmath_project`.`question_pool` (
+  `question_id` INT NOT NULL AUTO_INCREMENT,
+  `question_number` INT NOT NULL,
+  `class_number` INT NOT NULL,
+  `question_category` VARCHAR(45) NULL,
+  `display_type` VARCHAR(45) NULL,
+  `display_entity` VARCHAR(45) NULL,
+  `question_description` VARCHAR(45) NULL,
+  `question_extradetails` VARCHAR(45) NULL,
+  `answer_type` VARCHAR(45) NULL,
+  `answer_choice` VARCHAR(45) NULL,
+  `answer_description` VARCHAR(45) NULL,
+  `answer_extradetails` VARCHAR(45) NULL,
+  `correct_answer` VARCHAR(45) NULL,
+  `correct_answer_type` VARCHAR(45) NULL,
+  PRIMARY KEY (`question_id`))
+COMMENT = 'Collection of questions for assignment';

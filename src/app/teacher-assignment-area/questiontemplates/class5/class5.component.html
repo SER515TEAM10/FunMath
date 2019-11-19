@@ -3,9 +3,27 @@
     <div>
       <span>
         <h3>Select multiple questions to create an assignment</h3>
-        <button type="submit" mat-raised-button color="primary">Create
-          Assignment</button>
+        <span>
+          <mat-form-field class="full-width">
+            <mat-label>Select assignment due date</mat-label>
+            <input matInput [matDatepicker]="duedate" [min]="startDate" placeholder="Choose a date"
+              [formControl]="date">
+            <mat-datepicker-toggle matSuffix [for]="duedate"></mat-datepicker-toggle>
+            <mat-datepicker #duedate startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </span>
+        <!-- <span>
+          <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Date"
+            show-todays-date="" min-date="date" ng-model="dateTime" class=" md-input" readonly="readonly">
+        </span> -->
+        <span>
+          <button type="submit" mat-raised-button color="primary" style="
+          left: 1%">Create
+            Assignment</button>
+        </span>
+
       </span>
+
     </div>
     <div>
 
