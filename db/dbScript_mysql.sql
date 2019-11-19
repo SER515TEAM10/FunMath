@@ -149,3 +149,11 @@ CREATE TABLE `funmath_project`.`publish_assignments` (
   `question_list` LONGTEXT NULL,
   `total_points` INT NULL,
   PRIMARY KEY (`assignment_id`));
+"""Updated question_pool table as question_repo """
+CREATE TABLE `question_repo` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_number` int(11) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL,
+  `question_list` longtext,
+  PRIMARY KEY (`question_id`)
+)

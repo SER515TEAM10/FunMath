@@ -1,6 +1,7 @@
 package com.ser515.funmath.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,15 @@ public class QuestionService {
 	QuestionPoolRepository repository;
 	
 	
-	public void addQuestions(List<QuestionPoolModel> questionList) {
-		repository.saveAll(questionList);		
+	public void addQuestions(QuestionPoolModel questionList) {
+		repository.save(questionList);		
 	}
 	public List<QuestionPoolModel> getAllQuestions() {
-		return repository.findAll();
+		return repository.findAll();	
 		
+	}
+	public QuestionPoolModel getQuestionByClassAndCategory(int classNumber,String category) {
+		return repository.findByClassNumberAndCategory(classNumber, category);
 		
 	}
 	

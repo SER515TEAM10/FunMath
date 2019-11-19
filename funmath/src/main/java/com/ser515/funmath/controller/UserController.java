@@ -3,6 +3,7 @@ package com.ser515.funmath.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -140,7 +141,7 @@ public class UserController {
 	}
 
 	@PostMapping("/question/add")
-	public void addQuestionsToPool(@RequestBody List<QuestionPoolModel> questionList) {
+	public void addQuestionsToPool(@RequestBody QuestionPoolModel questionList) {
 		questionService.addQuestions(questionList);
 	}
 
@@ -148,6 +149,11 @@ public class UserController {
 	public List<QuestionPoolModel> getAllQuestions() {
 		return questionService.getAllQuestions();
 	}
+	@PostMapping("/question/getByClassCategory")
+	public QuestionPoolModel getQuestionByClassAndCategory(@RequestBody QuestionPoolModel questionDetails) {
+		return questionService.getQuestionByClassAndCategory(questionDetails.getClassNumber(),questionDetails.getCategory());
+	}
+
 
 
 }
