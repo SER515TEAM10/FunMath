@@ -1,5 +1,6 @@
 package com.ser515.funmath.controller;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -110,14 +111,14 @@ public class UserController {
 		userService.saveExpression(expressionModel);
 
 	}
-<<<<<<< HEAD
 
 	@PostMapping("/publishAssignment")
 	public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
-		publishAssignService.publishAssignment(assignment);
+
+				publishAssignService.publishAssignment(assignment);
 
 	}
-=======
+
 	@GetMapping("/request/getAll/{requestStatus}")
 	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
 		return userService.getPendingRequests(requestStatus);
@@ -147,6 +148,6 @@ public class UserController {
 	public List<QuestionPoolModel> getAllQuestions() {
 		return questionService.getAllQuestions();
 	}
->>>>>>> 66089c725f682bf47283292e5ceab94acabf2227
+
 
 }

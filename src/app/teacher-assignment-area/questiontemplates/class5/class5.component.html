@@ -27,11 +27,11 @@
     </div>
     <div>
 
-      <section class="card-section" *ngFor='let question of questionList'>
+      <section class="card-section" *ngFor='let question of questionList; let i = index'>
         <mat-checkbox class="ques-checkbox" ngModel name='{{question.ID}}'>
           <mat-card>
             <mat-card-header>
-              <mat-card-title>Question {{question.number}}</mat-card-title>
+              <mat-card-title>Question {{i}}</mat-card-title>
               <mat-card-subtitle>{{question.description}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -40,7 +40,7 @@
               </div>
               <div>
                 <span>
-                  <p class="card_para">{{question.descquestion}}</p>
+                  <p class="card_para">{{question.extradescription}}</p>
                 </span>
               </div>
               <br />

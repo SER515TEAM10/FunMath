@@ -11,7 +11,8 @@ export class StudentFirstGradeComponent implements OnInit {
   public countingQuestions = [
     {
       number: "1",
-      desc: "Count the total number of doughnuts you can see",
+      description: "Count the total number of doughnuts you can see",
+      extradescription: "",
       images: [
         {
           name: "class1/doughnut.jpg"
@@ -39,68 +40,80 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "3",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "7",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "8",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "9",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "10",
             name: "",
             image: "",
-            desc: ""
+            description: ""
+          }
+        ]
+      },
+      correctAnswers: {
+        type: "button",
+        buttons: [
+          {
+            id: "6",
+            name: "",
+            image: "",
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "Select the box that displays 4 alarm clocks ",
+      description: "Select the box that displays 4 alarm clocks ",
+      extradescription: "",
       images: [
         {
           name: "class1/c1s1q1.jpg"
@@ -113,27 +126,39 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "A",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "B",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "C",
             name: "",
             image: "",
-            desc: ""
+            description: ""
+          }
+        ]
+      },
+      correctAnswers: {
+        type: "button",
+        buttons: [
+          {
+            id: "B",
+            name: "",
+            image: "",
+            description: ""
           }
         ]
       }
     },
     {
       number: "3",
-      desc:
+      description:
         "A full frame has 10 hearts. How many more hearts do you need to make 10?",
+      extradescription: "",
       images: [
         {
           name: "class1/c1s1q2.jpg"
@@ -146,68 +171,79 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "3",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "7",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "8",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "9",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "10",
             name: "",
             image: "",
-            desc: ""
+            description: ""
+          }
+        ]
+      },
+      correctAnswers: {
+        type: "button",
+        buttons: [
+          {
+            id: "6",
+            name: "",
+            image: "",
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc:
+      description:
         "Count the total number of blocks. Then fill in the missing numbers.",
       images: [
         {
@@ -224,7 +260,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "5",
-      desc: "Is the number of flowers even or odd?",
+      description: "Is the number of flowers even or odd?",
       images: [
         {
           name: "class1/c1s1q4.jpg"
@@ -237,20 +273,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "Even",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Odd",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "6",
-      desc: "Count the paws by 2s?",
+      description: "Count the paws by 2s?",
       images: [
         {
           name: "class1/c1s1q5.jpg"
@@ -265,7 +301,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "7",
-      desc: "How do you write this number using words?  23 ",
+      description: "How do you write this number using words?  23 ",
       images: [],
       answers: {
         type: "button",
@@ -274,32 +310,32 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "Twenty Three",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Nineteen",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Twenty",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Two Three",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "8",
-      desc: "Count the total number number of balls",
+      description: "Count the total number number of balls",
       images: [
         {
           name: "class1/ball2.jpg"
@@ -321,19 +357,19 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "8",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -342,7 +378,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public additionQuestions = [
     {
       number: "1",
-      desc:
+      description:
         "There is 1 orange cube and 5 blue cubes. Add to find how many cubes there are in all.",
       images: [
         {
@@ -356,7 +392,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "2",
-      desc: "ADD",
+      description: "ADD",
       images: [
         {
           name: "class1/c1s2q2.jpg"
@@ -369,7 +405,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "3",
-      desc: "Which shows 2 + 5 = 7 ?",
+      description: "Which shows 2 + 5 = 7 ?",
       images: [
         {
           name: "class1/c1s2q3.jpg"
@@ -382,26 +418,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "First",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Second",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Both",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc: "Which addition sentence does the picture show?",
+      description: "Which addition sentence does the picture show?",
       images: [
         {
           name: "class1/c1s2q4.jpg"
@@ -414,26 +450,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "2 + 3 = 5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "3 + 3 = 6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "3 + 4 = 7",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "5",
-      desc: "3 and 2 make 5.",
+      description: "3 and 2 make 5.",
       images: [],
       answers: {
         type: "textbox",
@@ -449,7 +485,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public subtractionQuestions = [
     {
       number: "1",
-      desc:
+      description:
         "Here are 7 cubes in all. Take away 3 green cubes. Write down how many cubes remain.",
       images: [
         {
@@ -463,7 +499,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "2",
-      desc: "SUBTRACT",
+      description: "SUBTRACT",
       images: [
         {
           name: "class1/c1s3q2.jpg"
@@ -476,7 +512,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "3",
-      desc: "Which picture shows 4 - 3 = 1 ?",
+      description: "Which picture shows 4 - 3 = 1 ?",
       images: [
         {
           name: "class1/c1s3q3.jpg"
@@ -489,32 +525,33 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "First",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Second",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Third",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Fourth",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc: "Write a subtraction sentence based on the picture (For ex: 3-1=2)",
+      description:
+        "Write a subtraction sentence based on the picture (For ex: 3-1=2)",
       images: [
         {
           name: "class1/c1s3q4.jpg"
@@ -532,7 +569,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "5",
-      desc: "6 take away 4 is 2",
+      description: "6 take away 4 is 2",
       images: [],
       answers: {
         type: "textbox",
@@ -548,7 +585,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public mixedOpQuestions = [
     {
       number: "1",
-      desc: "How do you make 7?",
+      description: "How do you make 7?",
       images: [],
       answers: {
         type: "button",
@@ -557,32 +594,33 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "3 + 3",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "1 + 6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2 + 6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "8 - 2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "Which sign is missing in the place of question mark.  5 ? 1 = 4",
+      description:
+        "Which sign is missing in the place of question mark.  5 ? 1 = 4",
       images: [],
       answers: {
         type: "button",
@@ -591,20 +629,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "+",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "-",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "3",
-      desc:
+      description:
         "8 of the pairs of shoes in a particular shoe store are black. There are 11 pair of shoes in the store in all. How many of the pairs of shoes are not black? ",
       images: [],
       answers: {
@@ -619,7 +657,7 @@ export class StudentFirstGradeComponent implements OnInit {
     },
     {
       number: "4",
-      desc: "In this problem, what is 45?",
+      description: "In this problem, what is 45?",
       images: [
         {
           name: "class1/c1s4q4.jpg"
@@ -632,20 +670,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "Difference",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Sum",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "5",
-      desc: "How do you make 12?",
+      description: "How do you make 12?",
       images: [],
       answers: {
         type: "button",
@@ -654,25 +692,25 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "7 + 4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2 + 11",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "16 - 4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "11 - 0",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -681,7 +719,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public comparisonQuestions = [
     {
       number: "1",
-      desc: "Which group has fewer?",
+      description: "Which group has fewer?",
       images: [
         {
           name: "class1/c1s5q1.jpg"
@@ -694,20 +732,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "First",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Second",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "Which words make this statement true?  9 __ 7 ",
+      description: "Which words make this statement true?  9 __ 7 ",
       images: [],
       answers: {
         type: "button",
@@ -716,26 +754,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: " is greater than ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: " is less than ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: " is equal to ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "3",
-      desc: "Which sign makes this statement true?  8 __ 8 ",
+      description: "Which sign makes this statement true?  8 __ 8 ",
       images: [],
       answers: {
         type: "button",
@@ -744,26 +782,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: " > ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: " = ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: " < ",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc:
+      description:
         "Oscar has fewer dogs than Annie does. If Annie has 3 dogs, how many dogs can Oscar possibly have?",
       images: [],
       answers: {
@@ -773,13 +811,13 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -788,7 +826,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public measurementQuestions = [
     {
       number: "1",
-      desc: "Which building is the shortest?",
+      description: "Which building is the shortest?",
       images: [
         {
           name: "class1/c1s6q1.jpg"
@@ -801,26 +839,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "A",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "B",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "C",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "Which lighthouse is the widest?",
+      description: "Which lighthouse is the widest?",
       images: [
         {
           name: "class1/c1s6q2.jpg"
@@ -833,26 +871,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "A",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "B",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "C",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "3",
-      desc: "Which is lighter? ",
+      description: "Which is lighter? ",
       images: [
         {
           name: "class1/c1s6q3.jpg"
@@ -865,20 +903,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "A",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "B",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc: "Which bag holds more?",
+      description: "Which bag holds more?",
       images: [
         {
           name: "class1/c1s6q4.jpg"
@@ -891,20 +929,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "A",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "B",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "5",
-      desc: "Which is a better estimate for the length of a house key?",
+      description: "Which is a better estimate for the length of a house key?",
       images: [
         {
           name: "class1/c1s6q5.jpg"
@@ -917,13 +955,13 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "3 inches",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "3 feet",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -932,7 +970,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public patternQuestions = [
     {
       number: "1",
-      desc: "What number comes next in the given pattern?",
+      description: "What number comes next in the given pattern?",
       images: [
         {
           name: "class1/1.jpg"
@@ -963,20 +1001,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1",
             name: "",
             image: "class1/1.jpg",
-            desc: ""
+            description: ""
           },
           {
             id: "2",
             name: "",
             image: "class1/2.jpg",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "What number comes next in the given pattern?",
+      description: "What number comes next in the given pattern?",
       images: [
         {
           name: "class1/5.jpg"
@@ -1013,19 +1051,19 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1",
             name: "",
             image: "class1/1.jpg",
-            desc: ""
+            description: ""
           },
           {
             id: "5",
             name: "",
             image: "class1/5.jpg",
-            desc: ""
+            description: ""
           },
           {
             id: "6",
             name: "",
             image: "class1/6.jpg",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -1034,7 +1072,7 @@ export class StudentFirstGradeComponent implements OnInit {
   public shapesQuestions = [
     {
       number: "1",
-      desc: "What shape is this?",
+      description: "What shape is this?",
       images: [
         {
           name: "class1/c1s8q1.jpg"
@@ -1047,26 +1085,26 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "Triangle",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Square",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Rectangle",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "2",
-      desc: "Pick all the circles",
+      description: "Pick all the circles",
       images: [
         {
           name: "class1/c1s8q2.jpg"
@@ -1079,32 +1117,32 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "2, 3, 5",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "1",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "1, 5, 6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "1, 6",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "3",
-      desc: "Which shape has 5 corners? ",
+      description: "Which shape has 5 corners? ",
       images: [
         {
           name: "class1/c1s8q3.jpg"
@@ -1117,32 +1155,32 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1, 3",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "1",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "4",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "4",
-      desc: "Which shape has 3 equal sides?",
+      description: "Which shape has 3 equal sides?",
       images: [
         {
           name: "class1/c1s8q4.jpg"
@@ -1155,20 +1193,20 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "1",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "2",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
     },
     {
       number: "5",
-      desc: "Is this shape open or closed?",
+      description: "Is this shape open or closed?",
       images: [
         {
           name: "class1/c1s8q5.jpg"
@@ -1181,13 +1219,13 @@ export class StudentFirstGradeComponent implements OnInit {
             id: "Open",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           },
           {
             id: "Closed",
             name: "",
             image: "",
-            desc: ""
+            description: ""
           }
         ]
       }
@@ -1200,11 +1238,18 @@ export class StudentFirstGradeComponent implements OnInit {
   labelstringC1S1Q2: string;
   labelstringC1S7Q1: string;
   labelstringC1S7Q2: string;
+
+  public JSONArr: any[] = [];
   constructor() {
     this.labelstringC1S1Q1 = "";
     this.labelstringC1S1Q2 = "";
     this.labelstringC1S7Q1 = "";
     this.labelstringC1S7Q2 = "";
+
+    this.JSONArr.push(this.countingQuestions[0]);
+    this.JSONArr.push(this.countingQuestions[1]);
+    this.JSONArr.push(this.countingQuestions[2]);
+    console.log(JSON.stringify(this.JSONArr));
   }
 
   ngOnInit() {}

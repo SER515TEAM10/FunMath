@@ -51,8 +51,8 @@ import {
   AdminApprovalDialog
 } from "./admin-dashboard/admin-dashboard.component";
 import {
-  StudentDashboardComponent,
-  PrivilegeRequestDialog
+  StudentDashboardComponent
+  // PrivilegeRequestDialog
 } from "./student-dashboard/student-dashboard.component";
 import { TeacherDashboardComponent } from "./teacher-dashboard/teacher-dashboard.component";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
@@ -81,7 +81,7 @@ import {
     AdminDashboardComponent,
     AdminApprovalDialog,
     StudentDashboardComponent,
-    PrivilegeRequestDialog,
+    //PrivilegeRequestDialog,
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
@@ -147,7 +147,8 @@ import {
   entryComponents: [
     AdminApprovalDialog,
     ConfirmDeleteDialog,
-    PrivilegeRequestDialog
+    ConfirmationDialog
+    //PrivilegeRequestDialog
   ]
 })
 export class AppModule {}

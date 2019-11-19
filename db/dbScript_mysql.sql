@@ -84,14 +84,19 @@ CREATE TABLE `student_expressions` (
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 )
  ''' Table for storing published assignments'''
-  CREATE TABLE `published_assignments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `published_assignments` (
+  `assignment_id` int(11) NOT NULL AUTO_INCREMENT,
   `assignment_number` int(11) DEFAULT NULL,
-  `class` int(11) DEFAULT NULL,
   `question_id` int(11) DEFAULT NULL,
-  `solution_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-)
+  `class_number` int(11) DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `creation_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `total_points` int(11) DEFAULT NULL,
+  PRIMARY KEY (`assignment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 )
 ''' table for storing user requests'''
 CREATE TABLE `funmath_project`.`user_requests` (
@@ -130,3 +135,17 @@ CREATE TABLE `funmath_project`.`question_pool` (
   `correct_answer_type` VARCHAR(45) NULL,
   PRIMARY KEY (`question_id`))
 COMMENT = 'Collection of questions for assignment';
+
+
+"""
+keep this for publish assignment
+"""
+CREATE TABLE `funmath_project`.`publish_assignments` (
+  `assignment_id` INT NOT NULL AUTO_INCREMENT,
+  `assignment_number` VARCHAR(45) NULL,
+  `class_number` INT NULL,
+  `due_date` DATE NULL,
+  `creation_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `question_list` LONGTEXT NULL,
+  `total_points` INT NULL,
+  PRIMARY KEY (`assignment_id`));

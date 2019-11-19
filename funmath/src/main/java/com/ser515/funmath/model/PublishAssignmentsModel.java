@@ -7,27 +7,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "published_assignments")
+@Entity(name = "publish_assignments")
 public class PublishAssignmentsModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int assignmentId;
-	private int assignmentNumber;
-	private int questionId;
+	private String assignmentNumber;
 	private int classNumber;
-	private Date creationDate;
 	private Date dueDate;
+	private String questionList;
 	private int totalPoints;
-
-	public PublishAssignmentsModel(int assignmentId, int assignmentNumber, int questionId, int classNumber,
-			Date creationDate, Date dueDate, int totalPoints) {
+	
+	public PublishAssignmentsModel() {
+		
+	}
+	
+	public PublishAssignmentsModel(int assignmentId, String assignmentNumber, int classNumber, Date dueDate,
+			String questionList, int totalPoints) {
 		super();
 		this.assignmentId = assignmentId;
 		this.assignmentNumber = assignmentNumber;
-		this.questionId = questionId;
 		this.classNumber = classNumber;
-		this.creationDate = creationDate;
 		this.dueDate = dueDate;
+		this.questionList = questionList;
 		this.totalPoints = totalPoints;
 	}
 
@@ -39,20 +41,12 @@ public class PublishAssignmentsModel {
 		this.assignmentId = assignmentId;
 	}
 
-	public int getAssignmentNumber() {
+	public String getAssignmentNumber() {
 		return assignmentNumber;
 	}
 
-	public void setAssignmentNumber(int assignmentNumber) {
+	public void setAssignmentNumber(String assignmentNumber) {
 		this.assignmentNumber = assignmentNumber;
-	}
-
-	public int getQuestionId() {
-		return questionId;
-	}
-
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
 	}
 
 	public int getClassNumber() {
@@ -63,20 +57,20 @@ public class PublishAssignmentsModel {
 		this.classNumber = classNumber;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
 	public Date getDueDate() {
 		return dueDate;
 	}
 
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
+	}
+
+	public String getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(String questionList) {
+		this.questionList = questionList;
 	}
 
 	public int getTotalPoints() {
@@ -86,5 +80,9 @@ public class PublishAssignmentsModel {
 	public void setTotalPoints(int totalPoints) {
 		this.totalPoints = totalPoints;
 	}
+	
+	
+	
 
+	
 }
