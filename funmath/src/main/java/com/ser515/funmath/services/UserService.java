@@ -12,9 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.ser515.funmath.model.AccessRequest;
 import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.repositories.ExpressionRepository;
+import com.ser515.funmath.repositories.RequestRepository;
 import com.ser515.funmath.repositories.UserRepository;
 
 @Service
@@ -24,6 +26,8 @@ public class UserService {
 	private UserRepository userRepository;
 	@Autowired
 	private ExpressionRepository expressionRepository;
+	@Autowired
+	private RequestRepository requestRepository;
 
 	@Autowired
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -94,6 +98,25 @@ public class UserService {
 
 	public void saveExpression(ExpressionModel expressionModel) {
 		expressionRepository.save(expressionModel);
+
+	}
+
+	public List<AccessRequest> getPendingRequests(String requestStatus) {
+		return requestRepository.findAllByRequestStatus(requestStatus);
+
+	}
+
+	public void addModifyRequest(AccessRequest accessRequest) {
+		AccessRequest request = requestRepository.save(accessRequest);
+		if (request.getRequestStatus().equalsIgnoreCase("approved")) {			
+			Users user = userRepository.findByEmailId(request.getEmailId());			
+			user.setRoleId(102);
+			System.out.println(user.toString());
+			userRepository.save(user);
+			//return true;
+		}
+			//return false;
+		
 
 	}
 }

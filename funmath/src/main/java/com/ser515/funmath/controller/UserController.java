@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ser515.funmath.model.AccessRequest;
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.services.QuestionService;
 import com.ser515.funmath.services.UserService;
 
 @CrossOrigin
@@ -26,7 +29,9 @@ import com.ser515.funmath.services.UserService;
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	UserService userService;	
+	@Autowired
+	QuestionService questionService;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	private static final String PATH = "/error";
@@ -92,6 +97,35 @@ public class UserController {
 	public void saveExpresions(@RequestBody ExpressionModel expressionModel) {
 		userService.saveExpression(expressionModel);
 
+	}
+	@GetMapping("/request/getAll/{requestStatus}")
+	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
+		return userService.getPendingRequests(requestStatus);
+
+	}
+	
+	
+	/*
+	 * Send input as shown below
+	 * { "Id": 1, "emailId": "sharaddhar@asu.edu", "requestDate": "2000-05-01",
+	 * "requestStatus": "Approved" }
+	 */
+	@PostMapping("/request/modifyStatus")
+	public void modifyRequest(@RequestBody Map<String,String> jsonRequest) {
+		
+		AccessRequest request = new AccessRequest((Integer.parseInt(jsonRequest.get("Id"))),jsonRequest.get("emailId"),jsonRequest.get("requestDate"),jsonRequest.get("requestStatus"));
+		userService.addModifyRequest(request);
+
+	}
+	
+	@PostMapping("/question/add")
+	public void addQuestionsToPool(@RequestBody List<QuestionPoolModel> questionList) {		
+		questionService.addQuestions(questionList);
+	}
+	
+	@GetMapping("/question/getAll")
+	public List<QuestionPoolModel> getAllQuestions() {		
+		return questionService.getAllQuestions();
 	}
 
 }
