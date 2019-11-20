@@ -1,6 +1,7 @@
 package com.ser515.funmath.controller;
 
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -113,13 +114,27 @@ public class UserController {
 
 	}
 
+	/*
+	 * @PostMapping("/publishAssignment") 
+	 * public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
+	 * 
+	 * publishAssignService.publishAssignment(assignment);
+	 * 
+	 * }
+	 */
+
 	@PostMapping("/publishAssignment")
-	public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
-
-				publishAssignService.publishAssignment(assignment);
-
+	public PublishAssignmentsModel publishAssignmentToStudent(@RequestBody Map<String, String> json) {
+		PublishAssignmentsModel assignment = new PublishAssignmentsModel();
+		assignment.setAssignmentNumber(json.get("assignmentNumber"));
+		assignment.setClassNumber(Integer.parseInt(json.get("classNumber")));
+		Date date = Date.valueOf(json.get("dueDate"));
+		assignment.setDueDate(date);
+		assignment.setQuestionList(json.get("questionList"));
+		assignment.setTotalPoints(Integer.parseInt(json.get("totalPoints")));
+		
+		return publishAssignService.publishAssignment(assignment);
 	}
-
 	@GetMapping("/request/getAll/{requestStatus}")
 	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
 		return userService.getPendingRequests(requestStatus);
@@ -153,7 +168,5 @@ public class UserController {
 	public QuestionPoolModel getQuestionByClassAndCategory(@RequestBody QuestionPoolModel questionDetails) {
 		return questionService.getQuestionByClassAndCategory(questionDetails.getClassNumber(),questionDetails.getCategory());
 	}
-
-
 
 }
