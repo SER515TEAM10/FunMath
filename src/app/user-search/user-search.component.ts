@@ -81,12 +81,21 @@ export class UserSearchComponent implements OnInit {
   }
 
   search(nameOrId: string): void {
-    this.Users = this.usersService.searchUser(nameOrId);
-    if (this.Users.length > 0) {
-      this.UsersSize = true;
-    } else {
-      this.UsersSize = false;
-    }
+    
+      this.usersService.getUsersByNameOrId(nameOrId)
+      .subscribe(
+        users => {
+          this.Users = users;
+          if (this.Users.length > 0) {
+            this.UsersSize = true;
+          } else {
+            this.UsersSize = false;
+          }
+        }
+      );
+
+    
+    
     console.log(this.UsersSize);
     this.selectedUsers = [];
   }

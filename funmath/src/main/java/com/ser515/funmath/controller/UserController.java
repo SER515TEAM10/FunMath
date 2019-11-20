@@ -2,6 +2,7 @@ package com.ser515.funmath.controller;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -106,6 +107,30 @@ public class UserController {
 			userService.removeUser(id);
 		}
 		return true;
+	}
+
+	@GetMapping("/searchByNameOrId/{idOrName}")
+	public List<Users> findUserByIdOrName(@PathVariable String idOrName) {
+		List<Users> userList = userService.findAll();
+		List<Users> users = new ArrayList<Users>();
+		boolean numeric = true;
+        numeric = idOrName.matches("\\d+");
+        if (numeric) {
+        	for (Users user: userList) {
+    			if (user.getUserId() == Integer.parseInt(idOrName)) {
+    				users.add(user);
+    			}
+    		}
+        }else {
+        	for (Users user: userList) {
+    			if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase()) || user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
+    				users.add(user);
+    			}
+    		}
+        }
+ 		
+ 		System.out.println("Inside searchByNameOrId : " + users.toString()  );
+		return users;
 	}
 
 	@PostMapping("/expression/save")
