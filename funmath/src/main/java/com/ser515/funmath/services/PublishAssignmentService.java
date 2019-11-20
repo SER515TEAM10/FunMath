@@ -12,8 +12,8 @@ public class PublishAssignmentService {
 	@Autowired
 	PublishAssignmentRepository repo;
 
-	public void publishAssignment(PublishAssignmentsModel assignment) {
-		repo.save(assignment);
+	public PublishAssignmentsModel publishAssignment(PublishAssignmentsModel assignment) {
+		return repo.save(assignment);
 	}
 
 }

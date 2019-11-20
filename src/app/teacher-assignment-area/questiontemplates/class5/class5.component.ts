@@ -14,6 +14,9 @@ import {
   NgForm
 } from "@angular/forms";
 import { ThrowStmt } from "@angular/compiler";
+import { QuestionModel } from "../../question-model";
+import { TeacherService } from "../../teacher.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-class5",
@@ -21,6 +24,7 @@ import { ThrowStmt } from "@angular/compiler";
   styleUrls: ["./class5.component.scss"]
 })
 export class Class5Component implements OnInit {
+  url = "http://localhost:8080/user/publishAssignment";
   date = new FormControl();
   startDate = new Date();
   public selected: string;
@@ -30,6 +34,7 @@ export class Class5Component implements OnInit {
   public request: any[] = [];
   public jsonString: string = "";
   public jsonArr: any[] = [];
+  questionObject: QuestionModel;
   public mulndivQL = [
     {
       number: "1",
@@ -161,8 +166,8 @@ export class Class5Component implements OnInit {
     }
     return true;
   }
-  constructor(public dialog: MatDialog) {
-    //console.log(JSON.stringify(this.addnsubQL));
+  constructor(public dialog: MatDialog, private http: HttpClient) {
+    console.log(JSON.stringify(this.addnsubQL));
   }
 
   ngOnInit() {}
@@ -171,6 +176,7 @@ export class Class5Component implements OnInit {
     console.log("Assignment Created");
     this.selectedList = e.value;
     console.log(this.selectedList);
+
     // duedate: this.date.value != null
     //   ? this.date.value.toISOString().substring(0, 10)
     //   : null;
@@ -193,16 +199,19 @@ export class Class5Component implements OnInit {
     console.log(JSON.stringify(this.jsonArr));
 
     this.openDialog();
-    console.log(this.assignmentList);
-    // this.request = {
-    //   assignmentNumber: 1,
-    //   questionId: 1,
-    //   classNumber: 1,
-    //   dueDate: "2019-11-25",
-    //   totalPoints: 100,
-    //   questions: JSON.stringify(this.assignmentList)
-    // };
-    console.log(JSON.stringify(this.assignmentList));
+    const obj = {
+      assignmentNumber: "1",
+      classNumber: "5",
+      dueDate: "2019-11-25",
+      questionList: JSON.stringify(this.jsonArr),
+      totalPoints: "100"
+    };
+    console.log(obj);
+    //console.log(this.assignmentList);
+    //console.log(JSON.stringify(this.assignmentList));
+    this.http.post(this.url, obj).subscribe(res => {
+      console.log("Res ", res);
+    });
 
     e.reset();
   }
@@ -221,7 +230,6 @@ export class ConfirmationDialog {
   constructor(public dialogRef: MatDialogRef<ConfirmationDialog>) {}
 
   onOKClick(): void {
-    //console.log("asdasd");
     this.dialogRef.close();
   }
 }

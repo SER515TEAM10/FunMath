@@ -10,8 +10,11 @@ import { catchError, map, tap } from "rxjs/operators";
 export class TeacherService {
   private teacherUrl = "http://localhost:8080/user";
   httpOptions = {
-    headers: new HttpHeaders({ "Content-Type": "application/json" })
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
   };
+  //, "Access-Control-Allow-Origin": "*"
 
   constructor(private http: HttpClient) {}
 

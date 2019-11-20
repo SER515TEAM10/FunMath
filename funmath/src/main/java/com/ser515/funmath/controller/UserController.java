@@ -1,6 +1,8 @@
 package com.ser515.funmath.controller;
 
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -107,19 +109,57 @@ public class UserController {
 		return true;
 	}
 
+	@GetMapping("/searchByNameOrId/{idOrName}")
+	public List<Users> findUserByIdOrName(@PathVariable String idOrName) {
+		List<Users> userList = userService.findAll();
+		List<Users> users = new ArrayList<Users>();
+		boolean numeric = true;
+        numeric = idOrName.matches("\\d+");
+        if (numeric) {
+        	for (Users user: userList) {
+    			if (user.getUserId() == Integer.parseInt(idOrName)) {
+    				users.add(user);
+    			}
+    		}
+        }else {
+        	for (Users user: userList) {
+    			if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase()) || user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
+    				users.add(user);
+    			}
+    		}
+        }
+ 		
+ 		System.out.println("Inside searchByNameOrId : " + users.toString()  );
+		return users;
+	}
+
 	@PostMapping("/expression/save")
 	public void saveExpresions(@RequestBody ExpressionModel expressionModel) {
 		userService.saveExpression(expressionModel);
 
 	}
 
+	/*
+	 * @PostMapping("/publishAssignment") 
+	 * public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
+	 * 
+	 * publishAssignService.publishAssignment(assignment);
+	 * 
+	 * }
+	 */
+
 	@PostMapping("/publishAssignment")
-	public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
-
-				publishAssignService.publishAssignment(assignment);
-
+	public PublishAssignmentsModel publishAssignmentToStudent(@RequestBody Map<String, String> json) {
+		PublishAssignmentsModel assignment = new PublishAssignmentsModel();
+		assignment.setAssignmentNumber(json.get("assignmentNumber"));
+		assignment.setClassNumber(Integer.parseInt(json.get("classNumber")));
+		Date date = Date.valueOf(json.get("dueDate"));
+		assignment.setDueDate(date);
+		assignment.setQuestionList(json.get("questionList"));
+		assignment.setTotalPoints(Integer.parseInt(json.get("totalPoints")));
+		
+		return publishAssignService.publishAssignment(assignment);
 	}
-
 	@GetMapping("/request/getAll/{requestStatus}")
 	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
 		return userService.getPendingRequests(requestStatus);
@@ -153,7 +193,5 @@ public class UserController {
 	public QuestionPoolModel getQuestionByClassAndCategory(@RequestBody QuestionPoolModel questionDetails) {
 		return questionService.getQuestionByClassAndCategory(questionDetails.getClassNumber(),questionDetails.getCategory());
 	}
-
-
 
 }
