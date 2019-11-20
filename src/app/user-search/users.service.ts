@@ -52,16 +52,27 @@ export class UsersService {
   }
 
 
-
-  searchUser(nameOrId: string): User[] {
-    var searchUsers: User[] = [];
-    Users.forEach(user => {
-      if ((user.userId == +nameOrId) || (user.firstName == nameOrId)) {
-        searchUsers.push(user);
-      }
-    });
-    return searchUsers;
+  getUsersByNameOrId(nameOrId: string): Observable<User[]> {
+    const url = `${this.usersUrl}/searchByNameOrId/${nameOrId}`;
+    return this.http.get<User[]>(url).pipe(
+      tap(_ => console.log(`fetched user id=${nameOrId}`)),
+      catchError(this.handleError<User[]>(`getUserById id=${nameOrId}`))
+    );
   }
+
+  // searchUser(nameOrId: string): User[] {
+  //   var searchUsers: User[] = [];
+  //   if (nameOrId == ""){
+  //     searchUsers = Users;
+  //   }else{
+  //     Users.forEach(user => {
+  //       if ((user.userId == +nameOrId) || (user.firstName == nameOrId)) {
+  //         searchUsers.push(user);
+  //       }
+  //     });
+  //   }      
+  //   return searchUsers;
+  // }
 
 
   deleteUser(userid: number): Observable<Boolean> {
