@@ -12,18 +12,21 @@ public class StudentGrades {
 	@Id
 	@Column(name = "grade_id")
 	private int gradeId;
-
+	
+	@Column(name = "assignment_number")
+	private String assignmentNumber;
+	
 	@Column(name = "student_user_id")
 	private int studentUserId;
 
 	@Column(name = "ass_id")
 	private int assignmentId;
 
-	@Column(name = "marks")
-	private int marks;
+	@Column(name = "points")
+	private int points;
 
-	@Column(name = "maximum_marks")
-	private int maxMarks;
+	@Column(name = "total_points")
+	private int totalPoints;
 
 	@Column(name = "comments")
 	private String comments;
@@ -44,22 +47,6 @@ public class StudentGrades {
 		this.studentUserId = studentUserId;
 	}
 
-	public int getMarks() {
-		return marks;
-	}
-
-	public void setMarks(int marks) {
-		this.marks = marks;
-	}
-
-	public int getMaxMarks() {
-		return maxMarks;
-	}
-
-	public void setMaxMarks(int maxMarks) {
-		this.maxMarks = maxMarks;
-	}
-
 	public String getComments() {
 		return comments;
 	}
@@ -67,4 +54,37 @@ public class StudentGrades {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	
+	public int getGradeId() {
+		return gradeId;
+	}
+
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
+
+	public String getAssignmentNumber() {
+		return assignmentNumber;
+	}
+
+	public void setAssignmentNumber(String assignmentNumber) {
+		this.assignmentNumber = assignmentNumber;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public int getTotalPoints() {
+		return totalPoints;
+	}
+
+	public void setTotalPoints(int totalPoints) {
+		this.totalPoints = totalPoints;
+	}
+
 }
