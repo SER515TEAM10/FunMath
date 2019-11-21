@@ -13,10 +13,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.ser515.funmath.model.AccessRequest;
+import com.ser515.funmath.model.Assignment;
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.SubmittedAssignments;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.repositories.AssignmentRepository;
 import com.ser515.funmath.repositories.ExpressionRepository;
 import com.ser515.funmath.repositories.RequestRepository;
+import com.ser515.funmath.repositories.SubmittedAssignmentsRepository;
 import com.ser515.funmath.repositories.UserRepository;
 
 @Service
@@ -28,6 +32,11 @@ public class UserService {
 	private ExpressionRepository expressionRepository;
 	@Autowired
 	private RequestRepository requestRepository;
+
+	@Autowired
+	private AssignmentRepository assignmentRepository;
+	@Autowired
+	private SubmittedAssignmentsRepository submittedAssignRepo;
 
 	@Autowired
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -108,15 +117,24 @@ public class UserService {
 
 	public void addModifyRequest(AccessRequest accessRequest) {
 		AccessRequest request = requestRepository.save(accessRequest);
-		if (request.getRequestStatus().equalsIgnoreCase("approved")) {			
-			Users user = userRepository.findByEmailId(request.getEmailId());			
+		if (request.getRequestStatus().equalsIgnoreCase("approved")) {
+			Users user = userRepository.findByEmailId(request.getEmailId());
 			user.setRoleId(102);
-			System.out.println(user.toString());
 			userRepository.save(user);
-			//return true;
 		}
-			//return false;
-		
+	}
 
+	public List<Assignment> getAssignmentList(int classNumber) {
+		return assignmentRepository.findAllByClassNumber(classNumber);
+
+	}
+
+	public void publishAssignment(Assignment assignment) {
+		assignmentRepository.save(assignment);
+
+	}
+
+	public void submitAssignment(SubmittedAssignments assignment) {
+		submittedAssignRepo.save(assignment);
 	}
 }

@@ -9,19 +9,28 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class AssignmentService {
 
-  private usersUrl = 'api/assignments';  // URL to web api
+  private usersUrl = 'http://localhost:8080/user/assignment';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   constructor(private http: HttpClient) { }
 
-  getAssignments(): Observable<Assignment[]> {
-    //return of(Users);
-    return this.http.get<Assignment[]>(this.usersUrl)
+
+  getAssignments(classNumber:number): Observable<Assignment[]> {
+    
+    return this.http.get<Assignment[]>(`${this.usersUrl}/getAssignments/${classNumber}`)
       .pipe(
-        tap(_ => console.log('fetched Users')),
+        tap(_ => console.log('asignmentList fecthed')),
         catchError(this.handleError<Assignment[]>('getAssignments', []))
       );
+  }
+  submitAssignment(assignment:any):Observable<any>{          
+      return this.http.post(`${this.usersUrl}/submitAssignment`,assignment)
+      .pipe(
+        tap(_ => console.log('Assignment Submitted')),
+        catchError(this.handleError<Boolean>('getAssignments',true))
+      );
+      
   }
 
   /**
@@ -31,17 +40,14 @@ export class AssignmentService {
    * @param result - optional value to return as the observable result
    */
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      //console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
+    
+    return (error: any): Observable<T> => {     
+      console.log(error);
       return of(result as T);
     };
+  }
+  private handleEmptyError(){
+    
   }
 
 

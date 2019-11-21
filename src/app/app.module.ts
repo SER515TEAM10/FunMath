@@ -61,6 +61,7 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
 import { Class1Component } from "./teacher-assignment-area/questiontemplates/class1/class1.component";
 import { Class3Component } from "./teacher-assignment-area/questiontemplates/class3/class3.component";
+import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ import { Class3Component } from "./teacher-assignment-area/questiontemplates/cla
     TeacherAssignmentAreaComponent,
     Class1Component,
     Class3Component,
-    StudentFirstGradeComponent
+    StudentFirstGradeComponent,    
+    AssignmentSubmitComponent
   ],
   imports: [
     BrowserModule,
