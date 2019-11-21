@@ -3,7 +3,6 @@ package com.ser515.funmath.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ser515.funmath.model.StudentGrades;
 import com.ser515.funmath.services.StudentGradesService;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/studentgrades")
 public class StudentGradesController {
