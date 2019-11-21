@@ -8,11 +8,13 @@ import { Component, OnInit } from "@angular/core";
 export class StudentFirstGradeComponent implements OnInit {
   public i: number = 0;
   public question: any;
+  public incorrectLabel: boolean = false;
+  public correctLabel: boolean = false;
   public countingQuestions = [
     {
-      number: "1",
-      description: "Count the total number of doughnuts you can see",
-      extradescription: "",
+      ID: "1",
+      description: "Counting Problems",
+      extradescription: "Count the total number of doughnuts you can see",
       images: [
         {
           name: "class1/doughnut.jpg"
@@ -98,6 +100,7 @@ export class StudentFirstGradeComponent implements OnInit {
           }
         ]
       },
+      correctAnswer: "6",
       correctAnswers: {
         type: "button",
         buttons: [
@@ -111,9 +114,9 @@ export class StudentFirstGradeComponent implements OnInit {
       }
     },
     {
-      number: "2",
-      description: "Select the box that displays 4 alarm clocks ",
-      extradescription: "",
+      ID: "2",
+      description: "Counting Problems",
+      extradescription: "Select the box that displays 4 alarm clocks",
       images: [
         {
           name: "class1/c1s1q1.jpg"
@@ -142,6 +145,7 @@ export class StudentFirstGradeComponent implements OnInit {
           }
         ]
       },
+      correctAnswer: "B",
       correctAnswers: {
         type: "button",
         buttons: [
@@ -155,10 +159,10 @@ export class StudentFirstGradeComponent implements OnInit {
       }
     },
     {
-      number: "3",
-      description:
+      ID: "3",
+      description: "Counting Problems",
+      extradescription:
         "A full frame has 10 hearts. How many more hearts do you need to make 10?",
-      extradescription: "",
       images: [
         {
           name: "class1/c1s1q2.jpg"
@@ -229,6 +233,7 @@ export class StudentFirstGradeComponent implements OnInit {
           }
         ]
       },
+      correctAnswer: "6",
       correctAnswers: {
         type: "button",
         buttons: [
@@ -242,8 +247,9 @@ export class StudentFirstGradeComponent implements OnInit {
       }
     },
     {
-      number: "4",
-      description:
+      ID: "4",
+      description: "Counting Problems",
+      extradescription:
         "Count the total number of blocks. Then fill in the missing numbers.",
       images: [
         {
@@ -256,11 +262,13 @@ export class StudentFirstGradeComponent implements OnInit {
           { answertext: "", answerunit: "tens + " },
           { answertext: "", answerunit: "ones = 14 " }
         ]
-      }
+      },
+      correctAnswer: "4" //1:4
     },
     {
-      number: "5",
-      description: "Is the number of flowers even or odd?",
+      ID: "5",
+      description: "Counting Problems",
+      extradescription: "Is the number of flowers even or odd?",
       images: [
         {
           name: "class1/c1s1q4.jpg"
@@ -282,14 +290,16 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Even"
     },
     {
-      number: "6",
-      description: "Count the paws by 2s?",
+      ID: "6",
+      description: "Counting Problems",
+      extradescription: "Count the paws by 2s?",
       images: [
         {
-          name: "class1/c1s1q5.jpg"
+          name: "class1/c1s1q6.jpg"
         }
       ],
       answers: {
@@ -297,11 +307,13 @@ export class StudentFirstGradeComponent implements OnInit {
         fields: [
           { answertext: "How many paws are there in all?   ", answerunit: "" }
         ]
-      }
+      },
+      correctAnswer: "8"
     },
     {
-      number: "7",
-      description: "How do you write this number using words?  23 ",
+      ID: "7",
+      description: "Counting Problems",
+      extradescription: "How do you write this number using words?  23 ",
       images: [],
       answers: {
         type: "button",
@@ -331,11 +343,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Twenty Three"
     },
     {
-      number: "8",
-      description: "Count the total number number of balls",
+      ID: "8",
+      description: "Counting Problems",
+      extradescription: "Count the total number number of balls",
       images: [
         {
           name: "class1/ball2.jpg"
@@ -372,13 +386,15 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "4"
     }
   ];
   public additionQuestions = [
     {
-      number: "1",
-      description:
+      ID: "1",
+      description: "Understanding Addition",
+      extradescription:
         "There is 1 orange cube and 5 blue cubes. Add to find how many cubes there are in all.",
       images: [
         {
@@ -387,12 +403,14 @@ export class StudentFirstGradeComponent implements OnInit {
       ],
       answers: {
         type: "textbox",
-        fields: [{ answertext: " 1 + 5 = ", answerunit: "" }]
-      }
+        fields: [{ answertext: "Your answer: ", answerunit: "" }]
+      },
+      correctAnswer: "6"
     },
     {
-      number: "2",
-      description: "ADD",
+      ID: "2",
+      description: "Understanding Addition",
+      extradescription: "ADD",
       images: [
         {
           name: "class1/c1s2q2.jpg"
@@ -400,12 +418,14 @@ export class StudentFirstGradeComponent implements OnInit {
       ],
       answers: {
         type: "textbox",
-        fields: [{ answertext: " 1 + 5 = ", answerunit: "" }]
-      }
+        fields: [{ answertext: "Your answer: ", answerunit: "" }]
+      },
+      correctAnswer: "4"
     },
     {
-      number: "3",
-      description: "Which shows 2 + 5 = 7 ?",
+      ID: "3",
+      description: "Understanding Addition",
+      extradescription: "Which diagram represents the expression  2 + 5 = 7 ?",
       images: [
         {
           name: "class1/c1s2q3.jpg"
@@ -433,11 +453,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "First"
     },
     {
-      number: "4",
-      description: "Which addition sentence does the picture show?",
+      ID: "4",
+      description: "Understanding Addition",
+      extradescription: "Which addition sentence does the picture show?",
       images: [
         {
           name: "class1/c1s2q4.jpg"
@@ -465,27 +487,31 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "3 + 4 = 7"
     },
     {
-      number: "5",
-      description: "3 and 2 make 5.",
+      ID: "5",
+      description: "Understanding Addition",
+      extradescription: "3 and 2 make 5.",
       images: [],
       answers: {
         type: "textbox",
         fields: [
           {
-            answertext: "Write this as an addition sentence (using + amd =)",
+            answertext: "Write this as an addition sentence (using + and =)",
             answerunit: ""
           }
         ]
-      }
+      },
+      correctAnswer: "(3+2)=5"
     }
   ];
   public subtractionQuestions = [
     {
-      number: "1",
-      description:
+      ID: "1",
+      description: "Understanding Subtraction",
+      extradescription:
         "Here are 7 cubes in all. Take away 3 green cubes. Write down how many cubes remain.",
       images: [
         {
@@ -495,11 +521,13 @@ export class StudentFirstGradeComponent implements OnInit {
       answers: {
         type: "textbox",
         fields: [{ answertext: "Subtract:   7 - 3 = ", answerunit: "" }]
-      }
+      },
+      correctAnswer: "4"
     },
     {
-      number: "2",
-      description: "SUBTRACT",
+      ID: "2",
+      description: "Understanding Subtraction",
+      extradescription: "SUBTRACT",
       images: [
         {
           name: "class1/c1s3q2.jpg"
@@ -508,11 +536,13 @@ export class StudentFirstGradeComponent implements OnInit {
       answers: {
         type: "textbox",
         fields: [{ answertext: " 7 - 3 = ", answerunit: "" }]
-      }
+      },
+      correctAnswer: "4"
     },
     {
-      number: "3",
-      description: "Which picture shows 4 - 3 = 1 ?",
+      ID: "3",
+      description: "Understanding Subtraction",
+      extradescription: "Which picture shows 4 - 3 = 1 ?",
       images: [
         {
           name: "class1/c1s3q3.jpg"
@@ -546,11 +576,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Second"
     },
     {
-      number: "4",
-      description:
+      ID: "4",
+      description: "Understanding Subtraction",
+      extradescription:
         "Write a subtraction sentence based on the picture (For ex: 3-1=2)",
       images: [
         {
@@ -565,27 +597,31 @@ export class StudentFirstGradeComponent implements OnInit {
             answerunit: ""
           }
         ]
-      }
+      },
+      correctAnswer: "(9-4)=5"
     },
     {
-      number: "5",
-      description: "6 take away 4 is 2",
+      ID: "5",
+      description: "Understanding Subtraction",
+      extradescription: "6 take away 4 is 2",
       images: [],
       answers: {
         type: "textbox",
         fields: [
           {
-            answertext: "Write this as a subtraction sentence (using - amd =)",
+            answertext: "Write this as a subtraction sentence (using - and =)",
             answerunit: ""
           }
         ]
-      }
+      },
+      correctAnswer: "(6-4)=2"
     }
   ];
   public mixedOpQuestions = [
     {
-      number: "1",
-      description: "How do you make 7?",
+      ID: "1",
+      description: "Mixed Operations",
+      extradescription: "How do you make 7?",
       images: [],
       answers: {
         type: "button",
@@ -615,11 +651,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "1 + 6"
     },
     {
-      number: "2",
-      description:
+      ID: "2",
+      description: "Mixed Operations",
+      extradescription:
         "Which sign is missing in the place of question mark.  5 ? 1 = 4",
       images: [],
       answers: {
@@ -638,11 +676,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "-"
     },
     {
-      number: "3",
-      description:
+      ID: "3",
+      description: "Mixed Operations",
+      extradescription:
         "8 of the pairs of shoes in a particular shoe store are black. There are 11 pair of shoes in the store in all. How many of the pairs of shoes are not black? ",
       images: [],
       answers: {
@@ -653,11 +693,13 @@ export class StudentFirstGradeComponent implements OnInit {
             answerunit: "  pairs of shoes"
           }
         ]
-      }
+      },
+      correctAnswer: "3"
     },
     {
-      number: "4",
-      description: "In this problem, what is 45?",
+      ID: "4",
+      description: "Mixed Operations",
+      extradescription: "In this problem, what is 45?",
       images: [
         {
           name: "class1/c1s4q4.jpg"
@@ -679,11 +721,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Sum"
     },
     {
-      number: "5",
-      description: "How do you make 12?",
+      ID: "5",
+      description: "Mixed Operations",
+      extradescription: "How do you make 12?",
       images: [],
       answers: {
         type: "button",
@@ -713,13 +757,15 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "16 - 4"
     }
   ];
   public comparisonQuestions = [
     {
-      number: "1",
-      description: "Which group has fewer?",
+      ID: "1",
+      description: "Comparison Problems",
+      extradescription: "Which group has fewer?",
       images: [
         {
           name: "class1/c1s5q1.jpg"
@@ -741,11 +787,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Second"
     },
     {
-      number: "2",
-      description: "Which words make this statement true?  9 __ 7 ",
+      ID: "2",
+      description: "Comparison Problems",
+      extradescription: "Which words make this statement true?  9 __ 7 ",
       images: [],
       answers: {
         type: "button",
@@ -769,11 +817,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: " is greater than "
     },
     {
-      number: "3",
-      description: "Which sign makes this statement true?  8 __ 8 ",
+      ID: "3",
+      description: "Comparison Problems ",
+      extradescription: "Which sign makes this statement true?  8 __ 8 ",
       images: [],
       answers: {
         type: "button",
@@ -797,11 +847,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: " = "
     },
     {
-      number: "4",
-      description:
+      ID: "4",
+      description: "Comparison Problems",
+      extradescription:
         "Oscar has fewer dogs than Annie does. If Annie has 3 dogs, how many dogs can Oscar possibly have?",
       images: [],
       answers: {
@@ -820,13 +872,15 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "2"
     }
   ];
   public measurementQuestions = [
     {
-      number: "1",
-      description: "Which building is the shortest?",
+      ID: "1",
+      description: "Measurement Problems",
+      extradescription: "Which building is the shortest?",
       images: [
         {
           name: "class1/c1s6q1.jpg"
@@ -854,11 +908,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "B"
     },
     {
-      number: "2",
-      description: "Which lighthouse is the widest?",
+      ID: "2",
+      description: "Measurement Problems",
+      extradescription: "Which lighthouse is the widest? ",
       images: [
         {
           name: "class1/c1s6q2.jpg"
@@ -886,11 +942,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "C"
     },
     {
-      number: "3",
-      description: "Which is lighter? ",
+      ID: "3",
+      description: "Measurement Problems",
+      extradescription: "Which is lighter? ",
       images: [
         {
           name: "class1/c1s6q3.jpg"
@@ -912,11 +970,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "B"
     },
     {
-      number: "4",
-      description: "Which bag holds more?",
+      ID: "4",
+      description: "Measurement Problems",
+      extradescription: "Which bag holds more?",
       images: [
         {
           name: "class1/c1s6q4.jpg"
@@ -938,11 +998,14 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "A"
     },
     {
-      number: "5",
-      description: "Which is a better estimate for the length of a house key?",
+      ID: "5",
+      description: "Measurement Problems",
+      extradescription:
+        "Which is a better estimate for the length of a house key?",
       images: [
         {
           name: "class1/c1s6q5.jpg"
@@ -964,13 +1027,15 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "3 inches"
     }
   ];
   public patternQuestions = [
     {
-      number: "1",
-      description: "What number comes next in the given pattern?",
+      ID: "1",
+      description: "Patterns",
+      extradescription: "What number comes next in the given pattern?",
       images: [
         {
           name: "class1/1.jpg"
@@ -991,7 +1056,7 @@ export class StudentFirstGradeComponent implements OnInit {
           name: "class1/2.jpg"
         },
         {
-          name: "class1/qmark.jpg"
+          name: "counting/qmark.jpg"
         }
       ],
       answers: {
@@ -1010,11 +1075,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "1"
     },
     {
-      number: "2",
-      description: "What number comes next in the given pattern?",
+      ID: "2",
+      description: "Patterns",
+      extradescription: "What number comes next in the given pattern?",
       images: [
         {
           name: "class1/5.jpg"
@@ -1066,13 +1133,15 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "6"
     }
   ];
   public shapesQuestions = [
     {
-      number: "1",
-      description: "What shape is this?",
+      ID: "1",
+      description: "Shapes",
+      extradescription: "What shape is this?",
       images: [
         {
           name: "class1/c1s8q1.jpg"
@@ -1100,11 +1169,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Triangle"
     },
     {
-      number: "2",
-      description: "Pick all the circles",
+      ID: "2",
+      description: "Shapes",
+      extradescription: "Pick all the circles",
       images: [
         {
           name: "class1/c1s8q2.jpg"
@@ -1138,11 +1209,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "1, 6"
     },
     {
-      number: "3",
-      description: "Which shape has 5 corners? ",
+      ID: "3",
+      description: "Shapes",
+      extradescription: "Which shape has 5 corners? ",
       images: [
         {
           name: "class1/c1s8q3.jpg"
@@ -1176,11 +1249,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "1"
     },
     {
-      number: "4",
-      description: "Which shape has 3 equal sides?",
+      ID: "4",
+      description: "Shapes",
+      extradescription: "Which shape has 3 equal sides?",
       images: [
         {
           name: "class1/c1s8q4.jpg"
@@ -1202,11 +1277,13 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "1"
     },
     {
-      number: "5",
-      description: "Is this shape open or closed?",
+      ID: "5",
+      description: "Shapes",
+      extradescription: "Is this shape open or closed?",
       images: [
         {
           name: "class1/c1s8q5.jpg"
@@ -1228,7 +1305,8 @@ export class StudentFirstGradeComponent implements OnInit {
             description: ""
           }
         ]
-      }
+      },
+      correctAnswer: "Closed"
     }
   ];
 
@@ -1337,4 +1415,16 @@ export class StudentFirstGradeComponent implements OnInit {
   //   }
 
   // }
+
+  evaluateAnswer(correctAnswer: string, selectedAnswer: string) {
+    if (correctAnswer == selectedAnswer) {
+      this.correctLabel = true;
+      this.incorrectLabel = false;
+    } else {
+      this.correctLabel = false;
+      this.incorrectLabel = true;
+    }
+    console.log(correctAnswer);
+    console.log(selectedAnswer);
+  }
 }

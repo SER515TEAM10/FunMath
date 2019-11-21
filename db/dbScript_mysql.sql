@@ -157,3 +157,15 @@ CREATE TABLE `question_repo` (
   `question_list` longtext,
   PRIMARY KEY (`question_id`)
 )
+
+"""
+Assignments submitted by students with points calculated
+"""
+CREATE TABLE `funmath_project`.`submitted_assignments` (
+  `submission_id` INT NOT NULL AUTO_INCREMENT,
+  `student_email` VARCHAR(45) NULL,
+  `assignment_number` VARCHAR(45) NULL,
+  `class_number` INT NULL,
+  `points_scored` INT NULL,
+  PRIMARY KEY (`submission_id`))
+COMMENT = 'Assignments submitted by students';

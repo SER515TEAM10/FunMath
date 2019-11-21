@@ -37,17 +37,223 @@ export class Class5Component implements OnInit {
   questionObject: QuestionModel;
   public mulndivQL = [
     {
-      number: "1",
-      description: "Add the following numbers and find the unknown entities",
-      images: [{ name: "../../assets/c5s1/c5s1q1.jpg" }],
+      ID: "c5s2q1",
+      description: "Word problem",
+      images: [],
+      extradescription:
+        "A university bookstore ordered 8 shipments of notebooks. There were 389 notebooks in each shipment. How many notebooks did the bookstore store in all?",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "", answerunit: "  notebooks" }]
+      },
+      correctAnswer: "3112",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "3112" }]
+      }
+    },
+    {
+      ID: "c5s2q2",
+      description: "Complete the pattern",
+      images: [{ name: "../../assets/class5/c5s2q2.jpg" }],
       extradescription: "",
       answers: {
         type: "textbox",
         fields: [
-          { answertext: "Value of a", answerunit: "" },
-          { answertext: "Value of b", answerunit: "" },
-          { answertext: "Value of c", answerunit: "" }
+          { answertext: "Value of A", answerunit: "" },
+          { answertext: "Value of B", answerunit: "" },
+          { answertext: "Value of C", answerunit: "" },
+          { answertext: "Value of D", answerunit: "" },
+          { answertext: "Value of E", answerunit: "" }
         ]
+      },
+      correctAnswer: "A:3;B:3;C:2100;D:7000;E:70000",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "A:3;B:3;C:2100;D:7000;E:70000" }]
+      }
+    },
+    {
+      ID: "c5s2q3",
+      description:
+        "Type the missing number. Hint: Use associative property of multiplication.",
+      images: [{ name: "../../assets/class5/c5s2q3.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "Value of A", answerunit: "" }]
+      },
+      correctAnswer: "28",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "28" }]
+      }
+    },
+    {
+      ID: "c5s2q4",
+      description: "Which property of multiplication is shown?",
+      images: [{ name: "../../assets/class5/c5s2q4.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "button",
+        buttons: [
+          {
+            id: "Commutative",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "Associative",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "Distributive",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "Zero",
+            name: "",
+            image: "",
+            description: ""
+          }
+        ]
+      },
+      correctAnswer: "Distributive",
+      correctAnswers: {
+        type: "button",
+        buttons: [{ actualanswer: "Distributive" }]
+      }
+    },
+    {
+      ID: "c5s2q5",
+      description: "Use properties to find the product",
+      images: [{ name: "../../assets/class5/c5s2q5.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "textbox",
+        fields: [
+          { answertext: "Value of A   ", answerunit: "" },
+          { answertext: "Value of B   ", answerunit: "" },
+          { answertext: "Value of C   ", answerunit: "" },
+          { answertext: "Value of D   ", answerunit: "" }
+        ]
+      },
+      correctAnswer: "A:6;B:6;C:30;D:180",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "A:6;B:6;C:30;D:180" }]
+      }
+    },
+    {
+      ID: "c5s2q6",
+      description: "Word problem",
+      images: [],
+      extradescription:
+        "Tess bought 12 flowers and divided them equally into 3 bouquets. How many flowers are in each bouquet?",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "", answerunit: "flowers" }]
+      },
+      correctAnswer: "4",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "4" }]
+      }
+    },
+    {
+      ID: "c5s2q7",
+      description: "Complete the pattern",
+      images: [{ name: "../../assets/class5/c5s2q7.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "textbox",
+        fields: [
+          { answertext: "Value of A   ", answerunit: "" },
+          { answertext: "Value of B   ", answerunit: "" },
+          { answertext: "Value of C   ", answerunit: "" }
+        ]
+      },
+      correctAnswer: "A:21;B:300;C:7",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "A:21;B:300;C:7" }]
+      }
+    },
+    {
+      ID: "c5s2q8",
+      description: "Solve",
+      images: [],
+      extradescription:
+        "Which expression will give a better whole-number estimate for 4766/64 ?",
+      answers: {
+        type: "button",
+        buttons: [
+          {
+            id: "4800 / 60",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "4500 / 90",
+            name: "",
+            image: "",
+            description: ""
+          }
+        ]
+      },
+      correctAnswer: "4800 / 60",
+      correctAnswers: {
+        type: "button",
+        buttons: [{ actualanswer: "4800 / 60" }]
+      }
+    },
+    {
+      ID: "c5s2q9",
+      description: "Solve",
+      images: [{ name: "../../assets/class5/c5s2q9.jpg" }],
+      extradescription: "Estimate which sign makes the above statement true",
+      answers: {
+        type: "button",
+        buttons: [
+          {
+            id: ">",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "<",
+            name: "",
+            image: "",
+            description: ""
+          }
+        ]
+      },
+      correctAnswer: "<",
+      correctAnswers: {
+        type: "button",
+        buttons: [{ actualanswer: "<" }]
+      }
+    },
+    {
+      ID: "c5s2q10",
+      description: "Property of multiplication and division",
+      images: [],
+      extradescription: "If   10 * 9 = 90,  then  90 / A = 9",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "Value of A", answerunit: "" }]
+      },
+      correctAnswer: "10",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "10" }]
       }
     }
   ];
@@ -111,7 +317,7 @@ export class Class5Component implements OnInit {
       description: "Word problem",
       images: [],
       extradescription:
-        "Last year, apple producers in XYZ county produced 7074 apples. \nThis year, those same farms produced 9898 apples.\nHow many more apples did the farms produce this year?",
+        "Last year, apple producers in XYZ county produced 7074 apples. This year, those same farms produced 9898 apples. How many more apples did the farms produce this year?",
       answers: {
         type: "textbox",
         fields: [{ answertext: "", answerunit: "apples" }]
@@ -152,6 +358,119 @@ export class Class5Component implements OnInit {
       }
     }
   ];
+  public exponentsQL = [
+    {
+      ID: "c5s3q1",
+      description:
+        "Which of the following is equivalent of the below expression?",
+      images: [{ name: "../../assets/class5/c5s3q1.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "button",
+        buttons: [
+          {
+            id: "A",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "B",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "C",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "D",
+            name: "",
+            image: "",
+            description: ""
+          }
+        ]
+      },
+      correctAnswer: "C",
+      correctAnswers: {
+        type: "button",
+        buttons: [{ actualanswer: "C" }]
+      }
+    },
+    {
+      ID: "c5s3q2",
+      description: "Answer the question given below",
+      images: [{ name: "../../assets/class5/c5s3q2.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "button",
+        buttons: [
+          {
+            id: "A",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "B",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "C",
+            name: "",
+            image: "",
+            description: ""
+          },
+          {
+            id: "D",
+            name: "",
+            image: "",
+            description: ""
+          }
+        ]
+      },
+      correctAnswer: "D",
+      correctAnswers: {
+        type: "button",
+        buttons: [{ actualanswer: "D" }]
+      }
+    },
+    {
+      ID: "c5s3q3",
+      description: "Solve",
+      images: [{ name: "../../assets/class5/c5s3q3.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "Your answer", answerunit: "" }]
+      },
+      correctAnswer: "729",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "729" }]
+      }
+    },
+    {
+      ID: "c5s3q4",
+      description: "Word problem",
+      images: [{ name: "../../assets/class5/c5s3q4.jpg" }],
+      extradescription: "",
+      answers: {
+        type: "textbox",
+        fields: [{ answertext: "Value of A", answerunit: "" }]
+      },
+      correctAnswer: "3",
+      correctAnswers: {
+        type: "textbox",
+        fields: [{ actualanswer: "3" }]
+      }
+    }
+  ];
 
   @Input() classSelected: string;
   public showDialog: boolean;
@@ -161,13 +480,20 @@ export class Class5Component implements OnInit {
       this.questionList = this.addnsubQL;
     } else if (selected == "c5s2") {
       this.questionList = this.mulndivQL;
+    } else if (selected == "c5s3") {
+      this.questionList = this.exponentsQL;
     } else {
       return false;
     }
     return true;
   }
   constructor(public dialog: MatDialog, private http: HttpClient) {
+    console.log("Addition and Subtraction");
     console.log(JSON.stringify(this.addnsubQL));
+    console.log("Multiplication and Division");
+    console.log(JSON.stringify(this.mulndivQL));
+    console.log("Understanding Exponents");
+    console.log(JSON.stringify(this.exponentsQL));
   }
 
   ngOnInit() {}
@@ -200,7 +526,7 @@ export class Class5Component implements OnInit {
 
     this.openDialog();
     const obj = {
-      assignmentNumber: "1",
+      assignmentNumber: "Assignment_7",
       classNumber: "5",
       dueDate: "2019-11-25",
       questionList: JSON.stringify(this.jsonArr),
