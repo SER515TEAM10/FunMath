@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -9,7 +10,9 @@ import { MatDialog } from '@angular/material';
 })
 export class StudentDashboardComponent implements OnInit {
 
-  constructor(private router: Router, public dialog: MatDialog) { }
+  createRequestUrl = 'http://localhost:8080/user/request/modifyStatus';
+
+  constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   breakpoint: number;
 
@@ -21,7 +24,30 @@ export class StudentDashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(PrivilegeRequestDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      // if ${result} == true then call API
+      if (result == true) {
+        const obj = {
+          emailId: localStorage.getItem('emailId'),
+          requestDate: new Date().toISOString().substring(0, 10),
+          requestStatus: 'pending'
+        };
+        console.log(obj);
+        this.http.post(this.createRequestUrl, obj).subscribe(
+          res => {
+            this.snackBar.open("Request Submitted!", "Dismiss", {
+              duration: 1000
+            });
+          },
+          err => {
+            this.snackBar.open("Error in Sending Request!", "Dismiss", {
+              duration: 1000
+            });
+          }
+        );
+      }
+      console.log(result)
+      // "emailId": "test@asu.edu",
+      // "requestDate": "2000-05-11",
+      // "requestStatus": "pending"
     });
   }
   //Not working need to take a look again.
