@@ -11,7 +11,7 @@
       <mat-list>
         <mat-list-item>
           <!-- <a class="link-menu" (click)="displayclass1s1()">Counting problems</a> -->
-          <a class="link-menu" (click)="linkClicked = 'c1s1'">Counting problems</a>
+          <a class="link-menu" (click)="fetchData();linkClicked = 'c1s1'">Counting problems</a>
         </mat-list-item>
         <mat-list-item>
           <a class="link-menu" (click)="linkClicked = 'c1s2'">Understanding Addition</a>
@@ -89,34 +89,34 @@
     <mat-panel-description>
       <mat-list>
         <mat-list-item>
-          <a class="link-menu">Addition and Subtraction</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s1'">Addition and Subtraction</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Multiplication and Division</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s2'">Multiplication and Division</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Understanding Exponents</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s3'">Understanding Exponents</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Number Theory</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s4'">Number Theory</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Fractions</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s5'">Fractions</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Mixed Operations</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s6'">Mixed Operations</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Probability</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s7'">Probability</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Time</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s8'">Time</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Geometric Measurements</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s9'">Geometric Measurements</a>
         </mat-list-item>
         <mat-list-item>
-          <a class="link-menu">Ratios and Percentage</a>
+          <a class="link-menu" (click)="linkClicked = 'c5s10'">Ratios and Percentage</a>
         </mat-list-item>
       </mat-list>
     </mat-panel-description>
@@ -151,5 +151,6 @@
 <div class="flex-container">
   <div class=" slide-right">
     <app-class1 [classSelected]="linkClicked"></app-class1>
+    <app-class5 [classSelected]="linkClicked"></app-class5>
   </div>
 </div>

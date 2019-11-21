@@ -12,9 +12,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.ser515.funmath.model.AccessRequest;
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.PublishAssignmentsModel;
+import com.ser515.funmath.model.SubmittedAssignments;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.repositories.AssignmentRepository;
 import com.ser515.funmath.repositories.ExpressionRepository;
+import com.ser515.funmath.repositories.RequestRepository;
+import com.ser515.funmath.repositories.SubmittedAssignmentsRepository;
 import com.ser515.funmath.repositories.UserRepository;
 
 @Service
@@ -24,6 +30,13 @@ public class UserService {
 	private UserRepository userRepository;
 	@Autowired
 	private ExpressionRepository expressionRepository;
+	@Autowired
+	private RequestRepository requestRepository;
+
+	@Autowired
+	private AssignmentRepository assignmentRepository;
+	@Autowired
+	private SubmittedAssignmentsRepository submittedAssignRepo;
 
 	@Autowired
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -95,5 +108,33 @@ public class UserService {
 	public void saveExpression(ExpressionModel expressionModel) {
 		expressionRepository.save(expressionModel);
 
+	}
+
+	public List<AccessRequest> getPendingRequests(String requestStatus) {
+		return requestRepository.findAllByRequestStatus(requestStatus);
+
+	}
+
+	public void addModifyRequest(AccessRequest accessRequest) {
+		AccessRequest request = requestRepository.save(accessRequest);
+		if (request.getRequestStatus().equalsIgnoreCase("approved")) {
+			Users user = userRepository.findByEmailId(request.getEmailId());
+			user.setRoleId(102);
+			userRepository.save(user);
+		}
+	}
+
+	public List<PublishAssignmentsModel> getAssignmentList(int classNumber) {
+		return assignmentRepository.findAllByClassNumber(classNumber);
+
+	}
+
+	public void publishAssignment(PublishAssignmentsModel assignment) {
+		assignmentRepository.save(assignment);
+
+	}
+
+	public void submitAssignment(SubmittedAssignments assignment) {
+		submittedAssignRepo.save(assignment);
 	}
 }

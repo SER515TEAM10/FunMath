@@ -1,19 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-export interface GradedAssignments {
-  name: string;
-  position: number;
-  marks: number;
-  total: number;
-  comments: string;
-}
-
-const GRADES_DATA: GradedAssignments[] = [
-  { position: 1, name: 'Addition Assignment', marks: 100, total: 100, comments: 'Good job' },
-  { position: 2, name: 'Subtraction Assignment', marks: 60, total: 100, comments: 'Work harder next time' },
-  { position: 3, name: 'Multiplication Assignment', marks: 90, total: 100, comments: 'Nice' },
-  { position: 4, name: 'Division Assignment', marks: 100, total: 100, comments: 'Amazing' }
-];
+// export interface GradedAssignments {
+//   name: string;
+//   position: number;
+//   marks: number;
+//   total: number;
+//   comments: string;
+// }
 
 @Component({
   selector: 'app-student-grades',
@@ -22,12 +16,21 @@ const GRADES_DATA: GradedAssignments[] = [
 })
 export class StudentGradesComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'marks', 'total', 'comments'];
-  dataSource = GRADES_DATA;
-  constructor() { }
+  url = 'http://localhost:8080/submittedassignments/search/';
+  displayedColumns: string[] = ['submissionid', 'name', 'marks', 'total'];
+  dataSource;
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-
+    this.http.get(this.url+localStorage.getItem('emailId'))
+        .subscribe(
+          res => {
+              console.log(res)
+              this.dataSource = res
+          },
+          err => {
+            console.log("Error")
+          }
+        );
   }
-
 }

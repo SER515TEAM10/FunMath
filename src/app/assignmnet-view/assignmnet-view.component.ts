@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Assignment } from '../assignment';
-import { AssignmentService } from '../assignment.service';
+import { Assignment } from './assignment';
+import { AssignmentService } from './assignment.service';
 import { Router } from "@angular/router";
 import { Injectable } from '@angular/core';
 
@@ -19,8 +19,8 @@ export class AssignmnetViewComponent implements OnInit {
   Assignments: Assignment[];
   assignmentsSize: boolean;
   breakpoint: boolean;
-  displayedColumns: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks'];
-  displayedColumns1: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks', 'star'];
+  displayedColumns: string[] = ['ID', 'Name', 'Due Date', 'Points'];
+  displayedColumns1: string[] = ['ID', 'Name', 'Due Date', 'Points', 'star'];
 
   constructor(private assignmentService: AssignmentService, private router: Router) { }
 
@@ -29,8 +29,25 @@ export class AssignmnetViewComponent implements OnInit {
     this.getAssignments();
   }
 
+  goToAssignment(assignment : Assignment): void{
+    console.log("assignment" + assignment);
+    localStorage.setItem('assignmentId', String(assignment["assignmentId"]));
+    localStorage.setItem('assignmentNumber', assignment.assignmentNumber);
+    localStorage.setItem('dueDate', assignment.dueDate.toString());
+    localStorage.setItem('questionList', assignment.questionList);
+    localStorage.setItem('totalPoints', String(assignment.totalPoints));
+    localStorage.setItem('classNumber', assignment.classNumber.toString());
+    console.log(localStorage.getItem('assignmentId'));
+    console.log(localStorage.getItem('assignmentNumber'));
+    console.log(localStorage.getItem('dueDate'));
+    console.log(localStorage.getItem('questionList'));
+    console.log(localStorage.getItem('totalPoints'));
+    console.log(localStorage.getItem('classNumber'));
+    this.router.navigateByUrl('/assignmentSubmit', { skipLocationChange: true });
+  }
+
   getAssignments(): void {
-    this.assignmentService.getAssignments()
+    this.assignmentService.getAssignments(5)
       .subscribe(
         assignments => {
           this.Assignments = assignments;
@@ -44,6 +61,4 @@ export class AssignmnetViewComponent implements OnInit {
         }
       );
   }
-
-
 }

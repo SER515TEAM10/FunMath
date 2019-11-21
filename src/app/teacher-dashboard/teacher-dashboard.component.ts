@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./teacher-dashboard.component.scss']
 })
 export class TeacherDashboardComponent implements OnInit {
-  public router: Router;
-  constructor(router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   viewGrades() {
+    this.router.navigateByUrl('teachergradesdash', { skipLocationChange: true });
+  }
+  viewStudentInfo() {
 
   }
   addAssignments() {

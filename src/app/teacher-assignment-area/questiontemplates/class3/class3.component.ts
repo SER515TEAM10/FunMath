@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Class3Component implements OnInit {
 
+  isClass3: any;
+
   constructor() { }
 
   ngOnInit() {
