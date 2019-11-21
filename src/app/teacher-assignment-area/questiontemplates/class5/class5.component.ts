@@ -17,6 +17,7 @@ import { ThrowStmt } from "@angular/compiler";
 import { QuestionModel } from "../../question-model";
 import { TeacherService } from "../../teacher.service";
 import { HttpClient } from "@angular/common/http";
+import { AssignmentService } from "src/app/assignmnet-view/assignment.service";
 
 @Component({
   selector: "app-class5",
@@ -25,11 +26,13 @@ import { HttpClient } from "@angular/common/http";
 })
 export class Class5Component implements OnInit {
   url = "http://localhost:8080/user/publishAssignment";
+  getAssignmentURL = "http://localhost:8080/user/assignment/getAssignments/";
   date = new FormControl();
   startDate = new Date();
   public selected: string;
   public selectedList: any;
   public assignmentList: any[] = [];
+  public assignments: any[] = [];
   public questionList: any;
   public request: any[] = [];
   public jsonString: string = "";
@@ -487,7 +490,11 @@ export class Class5Component implements OnInit {
     }
     return true;
   }
-  constructor(public dialog: MatDialog, private http: HttpClient) {
+  constructor(
+    public dialog: MatDialog,
+    private http: HttpClient,
+    private assignmentService: AssignmentService
+  ) {
     console.log("Addition and Subtraction");
     console.log(JSON.stringify(this.addnsubQL));
     console.log("Multiplication and Division");
@@ -499,9 +506,7 @@ export class Class5Component implements OnInit {
   ngOnInit() {}
 
   createAssignment(e: NgForm) {
-    console.log("Assignment Created");
     this.selectedList = e.value;
-    console.log(this.selectedList);
 
     // duedate: this.date.value != null
     //   ? this.date.value.toISOString().substring(0, 10)
@@ -525,21 +530,47 @@ export class Class5Component implements OnInit {
     console.log(JSON.stringify(this.jsonArr));
 
     this.openDialog();
-    const obj = {
-      assignmentNumber: "Assignment_7",
-      classNumber: "5",
-      dueDate: "2019-11-25",
-      questionList: JSON.stringify(this.jsonArr),
-      totalPoints: "100"
-    };
-    console.log(obj);
-    //console.log(this.assignmentList);
-    //console.log(JSON.stringify(this.assignmentList));
-    this.http.post(this.url, obj).subscribe(res => {
-      console.log("Res ", res);
-    });
+    this.assignmentService
+      // .getAssignments(+localStorage.getItem("classNum"))
+      .getAssignments(5)
+      .subscribe(assignments => {
+        {
+          this.assignments = assignments;
+          let assignmentNumber: Number = 0;
+          assignmentNumber = this.assignments.length + 1;
+          console.log(assignmentNumber);
+          const obj = {
+            assignmentNumber: "Assignment_" + assignmentNumber,
+            classNumber: "5",
+            dueDate:
+              e.value.date != null
+                ? e.value.date.toISOString().substring(0, 10)
+                : null,
+            questionList: JSON.stringify(this.jsonArr),
+            totalPoints: this.jsonArr.length * 10
+          };
+          this.http.post(this.url, obj).subscribe(res => {
+            console.log("Res ", res);
+          });
 
-    e.reset();
+          e.reset();
+        }
+      });
+    // const obj = {
+    //   assignmentNumber: "Assignment_7",
+    //   classNumber: "5",
+    //   dueDate:
+    //     e.value.date != null
+    //       ? e.value.date.toISOString().substring(0, 10)
+    //       : null,
+    //   questionList: JSON.stringify(this.jsonArr),
+    //   totalPoints: this.jsonArr.length * 10
+    // };
+    // this.http.post(this.url, obj).subscribe(res => {
+    //   console.log("Res ", res);
+    // });
+
+    // e.reset();
   }
 
   openDialog(): void {

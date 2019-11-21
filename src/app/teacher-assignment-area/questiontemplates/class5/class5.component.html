@@ -6,8 +6,7 @@
         <span>
           <mat-form-field class="full-width">
             <mat-label>Select assignment due date</mat-label>
-            <input matInput [matDatepicker]="duedate" [min]="startDate" placeholder="Choose a date"
-              [formControl]="date">
+            <input ngModel name="date" matInput [matDatepicker]="duedate" [min]="startDate" placeholder="Choose a date">
             <mat-datepicker-toggle matSuffix [for]="duedate"></mat-datepicker-toggle>
             <mat-datepicker #duedate startView="year" [startAt]="startDate"></mat-datepicker>
           </mat-form-field>
