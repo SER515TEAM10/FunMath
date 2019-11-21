@@ -24,4 +24,9 @@ public class SubmittedAssignmentsController {
 	public List<SubmittedAssignments> findGradesByEmail(@PathVariable String emailId) {
 		return submitAssignmentService.findGrades(emailId);
 	}
+	
+	@GetMapping("/search")
+	public List<SubmittedAssignments> findAllGrades() {
+		return submitAssignmentService.findAllGrades();
+	}
 }

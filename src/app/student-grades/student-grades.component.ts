@@ -31,7 +31,6 @@ export class StudentGradesComponent implements OnInit {
           err => {
             console.log("Error")
           }
-
         );
   }
 }

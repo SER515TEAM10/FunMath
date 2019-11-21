@@ -13,6 +13,9 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   viewGrades() {
+    this.router.navigateByUrl('teachergradesdash', { skipLocationChange: true });
+  }
+  viewStudentInfo() {
 
   }
   addAssignments() {
