@@ -8,6 +8,11 @@ import { Component, OnInit } from "@angular/core";
 export class StudentFirstGradeComponent implements OnInit {
   public i: number = 0;
   public question: any;
+  
+
+
+
+
   public countingQuestions = [
     {
       number: "1",

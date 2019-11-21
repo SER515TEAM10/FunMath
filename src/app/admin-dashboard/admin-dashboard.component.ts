@@ -43,11 +43,12 @@ export class AdminDashboardComponent {
       this.dataList = [];
       result = result.split(' ');
       const obj = {
-        Id: result[0],
+        id: result[0],
         emailId: result[1],
         requestDate: result[2],
         requestStatus: result[3]
       };
+      console.log(obj)
       this.http.post(this.updateRoleUrl, obj).subscribe(
         res => {
           this.snackBar.open("Processed Successfully!", "Dismiss", {

@@ -15,19 +15,21 @@ public class SubmittedAssignments {
 	private String assignmentNumber;
 	private int classNumber;
 	private int pointsScored;
+	private int totalPoints;
 
 	public SubmittedAssignments() {
 
 	}
 
 	public SubmittedAssignments(int submissionId, String studentEmail, String assignmentNumber, int classNumber,
-			int pointsScored) {
+			int pointsScored, int totalPoints) {
 		super();
 		this.submissionId = submissionId;
 		this.studentEmail = studentEmail;
 		this.assignmentNumber = assignmentNumber;
 		this.classNumber = classNumber;
 		this.pointsScored = pointsScored;
+		this.totalPoints = totalPoints;
 	}
 
 	public int getSubmissionId() {
@@ -70,4 +72,12 @@ public class SubmittedAssignments {
 		this.pointsScored = pointsScored;
 	}
 
+	public int getTotalPoints() {
+		return totalPoints;
+	}
+
+	public void setTotalPoints(int totalPoints) {
+		this.totalPoints = totalPoints;
+	}
+	
 }

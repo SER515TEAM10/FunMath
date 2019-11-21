@@ -16,13 +16,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentGradesComponent implements OnInit {
 
-  url = 'http://localhost:8080/studentgrades/search/';
-  displayedColumns: string[] = ['position', 'name', 'marks', 'total', 'comments'];
+  url = 'http://localhost:8080/submittedassignments/search/';
+  displayedColumns: string[] = ['submissionid', 'name', 'marks', 'total'];
   dataSource;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(this.url+localStorage.getItem('userId'))
+    this.http.get(this.url+localStorage.getItem('emailId'))
         .subscribe(
           res => {
               console.log(res)

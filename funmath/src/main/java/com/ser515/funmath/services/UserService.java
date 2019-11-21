@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.ser515.funmath.model.AccessRequest;
-import com.ser515.funmath.model.Assignment;
 import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.SubmittedAssignments;

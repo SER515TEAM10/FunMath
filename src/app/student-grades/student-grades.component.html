@@ -8,9 +8,9 @@
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> Assignment Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.assignmentId}} </td>
+  <ng-container matColumnDef="submissionid">
+    <th mat-header-cell *matHeaderCellDef> Submission ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.submissionId}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -22,19 +22,13 @@
   <!-- Marks Column -->
   <ng-container matColumnDef="marks">
     <th mat-header-cell *matHeaderCellDef> Score </th>
-    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.pointsScored}} </td>
   </ng-container>
 
   <!-- Total Marks Column -->
   <ng-container matColumnDef="total">
     <th mat-header-cell *matHeaderCellDef> Out Of </th>
     <td mat-cell *matCellDef="let element"> {{element.totalPoints}} </td>
-  </ng-container>
-
-  <!-- Comments Column -->
-  <ng-container matColumnDef="comments">
-    <th mat-header-cell *matHeaderCellDef> Comments </th>
-    <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

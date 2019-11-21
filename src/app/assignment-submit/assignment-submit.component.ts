@@ -18,24 +18,24 @@ export class AssignmentSubmitComponent implements OnInit {
   classNumber: number = 5;
 
   constructor(private assignmentService: AssignmentService) {
-    this.getAssignment();
+    this.displaySpecificAssignment();
   }
 
   ngOnInit() {
 
   }
 
-  getAssignment() {
-    this.assignmentService.getAssignments(this.classNumber).subscribe((assignments) => { this.assignments = assignments; this.displaySpecificAssignment(9) });
-  }
-  displaySpecificAssignment(assignmentId: number) {
-    for (let i in this.assignments) {
-      if (assignmentId == this.assignments[i].assignmentId) {
-        this.selectedAssignment = this.assignments[i];
-        break;
-      }
-    }
-    this.questionList = JSON.parse(this.selectedAssignment.questionList);
+  // getAssignment() {
+  //   this.assignmentService.getAssignments(this.classNumber).subscribe((assignments) => { this.assignments = assignments; this.displaySpecificAssignment(9) });
+  // }
+  displaySpecificAssignment() {
+    // for (let i in this.assignments) {
+    //   if (assignmentId == this.assignments[i].assignmentId) {
+    //     this.selectedAssignment = this.assignments[i];
+    //     break;
+    //   }
+    // }
+    this.questionList = JSON.parse(localStorage.getItem("questionList"));
     // console.log(this.questionList);
     this.displayForm = true;
 
@@ -54,10 +54,11 @@ export class AssignmentSubmitComponent implements OnInit {
       }
     }
     let requestBody = {
-      "studentEmail": "sdhar@asu.edu",
-      "assignmentNumber": this.selectedAssignment.assignmentNumber,
-      "classNumber": this.classNumber,
-      "pointsScored": this.grades
+      "studentEmail": localStorage.getItem("emailId"),
+      "assignmentNumber": localStorage.getItem("assignmentNumber"),
+      "classNumber": +localStorage.getItem("classNumber"),
+      "pointsScored": this.grades,
+      "totalPoints":+localStorage.getItem("totalPoints")
     }
     console.log(requestBody);
     this.assignmentService.submitAssignment(requestBody).subscribe((value)=>(console.log(value)));
