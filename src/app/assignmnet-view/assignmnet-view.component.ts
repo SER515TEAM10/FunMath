@@ -19,14 +19,31 @@ export class AssignmnetViewComponent implements OnInit {
   Assignments: Assignment[];
   assignmentsSize: boolean;
   breakpoint: boolean;
-  displayedColumns: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks'];
-  displayedColumns1: string[] = ['id', 'name', 'creationDate', 'dueDate', 'marks', 'star'];
+  displayedColumns: string[] = ['ID', 'Name', 'Due Date', 'Points'];
+  displayedColumns1: string[] = ['ID', 'Name', 'Due Date', 'Points', 'star'];
 
   constructor(private assignmentService: AssignmentService, private router: Router) { }
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 400) ? true : false;
     this.getAssignments();
+  }
+
+  goToAssignment(assignment : Assignment): void{
+    console.log("assignment" + assignment);
+    localStorage.setItem('assignmentId', String(assignment["assignmentId"]));
+    localStorage.setItem('assignmentNumber', assignment.assignmentNumber);
+    localStorage.setItem('dueDate', assignment.dueDate.toString());
+    localStorage.setItem('questionList', assignment.questionList);
+    localStorage.setItem('totalPoints', String(assignment.totalPoints));
+    localStorage.setItem('classNumber', assignment.classNumber.toString());
+    console.log(localStorage.getItem('assignmentId'));
+    console.log(localStorage.getItem('assignmentNumber'));
+    console.log(localStorage.getItem('dueDate'));
+    console.log(localStorage.getItem('questionList'));
+    console.log(localStorage.getItem('totalPoints'));
+    console.log(localStorage.getItem('classNumber'));
+    this.router.navigateByUrl('/assignmentSubmit', { skipLocationChange: true });
   }
 
   getAssignments(): void {
