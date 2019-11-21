@@ -5,7 +5,8 @@ export class Assignment {
   assignmentNumber: string;
   dueDate: Date;
   creationDate: Timestamp<string>;
-  points: number;
+  totalPoints: number;
   questionList:string;
-  submittedAnswer:any[];  
+  submittedAnswer:any[]; 
+  classNumber: number; 
 }
