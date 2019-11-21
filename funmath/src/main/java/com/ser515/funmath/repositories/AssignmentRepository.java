@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ser515.funmath.model.Assignment;
+import com.ser515.funmath.model.PublishAssignmentsModel;
 
-public interface AssignmentRepository extends JpaRepository<Assignment,Integer> {
+public interface AssignmentRepository extends JpaRepository<PublishAssignmentsModel,Integer> {
 	
-	List<Assignment> findAllByClassNumber(int classNumber);
+	List<PublishAssignmentsModel> findAllByClassNumber(int classNumber);
 
 }
