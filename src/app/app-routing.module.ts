@@ -15,6 +15,7 @@ import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teache
 import { TeacherGradesComponent } from "./teacher-grades/teacher-grades.component";
 import { Class5Component } from './teacher-assignment-area/questiontemplates/class5/class5.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
+import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: "add-assignment", component: TeacherAssignmentAreaComponent },
   { path: "studentfirstgrade", component: StudentFirstGradeComponent },
   { path: "studentfifthgrade", component: Class5Component },
+  { path: "assignmentSubmit", component: AssignmentSubmitComponent },
 
 
   { path: "**", redirectTo: "" }

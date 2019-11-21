@@ -3,15 +3,12 @@
 </div>
 <div *ngIf="displayForm">
     <form #submitAssign="ngForm" (ngSubmit)="submitAssignment(submitAssign)">
-        <div>
-            <h2>{{selectedAssignment.assignmentNumber}}</h2>
-        </div>
-        <div>
-            <span>
-                <button type="submit" mat-raised-button color="primary" style="
-            left: 1%">Submit Assignment</button>
-            </span>
-        </div>
+        <!-- <div>
+            <h2>{{assignmentNumber}}</h2>
+        </div> -->
+        <mat-toolbar>
+            <mat-icon>assignment</mat-icon><span>{{assignmentNumber}}</span>
+        </mat-toolbar>
         <div>
 
             <section class="card-section" *ngFor='let question of questionList; let i = index'>
@@ -55,7 +52,8 @@
                                 </span>
                             </div> -->
                             <div *ngIf="question.answers.type=='button'">
-                                <mat-button-toggle-group #{{question.ID}}='matButtonToggleGroup' ngModel name="{{question.ID}}">
+                                <mat-button-toggle-group #{{question.ID}}='matButtonToggleGroup' ngModel
+                                    name="{{question.ID}}">
                                     <mat-button-toggle *ngFor="let button of question.answers.buttons"
                                         value={{button.id}}>{{button.id}}</mat-button-toggle>
                                 </mat-button-toggle-group>
@@ -63,9 +61,16 @@
                         </div>
                     </mat-card-content>
                 </mat-card>
-
             </section>
             <br>
+            <mat-card>
+                <mat-card-actions>
+                    <span>
+                        <button type="submit" mat-raised-button color="primary" style="
+                    left: 44%">Submit Assignment</button>
+                    </span>
+                </mat-card-actions>
+            </mat-card>
         </div>
 
         <!--Multiplication and Division-->
