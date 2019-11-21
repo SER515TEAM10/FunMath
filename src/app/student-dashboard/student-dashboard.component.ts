@@ -68,7 +68,7 @@ export class StudentDashboardComponent implements OnInit {
   }
 
   launchCanvas(): void {
-    if (Number(localStorage.getItem('age')) > 6 && Number(localStorage.getItem('age')) < 11) {
+    if (localStorage.getItem('classNum') === '1') {
       this.router.navigateByUrl('studentfirstgrade', { skipLocationChange: true });
     }
     else {
