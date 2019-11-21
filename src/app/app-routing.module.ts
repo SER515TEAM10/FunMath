@@ -12,6 +12,8 @@ import { UserSearchComponent } from "./user-search/user-search.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { StudentCanvasComponent } from "./student-canvas/student-canvas.component";
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
+import { Class5Component } from './teacher-assignment-area/questiontemplates/class5/class5.component';
+import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
@@ -23,25 +25,16 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: "studentdash",
-    component: StudentDashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "teacherdash",
-    component: TeacherDashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "assignmentview",
-    component: AssignmnetViewComponent,
-    canActivate: [AuthGuard]
-  },
+  { path: "studentdash", component: StudentDashboardComponent, },
+  { path: "teacherdash", component: TeacherDashboardComponent, },
+  { path: "assignmentview", component: AssignmnetViewComponent, },
   { path: "studentgradesdash", component: StudentGradesComponent },
   { path: "usersearch", component: UserSearchComponent },
   { path: "userdetails/:id", component: UserDetailsComponent },
   { path: "add-assignment", component: TeacherAssignmentAreaComponent },
+  { path: "studentfirstgrade", component: StudentFirstGradeComponent },
+  { path: "studentfifthgrade", component: Class5Component },
+
 
   { path: "**", redirectTo: "" }
 ];
@@ -55,4 +48,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

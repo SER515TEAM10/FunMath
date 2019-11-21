@@ -46,6 +46,17 @@ export class UserLoginComponent implements OnInit {
             localStorage.setItem('isLoggedIn', "true");
             localStorage.setItem('token', res['firstName']);
             localStorage.setItem('userId', res['userId'])
+            localStorage.setItem('emailId', res['emailId'])
+
+            const today = new Date().toISOString().substring(0, 4)
+            const dob = res['dob'] != null ? res['dob'].substring(0, 4) : today
+            localStorage.setItem('age', String(Number(today) - Number(dob)))
+            if (Number(localStorage.getItem('age')) > 6 && Number(localStorage.getItem('age')) < 11) {
+              localStorage.setItem('classNum', '1');
+            } else {
+              localStorage.setItem('classNum', '5');
+            }
+
             if (res['roleId'] === 100) { localStorage.setItem('userType', 'Student'); }
             if (res['roleId'] === 101) { localStorage.setItem('userType', 'Admin'); }
             if (res['roleId'] === 102) { localStorage.setItem('userType', 'Teacher'); }
