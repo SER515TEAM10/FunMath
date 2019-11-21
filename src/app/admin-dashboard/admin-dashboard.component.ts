@@ -24,7 +24,7 @@ export class AdminDashboardComponent {
     this.http.get(this.pendingTaskUrl)
       .subscribe(
         res => {
-          for (let i = 0; i < res.length; i++) {
+          for (let i = 0; i < Object.keys(res).length; i++) {
             this.dataList.push({ id: res[i]['emailId'], date: res[i]['requestDate'] })
           }
         },
@@ -34,14 +34,13 @@ export class AdminDashboardComponent {
           });
         }
       );
-    console.log(this.dataList)
     const dialogRef = this.dialog.open(AdminApprovalDialog, {
       data: { dataList: this.dataList }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       this.dataList = [];
+      // Call approve/reject API
     });
   }
 
