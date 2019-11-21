@@ -54,10 +54,15 @@
       <div>
         <mat-card>
           <mat-card-header>
-            <mat-card-title>Question{{question[i].number}}</mat-card-title>
-            <mat-card-subtitle>{{question[i].desc}}</mat-card-subtitle>
+            <mat-card-title>Question{{question[i].ID}}</mat-card-title>
+            <mat-card-subtitle>{{question[i].description}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
+            <div>
+              <p><b>{{question[i].extradescription}}</b></p>
+            </div>
+            <br>
+            <br>
             <div class="flex-container">
               <span class="flex-item" *ngFor="let image of question[i].images"><img
                   src="../../assets/{{image.name}}"></span>
@@ -65,19 +70,34 @@
             <br>
             <br>
             <br>
+
             <div class="flex-container" style="position:relative;right:-50px">
               <div *ngIf="question[i].answers.type=='button'">
+                <mat-button-toggle-group #abc='matButtonToggleGroup' ngModel name="abc">
+                  <mat-button-toggle *ngFor="let button of question[i].answers.buttons"
+                    (click)="evaluateAnswer(question[i].correctAnswer,abc.value)" value={{button.id}}>
+                    {{button.id}}</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+              <div *ngIf="question[i].answers.type=='image'">
+                <mat-button-toggle-group #abc='matButtonToggleGroup' ngModel name="abc">
+                  <mat-button-toggle *ngFor="let button of question[i].answers.buttons"
+                    (click)="evaluateAnswer(question[i].correctAnswer,abc.value)" value={{button.id}}>
+                    <img src="../../assets/{{button.image}}" /></mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+              <!-- <div *ngIf="question[i].answers.type=='button'">
                 <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
                   <button mat-raised-button type="submit"
                     (click)="changeLabelNameC1S1Q2('1')"><b>{{button.id}}</b></button>
                 </span>
-              </div>
-              <div *ngIf="question[i].answers.type=='image'">
+              </div> -->
+              <!-- <div *ngIf="question[i].answers.type=='image'">
                 <span class="flex-item" *ngFor="let button of question[i].answers.buttons">
                   <button mat-raised-button type="submit" (click)="changeLabelNameC1S1Q2('1')"><img
                       src="../../assets/{{button.image}}" /></button>
                 </span>
-              </div>
+              </div> -->
               <div *ngIf="question[i].answers.type=='textbox'">
                 <span class="flex-item">
                   <table>
@@ -90,17 +110,24 @@
                 </span>
               </div>
             </div>
+            <div>
+              <mat-label *ngIf="incorrectLabel">Incorrect</mat-label>
+            </div>
+            <div>
+              <mat-label *ngIf="correctLabel">Correct</mat-label>
+            </div>
           </mat-card-content>
         </mat-card>
       </div>
       <br>
       <div>
-        <button class="btn btn-outline-rounded btn-default previous-btn" (click)="i=i-1" [disabled]="i==0"> <span
-            style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span>
+        <button class="btn btn-outline-rounded btn-default previous-btn"
+          (click)="i=i-1;incorrectLabel=false;correctLabel=false" [disabled]="i==0"> <span style="margin-right:10px;"
+            class="glyphicon glyphicon-arrow-left"></span>
           Previous</button>
-        <button class="btn btn-outline-rounded btn-info" style="float:right" (click)="i=i+1"
-          [disabled]="i==question.length-1">Next <span style="margin-right:10px;"
-            class="glyphicon glyphicon-arrow-right"></span> </button>
+        <button class="btn btn-outline-rounded btn-info" style="float:right"
+          (click)="i=i+1;incorrectLabel=false;correctLabel=false" [disabled]="i==question.length-1">Next <span
+            style="margin-right:10px;" class="glyphicon glyphicon-arrow-right"></span> </button>
       </div>
     </div>
   </div>

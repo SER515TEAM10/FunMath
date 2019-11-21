@@ -164,6 +164,6 @@ CREATE TABLE `submitted_assignments` (
   `points_scored` int(11) DEFAULT NULL,
   `total_points` int(11) DEFAULT NULL,
   PRIMARY KEY (`submission_id`)
-) 
+)
 
 
