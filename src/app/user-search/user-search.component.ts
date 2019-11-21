@@ -81,7 +81,9 @@ export class UserSearchComponent implements OnInit {
   }
 
   search(nameOrId: string): void {
-    
+    if (nameOrId == ""){
+      this.getUsers();
+    }else{
       this.usersService.getUsersByNameOrId(nameOrId)
       .subscribe(
         users => {
@@ -94,7 +96,7 @@ export class UserSearchComponent implements OnInit {
         }
       );
 
-    
+    }
     
     console.log(this.UsersSize);
     this.selectedUsers = [];
