@@ -19,6 +19,7 @@ export class AssignmentSubmitComponent implements OnInit {
   submittedAnswerList: any[] = [];
   grades: number = 0;
   classNumber: number = 5;
+  j: any;
 
   constructor(private assignmentService: AssignmentService, private snackbar: MatSnackBar, private router:Router) {
     this.displaySpecificAssignment();
