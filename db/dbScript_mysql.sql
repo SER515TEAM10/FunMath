@@ -155,3 +155,15 @@ CREATE TABLE `question_repo` (
   `question_list` longtext,
   PRIMARY KEY (`question_id`)
 )
+"""Submitted assignment"""
+CREATE TABLE `submitted_assignments` (
+  `submission_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_email` varchar(45) DEFAULT NULL,
+  `assignment_number` varchar(45) DEFAULT NULL,
+  `class_number` int(11) DEFAULT NULL,
+  `points_scored` int(11) DEFAULT NULL,
+  `total_points` int(11) DEFAULT NULL,
+  PRIMARY KEY (`submission_id`)
+) 
+
+
