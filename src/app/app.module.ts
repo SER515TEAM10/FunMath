@@ -75,6 +75,7 @@ import {
   Class5Component,
   ConfirmationDialog
 } from "./teacher-assignment-area/questiontemplates/class5/class5.component";
+import { TeacherGradesComponent } from './teacher-grades/teacher-grades.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +99,8 @@ import {
     AssignmentSubmitComponent,
     StudentFirstGradeComponent,
     Class5Component,
-    ConfirmationDialog
+    ConfirmationDialog,
+    TeacherGradesComponent
   ],
   imports: [
     BrowserModule,

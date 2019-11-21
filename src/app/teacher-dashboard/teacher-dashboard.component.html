@@ -2,15 +2,20 @@
     <mat-icon>dashboard</mat-icon><span>Teacher Dashboard</span>
 </mat-toolbar>
 <mat-card>
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list cols="3" rowHeight="3:1">
         <mat-grid-tile>
             <button mat-raised-button (click)="viewGrades()" color="primary">
-                <mat-icon>grade</mat-icon>View Student Info
+                <mat-icon>info</mat-icon>View Student Info
             </button>
         </mat-grid-tile>
         <mat-grid-tile>
             <button mat-raised-button (click)="addAssignments()" color="primary">
                 <mat-icon>assignment</mat-icon>Add/Modify Assignments
+            </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-raised-button (click)="viewGrades()" color="primary">
+                <mat-icon>grade</mat-icon>View Student Grades
             </button>
         </mat-grid-tile>
     </mat-grid-list>

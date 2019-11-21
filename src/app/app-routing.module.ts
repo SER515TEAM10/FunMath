@@ -12,6 +12,7 @@ import { UserSearchComponent } from "./user-search/user-search.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { StudentCanvasComponent } from "./student-canvas/student-canvas.component";
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
+import { TeacherGradesComponent } from "./teacher-grades/teacher-grades.component";
 import { Class5Component } from './teacher-assignment-area/questiontemplates/class5/class5.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "teacherdash", component: TeacherDashboardComponent, },
   { path: "assignmentview", component: AssignmnetViewComponent, },
   { path: "studentgradesdash", component: StudentGradesComponent },
+  { path: "teachergradesdash", component: TeacherGradesComponent},
   { path: "usersearch", component: UserSearchComponent },
   { path: "userdetails/:id", component: UserDetailsComponent },
   { path: "add-assignment", component: TeacherAssignmentAreaComponent },
