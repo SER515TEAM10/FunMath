@@ -20,14 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ser515.funmath.model.AccessRequest;
-import com.ser515.funmath.model.Assignment;
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.model.SubmittedAssignments;
-import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.services.PublishAssignmentService;
-import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.services.QuestionService;
 import com.ser515.funmath.services.UserService;
 
@@ -187,7 +185,7 @@ public class UserController {
 	}
 
 	@GetMapping("/assignment/getAssignments/{classNumber}")
-	public List<Assignment> getAssignments(@PathVariable int classNumber) {		
+	public List<PublishAssignmentsModel> getAssignments(@PathVariable int classNumber) {		
 		return userService.getAssignmentList(classNumber);
 	}	
 

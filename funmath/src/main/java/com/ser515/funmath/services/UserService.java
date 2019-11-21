@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.ser515.funmath.model.AccessRequest;
 import com.ser515.funmath.model.Assignment;
 import com.ser515.funmath.model.ExpressionModel;
+import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.SubmittedAssignments;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.repositories.AssignmentRepository;
@@ -124,12 +125,12 @@ public class UserService {
 		}
 	}
 
-	public List<Assignment> getAssignmentList(int classNumber) {
+	public List<PublishAssignmentsModel> getAssignmentList(int classNumber) {
 		return assignmentRepository.findAllByClassNumber(classNumber);
 
 	}
 
-	public void publishAssignment(Assignment assignment) {
+	public void publishAssignment(PublishAssignmentsModel assignment) {
 		assignmentRepository.save(assignment);
 
 	}
