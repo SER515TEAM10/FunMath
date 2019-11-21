@@ -1,7 +1,11 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export class Assignment {
-  id: number;
-  name: string;
+  assignmentId: number;
+  assignmentNumber: string;
   dueDate: Date;
-  createdDate: Date;
-  marks: number;
+  creationDate: Timestamp<string>;
+  points: number;
+  questionList:string;
+  submittedAnswer:any[];  
 }

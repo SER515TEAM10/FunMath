@@ -70,6 +70,7 @@ import { StudentGradesComponent } from "./student-grades/student-grades.componen
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
 import { Class1Component } from "./teacher-assignment-area/questiontemplates/class1/class1.component";
 import { Class3Component } from "./teacher-assignment-area/questiontemplates/class3/class3.component";
+import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit.component';
 import {
   Class5Component,
   ConfirmationDialog
@@ -93,7 +94,8 @@ import {
     StudentCanvasComponent,
     TeacherAssignmentAreaComponent,
     Class1Component,
-    Class3Component,
+    Class3Component,     
+    AssignmentSubmitComponent,
     StudentFirstGradeComponent,
     Class5Component,
     ConfirmationDialog
