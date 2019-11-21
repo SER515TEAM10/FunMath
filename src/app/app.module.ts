@@ -51,8 +51,8 @@ import {
   AdminApprovalDialog
 } from "./admin-dashboard/admin-dashboard.component";
 import {
-  StudentDashboardComponent
-  // PrivilegeRequestDialog
+  StudentDashboardComponent,
+  PrivilegeRequestDialog
 } from "./student-dashboard/student-dashboard.component";
 import { TeacherDashboardComponent } from "./teacher-dashboard/teacher-dashboard.component";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
@@ -70,10 +70,12 @@ import { StudentGradesComponent } from "./student-grades/student-grades.componen
 import { TeacherAssignmentAreaComponent } from "./teacher-assignment-area/teacher-assignment-area.component";
 import { Class1Component } from "./teacher-assignment-area/questiontemplates/class1/class1.component";
 import { Class3Component } from "./teacher-assignment-area/questiontemplates/class3/class3.component";
+import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit.component';
 import {
   Class5Component,
   ConfirmationDialog
 } from "./teacher-assignment-area/questiontemplates/class5/class5.component";
+import { TeacherGradesComponent } from './teacher-grades/teacher-grades.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +83,7 @@ import {
     AdminDashboardComponent,
     AdminApprovalDialog,
     StudentDashboardComponent,
-    //PrivilegeRequestDialog,
+    PrivilegeRequestDialog,
     TeacherDashboardComponent,
     LandingPageComponent,
     UserLoginComponent,
@@ -93,10 +95,12 @@ import {
     StudentCanvasComponent,
     TeacherAssignmentAreaComponent,
     Class1Component,
-    Class3Component,
+    Class3Component,     
+    AssignmentSubmitComponent,
     StudentFirstGradeComponent,
     Class5Component,
-    ConfirmationDialog
+    ConfirmationDialog,
+    TeacherGradesComponent
   ],
   imports: [
     BrowserModule,
@@ -147,8 +151,8 @@ import {
   entryComponents: [
     AdminApprovalDialog,
     ConfirmDeleteDialog,
-    ConfirmationDialog
-    //PrivilegeRequestDialog
+    ConfirmationDialog,
+    PrivilegeRequestDialog
   ]
 })
 export class AppModule {}

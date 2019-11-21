@@ -30,7 +30,7 @@ export class AssignmnetViewComponent implements OnInit {
   }
 
   getAssignments(): void {
-    this.assignmentService.getAssignments()
+    this.assignmentService.getAssignments(5)
       .subscribe(
         assignments => {
           this.Assignments = assignments;
@@ -44,6 +44,4 @@ export class AssignmnetViewComponent implements OnInit {
         }
       );
   }
-
-
 }

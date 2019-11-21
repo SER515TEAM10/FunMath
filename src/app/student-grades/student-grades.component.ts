@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface GradedAssignments {
-  name: string;
-  position: number;
-  marks: number;
-  total: number;
-  comments: string;
-}
+// export interface GradedAssignments {
+//   name: string;
+//   position: number;
+//   marks: number;
+//   total: number;
+//   comments: string;
+// }
 
 @Component({
   selector: 'app-student-grades',
@@ -16,15 +16,13 @@ export interface GradedAssignments {
 })
 export class StudentGradesComponent implements OnInit {
 
-  url = 'http://localhost:8080/studentgrades/search/';
-  displayedColumns: string[] = ['position', 'name', 'marks', 'total', 'comments'];
+  url = 'http://localhost:8080/submittedassignments/search/';
+  displayedColumns: string[] = ['submissionid', 'name', 'marks', 'total'];
   dataSource;
-
-  
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(this.url+localStorage.getItem('userId'))
+    this.http.get(this.url+localStorage.getItem('emailId'))
         .subscribe(
           res => {
               console.log(res)
@@ -33,11 +31,6 @@ export class StudentGradesComponent implements OnInit {
           err => {
             console.log("Error")
           }
-
         );
-
   }
-
-
-
 }

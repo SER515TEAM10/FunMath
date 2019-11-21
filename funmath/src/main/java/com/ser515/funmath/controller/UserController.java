@@ -2,9 +2,9 @@ package com.ser515.funmath.controller;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,9 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ser515.funmath.model.AccessRequest;
 import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.PublishAssignmentsModel;
+import com.ser515.funmath.model.QuestionPoolModel;
+import com.ser515.funmath.model.SubmittedAssignments;
 import com.ser515.funmath.model.Users;
 import com.ser515.funmath.services.PublishAssignmentService;
-import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.services.QuestionService;
 import com.ser515.funmath.services.UserService;
 
@@ -102,10 +103,34 @@ public class UserController {
 
 	@RequestMapping(path = "/removeIds/", method = RequestMethod.POST)
 	public boolean removeIds(@RequestBody int[] ids) {
-		for (int id: ids){
+		for (int id : ids) {
 			userService.removeUser(id);
 		}
 		return true;
+	}
+
+	@GetMapping("/searchByNameOrId/{idOrName}")
+	public List<Users> findUserByIdOrName(@PathVariable String idOrName) {
+		List<Users> userList = userService.findAll();
+		List<Users> users = new ArrayList<Users>();
+		boolean numeric = true;
+        numeric = idOrName.matches("\\d+");
+        if (numeric) {
+        	for (Users user: userList) {
+    			if (user.getUserId() == Integer.parseInt(idOrName)) {
+    				users.add(user);
+    			}
+    		}
+        }else {
+        	for (Users user: userList) {
+    			if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase()) || user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
+    				users.add(user);
+    			}
+    		}
+        }
+ 		
+ 		System.out.println("Inside searchByNameOrId : " + users.toString()  );
+		return users;
 	}
 
 	@PostMapping("/expression/save")
@@ -113,15 +138,6 @@ public class UserController {
 		userService.saveExpression(expressionModel);
 
 	}
-
-	/*
-	 * @PostMapping("/publishAssignment") 
-	 * public void publishAssignmentToStudent(@RequestBody PublishAssignmentsModel assignment) {
-	 * 
-	 * publishAssignService.publishAssignment(assignment);
-	 * 
-	 * }
-	 */
 
 	@PostMapping("/publishAssignment")
 	public PublishAssignmentsModel publishAssignmentToStudent(@RequestBody Map<String, String> json) {
@@ -143,14 +159,11 @@ public class UserController {
 
 
 	/*
-	 * Send input as shown below
-	 * { "Id": 1, "emailId": "sharaddhar@asu.edu", "requestDate": "2000-05-01",
-	 * "requestStatus": "Approved" }
+	 * Send input as shown below { "Id": 1, "emailId": "sharaddhar@asu.edu",
+	 * "requestDate": "2000-05-01", "requestStatus": "Approved" }
 	 */
 	@PostMapping("/request/modifyStatus")
-	public void modifyRequest(@RequestBody Map<String,String> jsonRequest) {
-
-		AccessRequest request = new AccessRequest((Integer.parseInt(jsonRequest.get("Id"))),jsonRequest.get("emailId"),jsonRequest.get("requestDate"),jsonRequest.get("requestStatus"));
+	public void modifyRequest(@RequestBody AccessRequest request) {		
 		userService.addModifyRequest(request);
 
 	}
@@ -164,9 +177,21 @@ public class UserController {
 	public List<QuestionPoolModel> getAllQuestions() {
 		return questionService.getAllQuestions();
 	}
+
 	@PostMapping("/question/getByClassCategory")
 	public QuestionPoolModel getQuestionByClassAndCategory(@RequestBody QuestionPoolModel questionDetails) {
-		return questionService.getQuestionByClassAndCategory(questionDetails.getClassNumber(),questionDetails.getCategory());
+		return questionService.getQuestionByClassAndCategory(questionDetails.getClassNumber(),
+				questionDetails.getCategory());
+	}
+
+	@GetMapping("/assignment/getAssignments/{classNumber}")
+	public List<PublishAssignmentsModel> getAssignments(@PathVariable int classNumber) {		
+		return userService.getAssignmentList(classNumber);
+	}	
+
+	@PostMapping("/assignment/submitAssignment")
+	public void submitAssigment(@RequestBody SubmittedAssignments assignment) {
+		userService.submitAssignment(assignment);		
 	}
 
 }
