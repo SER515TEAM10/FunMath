@@ -45,6 +45,7 @@ export class UserLoginComponent implements OnInit {
             });
             localStorage.setItem('isLoggedIn', "true");
             localStorage.setItem('token', res['firstName']);
+            localStorage.setItem('userId', res['userId'])
             if (res['roleId'] === 100) { localStorage.setItem('userType', 'Student'); }
             if (res['roleId'] === 101) { localStorage.setItem('userType', 'Admin'); }
             if (res['roleId'] === 102) { localStorage.setItem('userType', 'Teacher'); }

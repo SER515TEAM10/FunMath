@@ -1,9 +1,14 @@
 <h1 mat-dialog-title>Approval Requests</h1>
 <div mat-dialog-content>
   <mat-list>
-    <mat-list-item> Task 1 </mat-list-item>
-    <mat-list-item> Task 2 </mat-list-item>
-    <mat-list-item> Task 3 </mat-list-item>
+    <mat-list-item *ngFor="let item of data.dataList">{{item.id}}<b>&nbsp;Requested On:&nbsp;</b>{{item.date}}
+      <button mat-icon-button [mat-dialog-close]="item.id">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-list-item>
   </mat-list>
 </div>
 <div mat-dialog-actions>

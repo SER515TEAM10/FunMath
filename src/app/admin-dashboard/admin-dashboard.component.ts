@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Router } from "@angular/router"
+import { HttpClient } from '@angular/common/http';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  dataList: [];
 }
 
 @Component({
@@ -14,18 +14,33 @@ export interface DialogData {
 })
 export class AdminDashboardComponent {
 
-  animal: string;
-  name: string;
+  pendingTaskUrl = ' http://localhost:8080/user/request/getAll/pending';
 
-  constructor(public dialog: MatDialog, private router: Router) { }
+  dataList = [];
+
+  constructor(public dialog: MatDialog, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   approve(): void {
+    this.http.get(this.pendingTaskUrl)
+      .subscribe(
+        res => {
+          for (let i = 0; i < Object.keys(res).length; i++) {
+            this.dataList.push({ id: res[i]['emailId'], date: res[i]['requestDate'] })
+          }
+        },
+        err => {
+          this.snackBar.open('Request timeout!', 'Dismiss', {
+            duration: 1000,
+          });
+        }
+      );
     const dialogRef = this.dialog.open(AdminApprovalDialog, {
-      data: { name: this.name, animal: this.animal }
+      data: { dataList: this.dataList }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.animal = result;
+      this.dataList = [];
+      // Call approve/reject API
     });
   }
 

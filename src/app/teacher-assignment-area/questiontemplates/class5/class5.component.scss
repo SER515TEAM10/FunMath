@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.create-button {
+  position: relative;
+  left: 666px;
+}
+
+mat-card {
+  min-width: 800px;
+}

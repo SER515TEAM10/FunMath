@@ -1,0 +1,77 @@
+<div *ngIf="classSelected?callThisMethod(classSelected):false">
+  <form #createAssign="ngForm" (ngSubmit)="createAssignment(createAssign)">
+    <div>
+      <span>
+        <h3>Select multiple questions to create an assignment</h3>
+        <span>
+          <mat-form-field class="full-width">
+            <mat-label>Select assignment due date</mat-label>
+            <input matInput [matDatepicker]="duedate" [min]="startDate" placeholder="Choose a date"
+              [formControl]="date">
+            <mat-datepicker-toggle matSuffix [for]="duedate"></mat-datepicker-toggle>
+            <mat-datepicker #duedate startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </span>
+        <!-- <span>
+          <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Date"
+            show-todays-date="" min-date="date" ng-model="dateTime" class=" md-input" readonly="readonly">
+        </span> -->
+        <span>
+          <button type="submit" mat-raised-button color="primary" style="
+          left: 1%">Create
+            Assignment</button>
+        </span>
+
+      </span>
+
+    </div>
+    <div>
+
+      <section class="card-section" *ngFor='let question of questionList; let i = index'>
+        <mat-checkbox class="ques-checkbox" ngModel name='{{question.ID}}'>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Question {{i+1}}</mat-card-title>
+              <mat-card-subtitle>{{question.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="flex-container" *ngFor='let image of question.images'>
+                <span class="flex-item"><img src="{{image.name}}" /></span>
+              </div>
+              <div>
+                <span>
+                  <p class="card_para">{{question.extradescription}}</p>
+                </span>
+              </div>
+              <br />
+              <br />
+              <h4>Your answer: </h4>
+              <div class="flex-container">
+                <span>
+                  <table *ngIf='question.answers.type == "textbox"'>
+                    <tr *ngFor='let answer of question.answers.fields'>
+                      <td>{{answer.answertext}} </td>
+                      <td> <input type="text" /></td>
+                      <td> {{answer.answerunit}}</td>
+                    </tr>
+                  </table>
+                </span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-checkbox>
+      </section>
+      <br>
+    </div>
+
+    <!--Multiplication and Division-->
+    <!--Understanding exponents-->
+    <!--Number theory-->
+    <!--Fractions-->
+    <!--Mixed Operations-->
+    <!--Probability-->
+    <!--Time-->
+    <!--Geometric Measurements-->
+    <!--Ratios and Percentages-->
+  </form>
+</div>

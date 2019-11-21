@@ -1,5 +1,8 @@
 package com.ser515.funmath.controller;
 
+
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +24,10 @@ import com.ser515.funmath.model.Assignment;
 import com.ser515.funmath.model.ExpressionModel;
 import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.model.SubmittedAssignments;
+import com.ser515.funmath.model.PublishAssignmentsModel;
 import com.ser515.funmath.model.Users;
+import com.ser515.funmath.services.PublishAssignmentService;
+import com.ser515.funmath.model.QuestionPoolModel;
 import com.ser515.funmath.services.QuestionService;
 import com.ser515.funmath.services.UserService;
 
@@ -34,6 +40,8 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	QuestionService questionService;
+	@Autowired
+	PublishAssignmentService publishAssignService;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	private static final String PATH = "/error";
@@ -103,25 +111,61 @@ public class UserController {
 		return true;
 	}
 
+	@GetMapping("/searchByNameOrId/{idOrName}")
+	public List<Users> findUserByIdOrName(@PathVariable String idOrName) {
+		List<Users> userList = userService.findAll();
+		List<Users> users = new ArrayList<Users>();
+		boolean numeric = true;
+        numeric = idOrName.matches("\\d+");
+        if (numeric) {
+        	for (Users user: userList) {
+    			if (user.getUserId() == Integer.parseInt(idOrName)) {
+    				users.add(user);
+    			}
+    		}
+        }else {
+        	for (Users user: userList) {
+    			if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase()) || user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
+    				users.add(user);
+    			}
+    		}
+        }
+ 		
+ 		System.out.println("Inside searchByNameOrId : " + users.toString()  );
+		return users;
+	}
+
 	@PostMapping("/expression/save")
 	public void saveExpresions(@RequestBody ExpressionModel expressionModel) {
 		userService.saveExpression(expressionModel);
 
 	}
 
+	@PostMapping("/publishAssignment")
+	public PublishAssignmentsModel publishAssignmentToStudent(@RequestBody Map<String, String> json) {
+		PublishAssignmentsModel assignment = new PublishAssignmentsModel();
+		assignment.setAssignmentNumber(json.get("assignmentNumber"));
+		assignment.setClassNumber(Integer.parseInt(json.get("classNumber")));
+		Date date = Date.valueOf(json.get("dueDate"));
+		assignment.setDueDate(date);
+		assignment.setQuestionList(json.get("questionList"));
+		assignment.setTotalPoints(Integer.parseInt(json.get("totalPoints")));
+		
+		return publishAssignService.publishAssignment(assignment);
+	}
 	@GetMapping("/request/getAll/{requestStatus}")
 	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
 		return userService.getPendingRequests(requestStatus);
 
 	}
 
+
 	/*
 	 * Send input as shown below { "Id": 1, "emailId": "sharaddhar@asu.edu",
 	 * "requestDate": "2000-05-01", "requestStatus": "Approved" }
 	 */
 	@PostMapping("/request/modifyStatus")
-	public void modifyRequest(@RequestBody AccessRequest request) {
-
+	public void modifyRequest(@RequestBody AccessRequest request) {		
 		userService.addModifyRequest(request);
 
 	}
@@ -143,19 +187,13 @@ public class UserController {
 	}
 
 	@GetMapping("/assignment/getAssignments/{classNumber}")
-	public List<Assignment> getAssignments(@PathVariable int classNumber) {
-		System.out.println("ClassNumber:" + classNumber);
+	public List<Assignment> getAssignments(@PathVariable int classNumber) {		
 		return userService.getAssignmentList(classNumber);
-	}
-
-	@PostMapping("/assignment/publishAssignment")
-	public void publishAssignment(@RequestBody Assignment assignment) {
-		userService.publishAssignment(assignment);
-	}
+	}	
 
 	@PostMapping("/assignment/submitAssignment")
 	public void submitAssigment(@RequestBody SubmittedAssignments assignment) {
-		userService.submitAssignment(assignment);
+		userService.submitAssignment(assignment);		
 	}
 
 }

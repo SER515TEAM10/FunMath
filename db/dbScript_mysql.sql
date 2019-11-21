@@ -51,29 +51,30 @@ INSERT INTO funmath_project.assignment (assignment_name, due_date) values("Integ
 CREATE TABLE `funmath_project`.`student_grades` (
 	`grade_id` INT NOT NULL AUTO_INCREMENT,
 	`ass_id` INT NOT NULL,
+	`assignment_number` VARCHAR(45) NULL,
 	`student_user_id` INT NOT NULL,
-	`marks` INT,
-	`maximum_marks` INT NOT NULL,
+	`points` INT,
+	`total_points` INT NOT NULL,
 	`comments` VARCHAR(200),
 	PRIMARY KEY (`grade_id`),
-    CONSTRAINT `student_user_id`
+    	CONSTRAINT `student_user_id`
 		FOREIGN KEY (`student_user_id`)
 		REFERENCES `funmath_project`.`users` (`user_id`)
-        ON DELETE NO ACTION
+		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
 	CONSTRAINT `ass_id`
 		FOREIGN KEY (`ass_id`)
-		REFERENCES `funmath_project`.`assignment` (`assignment_id`)
+		REFERENCES `funmath_project`.`publish_assignments` (`assignment_id`)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO user_role(role_id,role_name) VALUES(100,'STUDENT');
 INSERT INTO user_role(role_id,role_name) VALUES(101,'ADMIN');
 INSERT INTO user_role(role_id,role_name) VALUES(102,'TEACHER');
 
-''' Query for creating expression table  '''     
-                                                                         
+''' Query for creating expression table  '''
+
 CREATE TABLE `student_expressions` (
   `expression_id` int(11) NOT NULL AUTO_INCREMENT,
   `expression_val` varchar(1000) NOT NULL,
@@ -82,16 +83,22 @@ CREATE TABLE `student_expressions` (
   PRIMARY KEY (`expression_id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) 
- ''' Table for storing published assignments''' 
-  CREATE TABLE `published_assignments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+)
+ ''' Table for storing published assignments'''
+CREATE TABLE `published_assignments` (
+  `assignment_id` int(11) NOT NULL AUTO_INCREMENT,
   `assignment_number` int(11) DEFAULT NULL,
-  `class` int(11) DEFAULT NULL,
   `question_id` int(11) DEFAULT NULL,
-  `solution_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) 
+  `class_number` int(11) DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `creation_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `total_points` int(11) DEFAULT NULL,
+  PRIMARY KEY (`assignment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+)
 ''' table for storing user requests'''
 CREATE TABLE `funmath_project`.`user_requests` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -101,10 +108,45 @@ CREATE TABLE `funmath_project`.`user_requests` (
   PRIMARY KEY (`id`));
 
 
-INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (1, 1, 100, 100, 'Excellent!');
-INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (2, 1, 90, 100, 'Great!');
-INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (3, 1, 90, 100, 'Great!');
-INSERT INTO funmath_project.student_grades (ass_id, student_user_id, marks, maximum_marks, comments) values (4, 1, 30, 100, 'bhak bc');
+INSERT INTO funmath_project.student_grades (ass_id, assignment_number, student_user_id, points, total_points, comments) values (2, 'assignment_2', 1, 100, 100, 'Excellent!');
+
+
+
+"""
+question_pool
+"""
+
+CREATE TABLE `funmath_project`.`question_pool` (
+  `question_id` INT NOT NULL AUTO_INCREMENT,
+  `question_number` INT NOT NULL,
+  `class_number` INT NOT NULL,
+  `question_category` VARCHAR(45) NULL,
+  `display_type` VARCHAR(45) NULL,
+  `display_entity` VARCHAR(45) NULL,
+  `question_description` VARCHAR(45) NULL,
+  `question_extradetails` VARCHAR(45) NULL,
+  `answer_type` VARCHAR(45) NULL,
+  `answer_choice` VARCHAR(45) NULL,
+  `answer_description` VARCHAR(45) NULL,
+  `answer_extradetails` VARCHAR(45) NULL,
+  `correct_answer` VARCHAR(45) NULL,
+  `correct_answer_type` VARCHAR(45) NULL,
+  PRIMARY KEY (`question_id`))
+COMMENT = 'Collection of questions for assignment';
+
+
+"""
+keep this for publish assignment
+"""
+CREATE TABLE `funmath_project`.`publish_assignments` (
+  `assignment_id` INT NOT NULL AUTO_INCREMENT,
+  `assignment_number` VARCHAR(45) NULL,
+  `class_number` INT NULL,
+  `due_date` DATE NULL,
+  `creation_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `question_list` LONGTEXT NULL,
+  `total_points` INT NULL,
+  PRIMARY KEY (`assignment_id`));
 """Updated question_pool table as question_repo """
 CREATE TABLE `question_repo` (
   `question_id` int(11) NOT NULL AUTO_INCREMENT,
