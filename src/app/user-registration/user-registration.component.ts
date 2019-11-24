@@ -11,7 +11,9 @@ import { HttpClient } from "@angular/common/http";
 export class UserRegistrationComponent implements OnInit {
   url = "https://funmath-backend.appspot.com/user/register";
 
-  startDate = new Date(2000, 0, 1);
+  startDate = new Date(2010, 0, 1);
+  minDate = new Date(1919, 0, 1);
+  maxDate = new Date();
 
   fname = new FormControl("", Validators.required);
   lname = new FormControl("", Validators.required);
@@ -28,9 +30,9 @@ export class UserRegistrationComponent implements OnInit {
   gender = new FormControl();
   date = new FormControl();
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
+  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   register() {
     if (
@@ -55,17 +57,32 @@ export class UserRegistrationComponent implements OnInit {
             ? this.date.value.toISOString().substring(0, 10)
             : null
       };
-      console.log(obj);
 
       this.http.post(this.url, obj).subscribe(
         res => {
-          console.log("Res ", res);
           this.snackBar.open("Registration Successful!", "Dismiss", {
             duration: 1000
           });
+          localStorage.setItem('isLoggedIn', "true");
+          localStorage.setItem('token', res['firstName']);
+          localStorage.setItem('userId', res['userId'])
+          localStorage.setItem('emailId', res['emailId'])
+
+          const today = new Date().toISOString().substring(0, 4)
+          const dob = res['dob'] != null ? res['dob'].substring(0, 4) : today
+          localStorage.setItem('age', String(Number(today) - Number(dob)))
+          if (Number(localStorage.getItem('age')) < 11) {
+            localStorage.setItem('classNum', '1');
+          } else {
+            localStorage.setItem('classNum', '5');
+          }
+
+          if (res['roleId'] === 100) { localStorage.setItem('userType', 'Student'); }
+          if (res['roleId'] === 101) { localStorage.setItem('userType', 'Admin'); }
+          if (res['roleId'] === 102) { localStorage.setItem('userType', 'Teacher'); }
+          window.location.reload();
         },
         err => {
-          console.log("Error ", err);
           this.snackBar.open("Error in Registration!", "Dismiss", {
             duration: 1000
           });
