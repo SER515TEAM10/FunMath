@@ -80,6 +80,7 @@ import { StudentFifthGradeComponent } from './student-fifth-grade/student-fifth-
 import { TeacherAnnouncementsComponent } from './teacher-announcements/teacher-announcements.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { TeacherCreateannoucementComponent } from './teacher-createannoucement/teacher-createannoucement.component';
+import { TeacherViewannouncementComponent } from './teacher-viewannouncement/teacher-viewannouncement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ import { TeacherCreateannoucementComponent } from './teacher-createannoucement/t
     ConfirmationDialog,
     TeacherGradesComponent,
     TeacherAnnouncementsComponent,
-    TeacherCreateannoucementComponent
+    TeacherCreateannoucementComponent,
+    TeacherViewannouncementComponent
   ],
   imports: [
     BrowserModule,

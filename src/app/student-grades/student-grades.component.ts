@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// export interface GradedAssignments {
-//   name: string;
-//   position: number;
-//   marks: number;
-//   total: number;
-//   comments: string;
-// }
-
 @Component({
   selector: 'app-student-grades',
   templateUrl: './student-grades.component.html',

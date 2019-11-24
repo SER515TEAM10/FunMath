@@ -15,10 +15,7 @@ export class TeacherAnnouncementsComponent implements OnInit {
   createAnnouncement() {
     this.router.navigateByUrl('teacherCreateAnnouncement', { skipLocationChange: true });
   }
-  viewStudentInfo() {
-
-  }
-  addAssignments() {
-    this.router.navigateByUrl('add-assignment', { skipLocationChange: true });
+  viewAnnouncement() {
+    this.router.navigateByUrl('teacherViewAnnouncement', { skipLocationChange: true });
   }
 }
