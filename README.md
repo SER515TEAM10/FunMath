@@ -1,6 +1,7 @@
 # FunMath
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+The application is live on Google Cloud Platform (GCP) AppEngine!
+Check it out on http://funmath.appspot.com/
 
 ## Development server
 
