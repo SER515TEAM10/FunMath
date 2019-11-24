@@ -9,11 +9,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class StudentCanvasComponent implements OnInit {
 
-  constructor(private snackBar: MatSnackBar) { }
-
-  ngOnInit() {
-  }
-
+  isAdvanced = true;
   isComputed;
   hasResult = false;
 
@@ -21,7 +17,6 @@ export class StudentCanvasComponent implements OnInit {
   ];
 
   numbers = [
-    '0',
     '1',
     '2',
     '3',
@@ -30,26 +25,39 @@ export class StudentCanvasComponent implements OnInit {
     '6',
     '7',
     '8',
-    '9'
+    '9',
+    '0'
   ];
 
   basicOperations = [
     '+',
     '-',
-    '*',
-    '/'
+    '×',
+    '÷'
   ];
 
   advancedOperations = [
+    '^',
+    '%',
     '(',
-    ')',
+    ')'
+  ];
+
+  relationalOperations = [
     '>',
     '<',
     '>=',
     '<=',
-    '=',
     '!='
   ];
+
+  constructor(private snackBar: MatSnackBar) { }
+
+  ngOnInit() {
+    if (localStorage.getItem('classNum') === '1') {
+      this.isAdvanced = false;
+    }
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -71,19 +79,23 @@ export class StudentCanvasComponent implements OnInit {
   }
 
   calculate() {
-    // double slash , trim 0
     let expression = this.canvas.toString();
     for (let i = 0; i < expression.length; i++) {
+      expression = expression.replace('×', '*');
+      expression = expression.replace('÷', '/');
+      expression = expression.replace('^', '**');
       expression = expression.replace(',', '');
     }
     try {
       this.isComputed = eval(expression);
       if (this.isComputed != null) {
         this.hasResult = true;
+      } else {
+        this.hasResult = false;
       }
     } catch (err) {
-      this.snackBar.open(err, 'Dismiss', {
-        duration: 3000,
+      this.snackBar.open('Invalid Expression!', 'Dismiss', {
+        duration: 1500,
       });
       this.hasResult = false;
     }

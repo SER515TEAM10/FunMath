@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UsersService {
 
-  private usersUrl = 'http://localhost:8080/user';  // URL to web api
+  private usersUrl = 'https://funmath-backend.appspot.com/user';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

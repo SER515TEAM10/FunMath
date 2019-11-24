@@ -9,7 +9,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./user-registration.component.scss"]
 })
 export class UserRegistrationComponent implements OnInit {
-  url = "http://localhost:8080/user/register";
+  url = "https://funmath-backend.appspot.com/user/register";
 
   startDate = new Date(2000, 0, 1);
 
