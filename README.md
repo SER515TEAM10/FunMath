@@ -1,6 +1,6 @@
 # FunMath
 
-The application is live on Google Cloud Platform (GCP) AppEngine!
+The application is live on App Engine | Google Cloud!
 Check it out on http://funmath.appspot.com/
 
 ## Development server
