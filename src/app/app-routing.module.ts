@@ -16,6 +16,8 @@ import { TeacherGradesComponent } from "./teacher-grades/teacher-grades.componen
 import { Class5Component } from './teacher-assignment-area/questiontemplates/class5/class5.component';
 import { StudentFirstGradeComponent } from './student-first-grade/student-first-grade.component';
 import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit.component';
+import { TeacherAnnouncementsComponent } from './teacher-announcements/teacher-announcements.component';
+import { TeacherCreateannoucementComponent } from './teacher-createannoucement/teacher-createannoucement.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
@@ -38,7 +40,8 @@ const routes: Routes = [
   { path: "studentfirstgrade", component: StudentFirstGradeComponent },
   { path: "studentfifthgrade", component: Class5Component },
   { path: "assignmentSubmit", component: AssignmentSubmitComponent },
-
+  { path: "teacherAnnoucement", component: TeacherAnnouncementsComponent},
+  { path: "teacherCreateAnnouncement", component: TeacherCreateannoucementComponent},
 
   { path: "**", redirectTo: "" }
 ];

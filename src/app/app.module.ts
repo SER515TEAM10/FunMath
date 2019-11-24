@@ -77,6 +77,9 @@ import {
 } from "./teacher-assignment-area/questiontemplates/class5/class5.component";
 import { TeacherGradesComponent } from './teacher-grades/teacher-grades.component';
 import { StudentFifthGradeComponent } from './student-fifth-grade/student-fifth-grade.component';
+import { TeacherAnnouncementsComponent } from './teacher-announcements/teacher-announcements.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { TeacherCreateannoucementComponent } from './teacher-createannoucement/teacher-createannoucement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +105,9 @@ import { StudentFifthGradeComponent } from './student-fifth-grade/student-fifth-
     StudentFifthGradeComponent,
     Class5Component,
     ConfirmationDialog,
-    TeacherGradesComponent
+    TeacherGradesComponent,
+    TeacherAnnouncementsComponent,
+    TeacherCreateannoucementComponent
   ],
   imports: [
     BrowserModule,
@@ -145,7 +150,8 @@ import { StudentFifthGradeComponent } from './student-fifth-grade/student-fifth-
     ReactiveFormsModule,
     DragDropModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LayoutModule
   ],
   exports: [],
   providers: [MatDatepickerModule, AuthGuard],

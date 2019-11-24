@@ -1,0 +1,18 @@
+<div class="example-container">
+    <h4>Announcement</h4>
+    <mat-form-field>
+        <textarea matInput name="announce" [formControl]="announce"></textarea>
+    </mat-form-field>
+    <h4>Select Class</h4>
+    <mat-form-field>
+    <mat-label>Class</mat-label>
+        <mat-select name="classselect" [formControl]="classselect">
+            <mat-option *ngFor="let c of classes" [value]="c.value">
+                {{c.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<button mat-raised-button (click)="submitAnnouncement()" color="primary">
+        <mat-icon>done</mat-icon>Submit
+</button>

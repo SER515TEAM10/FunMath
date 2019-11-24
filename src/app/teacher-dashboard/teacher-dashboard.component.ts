@@ -15,8 +15,8 @@ export class TeacherDashboardComponent implements OnInit {
   viewGrades() {
     this.router.navigateByUrl('teachergradesdash', { skipLocationChange: true });
   }
-  viewStudentInfo() {
-
+  viewAnnouncements() {
+    this.router.navigateByUrl('teacherAnnoucement', { skipLocationChange: true });
   }
   addAssignments() {
     this.router.navigateByUrl('add-assignment', { skipLocationChange: true });
