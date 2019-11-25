@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Approval Requests</h1>
 <div mat-dialog-content>
   <mat-list>
-    <mat-list-item *ngIf="data.dataList[0] == null">
+    <mat-list-item *ngIf="data.dataList.length < 1">
       No pending requests!
     </mat-list-item>
     <mat-list-item *ngFor="let item of data.dataList">{{item.emailId}}<b>&nbsp;Requested On:&nbsp;</b>{{item.date}}

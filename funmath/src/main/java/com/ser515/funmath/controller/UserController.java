@@ -1,6 +1,5 @@
 package com.ser515.funmath.controller;
 
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +27,6 @@ import com.ser515.funmath.services.PublishAssignmentService;
 import com.ser515.funmath.services.QuestionService;
 import com.ser515.funmath.services.UserService;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -114,22 +111,23 @@ public class UserController {
 		List<Users> userList = userService.findAll();
 		List<Users> users = new ArrayList<Users>();
 		boolean numeric = true;
-        numeric = idOrName.matches("\\d+");
-        if (numeric) {
-        	for (Users user: userList) {
-    			if (user.getUserId() == Integer.parseInt(idOrName)) {
-    				users.add(user);
-    			}
-    		}
-        }else {
-        	for (Users user: userList) {
-    			if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase()) || user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
-    				users.add(user);
-    			}
-    		}
-        }
- 		
- 		System.out.println("Inside searchByNameOrId : " + users.toString()  );
+		numeric = idOrName.matches("\\d+");
+		if (numeric) {
+			for (Users user : userList) {
+				if (user.getUserId() == Integer.parseInt(idOrName)) {
+					users.add(user);
+				}
+			}
+		} else {
+			for (Users user : userList) {
+				if (user.getFirstName().toLowerCase().equals(idOrName.toLowerCase())
+						|| user.getLastName().toLowerCase().equals(idOrName.toLowerCase())) {
+					users.add(user);
+				}
+			}
+		}
+
+		System.out.println("Inside searchByNameOrId : " + users.toString());
 		return users;
 	}
 
@@ -148,22 +146,22 @@ public class UserController {
 		assignment.setDueDate(date);
 		assignment.setQuestionList(json.get("questionList"));
 		assignment.setTotalPoints(Integer.parseInt(json.get("totalPoints")));
-		
+
 		return publishAssignService.publishAssignment(assignment);
 	}
+
 	@GetMapping("/request/getAll/{requestStatus}")
 	public List<AccessRequest> getPendingRequests(@PathVariable String requestStatus) {
 		return userService.getPendingRequests(requestStatus);
 
 	}
 
-
 	/*
 	 * Send input as shown below { "Id": 1, "emailId": "sharaddhar@asu.edu",
 	 * "requestDate": "2000-05-01", "requestStatus": "Approved" }
 	 */
 	@PostMapping("/request/modifyStatus")
-	public void modifyRequest(@RequestBody AccessRequest request) {		
+	public void modifyRequest(@RequestBody AccessRequest request) {
 		userService.addModifyRequest(request);
 
 	}
@@ -185,13 +183,13 @@ public class UserController {
 	}
 
 	@GetMapping("/assignment/getAssignments/{classNumber}")
-	public List<PublishAssignmentsModel> getAssignments(@PathVariable int classNumber) {		
+	public List<PublishAssignmentsModel> getAssignments(@PathVariable int classNumber) {
 		return userService.getAssignmentList(classNumber);
-	}	
+	}
 
 	@PostMapping("/assignment/submitAssignment")
 	public void submitAssigment(@RequestBody SubmittedAssignments assignment) {
-		userService.submitAssignment(assignment);		
+		userService.submitAssignment(assignment);
 	}
 
 }
