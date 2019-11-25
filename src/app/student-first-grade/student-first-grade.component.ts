@@ -1330,7 +1330,9 @@ export class StudentFirstGradeComponent implements OnInit {
     console.log(JSON.stringify(this.JSONArr));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.countingProblems();
+  }
   countingProblems(): void {
     this.test_for_pattern = true;
     this.question = this.countingQuestions;
