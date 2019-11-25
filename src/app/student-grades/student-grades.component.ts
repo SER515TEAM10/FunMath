@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentGradesComponent implements OnInit {
 
-  url = 'http://localhost:8080/submittedassignments/search/';
+  url = 'https://funmath-backend.appspot.com/submittedassignments/search/';
   displayedColumns: string[] = ['submissionid', 'name', 'marks', 'total'];
   dataSource;
   constructor(private http: HttpClient) { }

@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentDashboardComponent implements OnInit {
 
-  createRequestUrl = 'http://localhost:8080/user/request/modifyStatus';
+  createRequestUrl = 'https://funmath-backend.appspot.com/user/request/modifyStatus';
 
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private snackBar: MatSnackBar) { }
 
