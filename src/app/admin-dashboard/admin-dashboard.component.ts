@@ -14,8 +14,8 @@ export interface DialogData {
 })
 export class AdminDashboardComponent {
 
-  pendingTaskUrl = ' http://localhost:8080/user/request/getAll/pending';
-  updateRoleUrl = 'http://localhost:8080/user/request/modifyStatus';
+  pendingTaskUrl = 'https://funmath-backend.appspot.com/user/request/getAll/pending';
+  updateRoleUrl = 'https://funmath-backend.appspot.com/user/request/modifyStatus';
 
   dataList = [];
 

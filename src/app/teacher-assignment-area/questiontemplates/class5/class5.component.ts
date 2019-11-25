@@ -25,8 +25,8 @@ import { AssignmentService } from "src/app/assignmnet-view/assignment.service";
   styleUrls: ["./class5.component.scss"]
 })
 export class Class5Component implements OnInit {
-  url = "http://localhost:8080/user/publishAssignment";
-  getAssignmentURL = "http://localhost:8080/user/assignment/getAssignments/";
+  url = "https://funmath-backend.appspot.com/user/publishAssignment";
+  getAssignmentURL = "https://funmath-backend.appspot.com/user/assignment/getAssignments/";
   date = new FormControl();
   startDate = new Date();
   public selected: string;
