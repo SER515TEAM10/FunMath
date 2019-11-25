@@ -81,6 +81,7 @@ import { TeacherAnnouncementsComponent } from './teacher-announcements/teacher-a
 import { LayoutModule } from '@angular/cdk/layout';
 import { TeacherCreateannoucementComponent } from './teacher-createannoucement/teacher-createannoucement.component';
 import { TeacherViewannouncementComponent } from './teacher-viewannouncement/teacher-viewannouncement.component';
+import { StudentViewannouncementComponent } from './student-viewannouncement/student-viewannouncement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +110,8 @@ import { TeacherViewannouncementComponent } from './teacher-viewannouncement/tea
     TeacherGradesComponent,
     TeacherAnnouncementsComponent,
     TeacherCreateannoucementComponent,
-    TeacherViewannouncementComponent
+    TeacherViewannouncementComponent,
+    StudentViewannouncementComponent
   ],
   imports: [
     BrowserModule,

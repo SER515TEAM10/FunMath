@@ -59,6 +59,10 @@ export class StudentDashboardComponent implements OnInit {
     this.router.navigateByUrl('studentgradesdash', { skipLocationChange: true });
   }
 
+  viewAnnouncements() {
+    this.router.navigateByUrl('studentViewAnnouncement', { skipLocationChange: true });
+  }
+
   viewAssignment(): void {
     this.router.navigateByUrl('assignmentview', { skipLocationChange: true });
   }

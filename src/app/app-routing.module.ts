@@ -19,6 +19,7 @@ import { AssignmentSubmitComponent } from './assignment-submit/assignment-submit
 import { TeacherAnnouncementsComponent } from './teacher-announcements/teacher-announcements.component';
 import { TeacherCreateannoucementComponent } from './teacher-createannoucement/teacher-createannoucement.component';
 import { TeacherViewannouncementComponent } from './teacher-viewannouncement/teacher-viewannouncement.component';
+import { StudentViewannouncementComponent } from './student-viewannouncement/student-viewannouncement.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: "teacherAnnoucement", component: TeacherAnnouncementsComponent},
   { path: "teacherCreateAnnouncement", component: TeacherCreateannoucementComponent},
   { path: "teacherViewAnnouncement", component: TeacherViewannouncementComponent},
+  { path: "studentViewAnnouncement", component: StudentViewannouncementComponent},
   { path: "**", redirectTo: "" }
 ];
 
