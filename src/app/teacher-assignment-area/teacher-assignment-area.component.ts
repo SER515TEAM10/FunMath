@@ -19,7 +19,9 @@ export class TeacherAssignmentAreaComponent implements OnInit {
   }
   //checkClass = 'isClass1s1';
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   // public displayclass1s1() {
   //   localStorage.setItem("isClass1", "S1");
@@ -34,7 +36,9 @@ export class TeacherAssignmentAreaComponent implements OnInit {
   getAllQuestions(): void {
     this.teacherService
       .getQuestionByClassCategory(5, "Addition and Subtraction")
-      .subscribe(question => (this.questionObject = question));
+      .subscribe(question => {this.questionObject = question;
+        this.fetchData();
+    this.linkClicked = 'c1s1';});
   }
   fetchData() {
     console.log(JSON.parse(this.questionObject.questionList));
