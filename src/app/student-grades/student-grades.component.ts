@@ -19,6 +19,7 @@ export class StudentGradesComponent implements OnInit {
   url = 'https://funmath-backend.appspot.com/submittedassignments/search/';
   displayedColumns: string[] = ['submissionid', 'name', 'marks', 'total'];
   dataSource;
+  gradeSize : boolean;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -26,6 +27,11 @@ export class StudentGradesComponent implements OnInit {
         .subscribe(
           res => {
               console.log(res)
+              if (res != null) {
+                this.gradeSize = true;
+              } else {
+                this.gradeSize = false;
+              }
               this.dataSource = res
           },
           err => {

@@ -47,7 +47,9 @@ export class AssignmnetViewComponent implements OnInit {
   }
 
   getAssignments(): void {
-    this.assignmentService.getAssignments(5)
+    var classNum = (Number)(localStorage.getItem('classNum'));
+    console.log(classNum);
+    this.assignmentService.getAssignments(classNum)
       .subscribe(
         assignments => {
           this.Assignments = assignments;
