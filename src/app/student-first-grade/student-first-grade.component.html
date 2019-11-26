@@ -103,18 +103,18 @@
                   <table>
                     <tr *ngFor='let answer of question[i].answers.fields'>
                       <td>{{answer.answertext}} </td>
-                      <td> <input type="text" /></td>
+                      <td> <input type="text" #inputValue (change)="evaluateAnswer(question[i].correctAnswer,inputValue.value)" /></td>
                       <td> {{answer.answerunit}}</td>
                     </tr>
                   </table>
                 </span>
               </div>
             </div>
-            <div>
-              <mat-label *ngIf="incorrectLabel">Incorrect</mat-label>
+            <div style="padding-top:1%">
+              <mat-label *ngIf="incorrectLabel" class="incorrect-label" style="color:red">Incorrect</mat-label>
             </div>
-            <div>
-              <mat-label *ngIf="correctLabel">Correct</mat-label>
+            <div style="padding-top:1%">
+              <mat-label *ngIf="correctLabel"class="correct-label" style="color:green">Correct</mat-label>
             </div>
           </mat-card-content>
         </mat-card>
