@@ -4,8 +4,19 @@
   <div>
     <span>
       <h3>Select multiple questions to create an assignment</h3>
-      <button class="create-button" mat-raised-button color="primary" (click)="createAssignment()">Create
-        Assignment</button>
+      <span>
+          <mat-form-field class="full-width">
+            <mat-label>Select assignment due date</mat-label>
+            <input ngModel name="date" matInput (focus)="duedate.open()" [matDatepicker]="duedate" [min]="startDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="duedate"></mat-datepicker-toggle>
+            <mat-datepicker #duedate startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </span>
+        <span>
+            <button type="submit" mat-raised-button color="primary" style="
+            left: 1%">Create
+              Assignment</button>
+          </span>
     </span>
   </div>
   <div>
