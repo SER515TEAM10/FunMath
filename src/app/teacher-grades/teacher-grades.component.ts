@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TeacherGradesComponent implements OnInit {
 
-  url = 'http://localhost:8080/submittedassignments/search';
+  url = 'https://funmath-backend.appspot.com/submittedassignments/search';
   displayedColumns: string[] = ['submissionid', 'assignmentnumber', 'studentid', 'class', 'marks', 'total'];
   dataSource;
   constructor(private http: HttpClient) { }

@@ -8,7 +8,7 @@ import { catchError, map, tap } from "rxjs/operators";
   providedIn: "root"
 })
 export class TeacherService {
-  private teacherUrl = "http://localhost:8080/user";
+  private teacherUrl = "https://funmath-backend.appspot.com/user";
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"

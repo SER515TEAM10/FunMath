@@ -2,7 +2,7 @@
   <mat-icon>dashboard</mat-icon><span>Student Dashboard</span>
 </mat-toolbar>
 <mat-card>
-  <mat-grid-list cols="5" rowHeight="5:1">
+  <mat-grid-list cols="4" rowHeight="4:1">
     <mat-grid-tile>
         <button mat-raised-button (click)="viewAnnouncements()" color="primary">
           <mat-icon>announcement</mat-icon>VIEW ANNOUNCEMENTS
@@ -18,11 +18,11 @@
         <mat-icon>assignment</mat-icon>VIEW ASSIGNMENTS
       </button>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <!-- <mat-grid-tile>
       <button mat-raised-button (click)="viewHistory()" color="primary">
         <mat-icon>history</mat-icon>HISTORY
       </button>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile>
       <button mat-raised-button (click)="launchCanvas()" color="primary">
         <mat-icon>launch</mat-icon>CANVAS
@@ -33,7 +33,8 @@
 <div style="display:flex; justify-content: center;">
   <mat-list>
     <mat-list-item>
-      <mat-icon>account_circle</mat-icon>If you're a teacher, raise a request&nbsp;<a (click)="openDialog()">here</a>!
+      <mat-icon>contacts</mat-icon>If you're a teacher, raise a request&nbsp;<a style="cursor: pointer;"
+        (click)="openDialog()"><b>here</b></a>!
     </mat-list-item>
   </mat-list>
 </div>

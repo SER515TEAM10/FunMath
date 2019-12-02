@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserLoginComponent implements OnInit {
 
-  url = 'http://localhost:8080/user/login/';
+  url = 'https://funmath-backend.appspot.com/user/login/';
 
   constructor(private router: Router, private formBuilder: FormBuilder, public authService: AuthService,
     private snackBar: MatSnackBar, private http: HttpClient) { }
@@ -24,6 +24,10 @@ export class UserLoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  goRegister() {
+    this.router.navigateByUrl('register', { skipLocationChange: true });
   }
 
   login() {

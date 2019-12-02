@@ -54,3 +54,15 @@ mat-label {
 .align-contents {
   justify-items: flex-start;
 }
+.correct-label{
+  color: green;
+  font-size: xx-large;
+}
+
+.incorrect-label{
+  color: red;
+  font-size: xx-large;
+}
+.is-active{
+  background-color: gray;
+}

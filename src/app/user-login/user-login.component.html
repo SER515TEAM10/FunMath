@@ -15,15 +15,20 @@
       <button mat-raised-button (click)="login()" color="primary">LOGIN</button>
     </form>
   </mat-card-content>
+
 </mat-card>
 <div style="display:flex; justify-content: center;">
   <mat-list>
-    <mat-list-item></mat-list-item>
-    <mat-list-item></mat-list-item>
     <mat-list-item>
-      <mat-label style="    font-size: xx-large;
-      font-weight: 500;
-      color: #673ab7;"> Be a wise girl or guy, give Math a try!</mat-label>
+      <mat-icon>account_circle</mat-icon>Not registered yet?&nbsp;<a style="cursor: pointer;" (click)="goRegister()">
+        <b>Register</b></a>&nbsp;now!
+    </mat-list-item>
+  </mat-list>
+</div>
+<div class="forbackground">
+  <mat-list>
+    <mat-list-item>
+      <label class="tagline"> Be a wise girl or guy, give Math a try!</label>
     </mat-list-item>
   </mat-list>
 </div>

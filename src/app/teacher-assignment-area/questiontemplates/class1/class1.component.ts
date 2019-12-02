@@ -8,6 +8,7 @@ import { TeacherAssignmentAreaComponent } from "src/app/teacher-assignment-area/
 })
 export class Class1Component implements OnInit {
   public test: string;
+  startDate = new Date();
   @Input() classSelected: string;
   constructor() {}
 
