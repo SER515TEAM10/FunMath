@@ -2,7 +2,12 @@
   <mat-icon>dashboard</mat-icon><span>Student Dashboard</span>
 </mat-toolbar>
 <mat-card>
-  <mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-list cols="4" rowHeight="4:1">
+    <mat-grid-tile>
+        <button mat-raised-button (click)="viewAnnouncements()" color="primary">
+          <mat-icon>announcement</mat-icon>VIEW ANNOUNCEMENTS
+        </button>
+    </mat-grid-tile>
     <mat-grid-tile>
       <button mat-raised-button (click)="viewGrades()" color="primary">
         <mat-icon>grade</mat-icon>VIEW GRADES

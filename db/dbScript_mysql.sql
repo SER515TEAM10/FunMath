@@ -166,4 +166,11 @@ CREATE TABLE `submitted_assignments` (
   PRIMARY KEY (`submission_id`)
 )
 
+CREATE TABLE `funmath_project`.`annoucements` (
+	`announcement_id` INT NOT NULL AUTO_INCREMENT,
+	`announcement_text` VARCHAR(500) NOT NULL,
+	`class_number` int(11) DEFAULT NULL,
+	PRIMARY KEY (`announcement_id')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
