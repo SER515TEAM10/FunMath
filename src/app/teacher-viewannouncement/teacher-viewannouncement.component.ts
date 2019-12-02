@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TeacherViewannouncementComponent implements OnInit {
 
-  url = 'http://funmath-backend.appspot.com/announcements/getAll';
+  url = 'https://funmath-backend.appspot.com/announcements/getAll';
   displayedColumns: string[] = ['announcementid', 'announcementtext', 'class'];
   dataSource;
   constructor(private http: HttpClient) { }
