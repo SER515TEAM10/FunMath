@@ -15,7 +15,7 @@ export interface Class {
 })
 export class TeacherCreateannoucementComponent implements OnInit {
 
-  url = "http://localhost:8080/announcements/create";
+  url = "http://funmath-backend.appspot.com/announcements/create";
 
   announce = new FormControl("", Validators.required);
   classselect = new FormControl("", Validators.required);
